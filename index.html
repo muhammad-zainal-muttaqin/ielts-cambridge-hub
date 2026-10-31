@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IELTS Cambridge Test Hub</title>
+<style>
+  /* Tokens and choices: DESIGN.md ("Lembar skor", ENERGY 1 / RHYTHM 2 / MOTION 1). */
+  :root{
+    --bg:#f5f3ee;--surface:#fffdf9;--ink:#1d1c19;--muted:#5f5b53;--line:#e2ddd2;--line-in:#8c867a;--hover:#f0ede6;
+    --acc:#24408f;--acc-hover:#1b3273;--on-acc:#fff;--acc-text:#24408f;--acc-soft:#e8ecf6;--focus:#24408f;
+    --sq:#e9e5db;--sq-lo:#d3dbef;--sq-lo-ink:#1d1c19;--sq-mid:#8fa3d6;--sq-mid-ink:#1d1c19;--sq-hi:#24408f;--sq-hi-ink:#fff;--sq-dn:#5f5b53;--sq-dn-ink:#fff;
+    --warn-bg:#fbf1dc;--warn-line:#b7791f;--warn-ink:#6b4410;--danger:#a3261b;
+    --inv:#1d1c19;--inv-ink:#fffdf9;--timer-end:#ff8a7a;--flash:#f8e7a6;
+    --chev:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%235f5b53' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    --chev-inv:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23fffdf9' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    --h:40px;--hr:34px;
+    color-scheme:light;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#171613;--surface:#201f1b;--ink:#ece8df;--muted:#a8a296;--line:#34322c;--line-in:#7a756b;--hover:#2a2924;
+      --acc:#a9bdf2;--acc-hover:#c3d1f6;--on-acc:#121a33;--acc-text:#a9bdf2;--acc-soft:#1f2a45;--focus:#a9bdf2;
+      --sq:#2e2c27;--sq-lo:#2a3556;--sq-lo-ink:#ece8df;--sq-mid:#4c64a8;--sq-mid-ink:#fff;--sq-hi:#a9bdf2;--sq-hi-ink:#121a33;--sq-dn:#4a463f;--sq-dn-ink:#fff;
+      --warn-bg:#2b2212;--warn-line:#a8741d;--warn-ink:#f3d9a4;--danger:#f2a69c;
+      --inv:#ece8df;--inv-ink:#171613;--timer-end:#b3261e;--flash:#4a3d14;
+      --chev:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23a8a296' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      --chev-inv:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23171613' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      color-scheme:dark;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#171613;--surface:#201f1b;--ink:#ece8df;--muted:#a8a296;--line:#34322c;--line-in:#7a756b;--hover:#2a2924;
+    --acc:#a9bdf2;--acc-hover:#c3d1f6;--on-acc:#121a33;--acc-text:#a9bdf2;--acc-soft:#1f2a45;--focus:#a9bdf2;
+    --sq:#2e2c27;--sq-lo:#2a3556;--sq-lo-ink:#ece8df;--sq-mid:#4c64a8;--sq-mid-ink:#fff;--sq-hi:#a9bdf2;--sq-hi-ink:#121a33;--sq-dn:#4a463f;--sq-dn-ink:#fff;
+    --warn-bg:#2b2212;--warn-line:#a8741d;--warn-ink:#f3d9a4;--danger:#f2a69c;
+    --inv:#ece8df;--inv-ink:#171613;--timer-end:#b3261e;--flash:#4a3d14;
+    --chev:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23a8a296' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    --chev-inv:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23171613' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    color-scheme:dark;
+  }
+  /* Touch screens and phones: every control becomes a 44px target. */
+  @media (max-width:760px), (pointer:coarse){ :root{--h:44px;--hr:44px} }
+
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+  h1,h2,.bk{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif}
+  h1{margin:0;font-size:28px;line-height:1.2}
+  h2{margin:0;font-size:20px;line-height:1.3}
+  a{color:var(--acc-text);text-underline-offset:3px}
+  p{margin:0}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+  .num{font-variant-numeric:tabular-nums}
+  .muted{color:var(--muted)}
+  .small{font-size:12.5px}
+  .sr,.fl{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+  .hidden{display:none !important}
+  kbd{font:11px/1.4 ui-monospace,Menlo,monospace;border:1px solid var(--line-in);border-radius:4px;padding:0 4px;color:var(--muted)}
+
+  /* Controls: one height per context (toolbar --h, table rows --hr). */
+  button,.btn,select,input[type=text],input[type=number],input[type=search]{font:inherit;font-size:14px;height:var(--h);border-radius:8px;color:var(--ink);margin:0}
+  button,.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:0 14px;border:1px solid var(--line-in);background:var(--surface);font-weight:600;text-decoration:none;white-space:nowrap}
+  button:hover,.btn:hover{background:var(--hover);border-color:var(--ink)}
+  button:active,.btn:active{transform:translateY(1px)}
+  .primary,.primary:hover{background:var(--acc);border-color:var(--acc);color:var(--on-acc)}
+  .primary:hover{background:var(--acc-hover);border-color:var(--acc-hover);text-decoration:underline}
+  .danger{color:var(--danger)}
+  select,input[type=text],input[type=number],input[type=search]{border:1px solid var(--line-in);background:var(--surface);padding:0 12px;min-width:0}
+  select:hover,input:hover{border-color:var(--ink)}
+  select{appearance:none;-webkit-appearance:none;padding-right:34px;background-image:var(--chev);background-repeat:no-repeat;background-position:right 12px center;background-size:12px 8px;text-overflow:ellipsis}
+  input[type=number]{text-align:right;-moz-appearance:textfield;font-variant-numeric:tabular-nums}
+  input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+  ::placeholder{color:var(--muted);opacity:1}
+  button,.btn,select,summary,label[for],label.hit,input[type=checkbox],a[href]{cursor:pointer}
+  button:disabled,select:disabled,input:disabled{cursor:not-allowed;opacity:.55}
+  :focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+  .panel{background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+
+  header.wrap{padding-top:28px;display:flex;gap:16px;align-items:flex-start;justify-content:space-between}
+  header p{margin-top:6px;color:var(--muted);font-size:14.5px;max-width:620px}
+  main.wrap{padding-bottom:110px}
+  section{margin-top:28px}
+  .sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:6px 16px;flex-wrap:wrap;margin-bottom:10px}
+
+  /* Skill summary: the focal point. */
+  .bookbar{display:flex;align-items:center;justify-content:space-between;gap:10px 20px;flex-wrap:wrap;padding:12px 14px;border-bottom:1px solid var(--line);font-size:14px}
+  .bb-sq{display:flex;gap:12px;flex-wrap:wrap}
+  .grp{display:inline-flex;align-items:center;gap:3px}
+  .grp .gl{font-size:12px;font-weight:700;color:var(--muted);margin-right:3px}
+  .grp i{width:14px;height:14px;border-radius:3px;background:var(--sq)}
+  .grp i.o{box-shadow:inset 0 0 0 2px var(--acc)}
+  .grp i.d{background:var(--acc)}
+  .sum{width:100%;border-collapse:collapse}
+  .sum th,.sum td{padding:10px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:middle}
+  .sum thead th{font-size:12.5px;font-weight:600;color:var(--muted);padding-top:9px;padding-bottom:9px}
+  .sum .n{text-align:right;white-space:nowrap}
+  .sum tbody th{white-space:nowrap}
+  .sk{font-weight:700}
+  .tag{display:inline-block;margin-left:8px;font-size:12px;font-weight:700;color:var(--acc-text);border:1px solid currentColor;border-radius:5px;padding:0 6px;line-height:18px}
+  .sum tr.focus>*{background:var(--acc-soft)}
+  .sum tr.overall>*{border-top:2px solid var(--ink);border-bottom:0}
+  .bandbig{font-size:20px;font-weight:800;font-variant-numeric:tabular-nums}
+  .reached{font-weight:700;color:var(--acc-text)}
+  .sum select{width:118px}
+  .nx{display:flex;align-items:center;gap:8px 12px}
+  .nx .acts{display:inline-flex;gap:8px}
+  .goto{height:auto;padding:0;border:0;background:none;font-weight:700;text-decoration:underline;text-underline-offset:3px;color:var(--ink)}
+  .goto:hover{background:none;color:var(--acc-text)}
+  .spark{display:inline-block;width:44px;height:16px;vertical-align:middle;margin-right:6px}
+  .spark polyline{fill:none;stroke:var(--acc);stroke-width:1.6;stroke-linejoin:round;stroke-linecap:round}
+  .spark circle{fill:var(--acc)}
+
+  /* Toolbar */
+  .toolbar{position:sticky;top:0;z-index:20;background:var(--bg);padding:12px 0;margin-top:28px;border-bottom:1px solid var(--line)}
+  .tb-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+  .tb-row .push{margin-left:auto}
+  .seg{display:inline-flex;border-radius:8px;overflow:hidden;box-shadow:inset 0 0 0 1px var(--line-in);background:var(--surface)}
+  .seg button{border:0;border-radius:0;background:transparent;padding:0 14px}
+  .seg button+button{box-shadow:inset 1px 0 0 var(--line)}
+  .seg button:hover{background:var(--hover)}
+  .seg button[aria-pressed="true"]{background:var(--ink);color:var(--surface)}
+  .filters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:10px}
+  .filters label{display:flex;flex-direction:column;gap:3px;font-size:12.5px;color:var(--muted);font-weight:600}
+  .filters select,.filters input{width:100%}
+
+  /* Test list */
+  .list{width:100%;border-collapse:collapse;font-size:14px}
+  .list thead th{font-size:12.5px;font-weight:600;color:var(--muted);text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+  .list th.n,.list td.n{text-align:right}
+  .list td{padding:6px 10px;border-bottom:1px solid var(--line);vertical-align:middle}
+  .list tr.bookrow th{padding:16px 10px 8px;border-top:2px solid var(--ink);border-bottom:1px solid var(--line);text-align:left;font-weight:600;font-size:13px}
+  .list thead+tbody tr.bookrow th{border-top:0}
+  .bk{font-size:19px;font-weight:700;margin-right:12px}
+  .bh{color:var(--muted);margin-right:12px}
+  .btag{color:var(--muted);margin-right:12px}
+  .list tr.item.done>td{background:var(--acc-soft)}
+  .list tr.flash>td{background:var(--flash) !important}
+  .testcell{font-weight:700;white-space:nowrap;width:1%}
+  .chips{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+  .src{display:inline-flex;align-items:center;height:var(--hr);padding:0 10px;border:1px solid var(--line-in);border-radius:7px;font-size:13px;font-weight:600;color:var(--ink);text-decoration:none;white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis}
+  .src:hover{background:var(--hover);border-color:var(--ink);text-decoration:underline}
+  .src.main{color:var(--acc-text);border-color:var(--acc-text)}
+  .src.search{border-color:transparent;color:var(--muted);text-decoration:underline}
+  .src.search:hover{border-color:var(--line-in)}
+  .contoh{font-size:12.5px;color:var(--muted);margin-left:4px}
+  .opened{font-size:12px;color:var(--muted)}
+  .scorecell{white-space:nowrap;width:1%}
+  .scorecell input{width:62px;height:var(--hr)}
+  .scorecell select{width:96px;height:var(--hr)}
+  .band{display:inline-block;min-width:36px;text-align:right;font-weight:800;font-variant-numeric:tabular-nums;margin-left:6px;vertical-align:middle}
+  .donecell{white-space:nowrap;width:1%}
+  .hit{display:inline-flex;align-items:center;justify-content:center;width:var(--hr);height:var(--hr);vertical-align:middle}
+  .check{width:18px;height:18px;margin:0;accent-color:var(--acc)}
+  .date{font-size:12px;color:var(--muted);margin-left:2px;font-variant-numeric:tabular-nums;display:inline-block;min-width:68px}
+  .notecell{width:26%}
+  .notecell input{width:100%;height:var(--hr)}
+  .tmcell{width:1%;white-space:nowrap}
+  .rowbtn{height:var(--hr);padding:0 10px;font-size:13px}
+  .list td.xcell{display:none}
+  .xbtn svg{display:block}
+  tr.open .xbtn svg{transform:rotate(180deg)}
+  .empty{padding:28px 14px !important;text-align:left;color:var(--muted)}
+
+  /* Book map */
+  .mapbox{padding:14px}
+  .map{display:grid;grid-template-columns:52px repeat(4,minmax(0,1fr));gap:6px 10px;align-items:center}
+  .map .hd{font-size:12.5px;font-weight:600;color:var(--muted)}
+  .map .bl{font-weight:700;font-size:14px}
+  .map .bl small{display:block;font-weight:600;color:var(--muted);font-size:11.5px}
+  .quad{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:3px}
+  .quad.lbl span{font-size:11px;font-weight:700;color:var(--muted);text-align:center}
+  .sq{display:block;width:100%;height:28px;border-radius:5px;background:var(--sq);border:0;padding:0;font:700 12px/28px -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-variant-numeric:tabular-nums;color:var(--acc-text);text-align:center;min-width:0}
+  .sq:hover{background:var(--sq);box-shadow:inset 0 0 0 2px var(--ink)}
+  .sq.lo,.sq.lo:hover{background:var(--sq-lo);color:var(--sq-lo-ink)}
+  .sq.mid,.sq.mid:hover{background:var(--sq-mid);color:var(--sq-mid-ink)}
+  .sq.hi,.sq.hi:hover{background:var(--sq-hi);color:var(--sq-hi-ink)}
+  .sq.dn,.sq.dn:hover{background:var(--sq-dn);color:var(--sq-dn-ink)}
+  .map.one{grid-template-columns:48px repeat(4,minmax(0,1fr));gap:6px}
+  .map.one .sq{height:44px;line-height:44px;font-size:14px}
+  .legend{display:flex;gap:8px 16px;flex-wrap:wrap;margin-top:14px;font-size:12.5px;color:var(--muted)}
+  .legend span{display:inline-flex;align-items:center;gap:6px}
+  .legend i{width:20px;height:20px;border-radius:4px;display:inline-flex;align-items:center;justify-content:center;font:700 11px/1 -apple-system,BlinkMacSystemFont,sans-serif;font-style:normal}
+
+  /* Lower sections */
+  .warnbox{border:1px solid var(--warn-line);background:var(--warn-bg);color:var(--warn-ink);border-radius:10px;padding:12px 14px;font-size:14px;margin-top:16px}
+  details.panel{padding:0 14px}
+  details.panel summary{font-weight:700;padding:11px 0;min-height:var(--h);display:flex;align-items:center}
+  .plain{width:100%;border-collapse:collapse;font-size:14px;margin:4px 0 12px}
+  .plain th,.plain td{text-align:left;padding:7px 10px 7px 0;border-bottom:1px solid var(--line);vertical-align:top}
+  .plain th{font-size:12.5px;font-weight:600;color:var(--muted)}
+  details ol{margin:4px 0 10px;padding-left:20px;font-size:14px}
+  details li{margin:3px 0}
+  .links{margin:0;padding-left:20px;font-size:14.5px}
+  .links a{display:inline-flex;align-items:center;min-height:var(--h)}
+  .links li{margin:0}
+  .data-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:10px}
+  footer.wrap{padding-bottom:40px;color:var(--muted);font-size:13px}
+
+  .timer{position:fixed;right:16px;bottom:16px;z-index:50;background:var(--inv);color:var(--inv-ink);border-radius:10px;padding:10px 12px;display:none;align-items:center;gap:8px;flex-wrap:wrap;box-shadow:0 8px 24px rgba(0,0,0,.28);max-width:calc(100vw - 32px)}
+  .timer.on{display:flex}
+  .timer .tm{font:800 24px/1 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-variant-numeric:tabular-nums;min-width:80px}
+  .timer .tl{font-size:12px;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .timer label{display:flex;flex-direction:column;font-size:12px;gap:2px}
+  .timer select{background-color:var(--inv);color:var(--inv-ink);border-color:currentColor;background-image:var(--chev-inv)}
+  .timer button{background:transparent;color:inherit;border-color:currentColor}
+  .timer button:hover{background:transparent;text-decoration:underline}
+  .timer.end .tm{color:var(--timer-end)}
+  .timer.end{outline:3px solid var(--timer-end)}
+  .toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--inv);color:var(--inv-ink);padding:10px 16px;border-radius:8px;font-size:14px;display:none;z-index:60;max-width:calc(100vw - 32px)}
+  .toast.show{display:block}
+
+  @media (max-width:860px){
+    .filters{grid-template-columns:repeat(2,minmax(0,1fr))}
+  }
+  @media (max-width:760px){
+    h1{font-size:24px}
+    select,input[type=text],input[type=number],input[type=search]{font-size:16px}
+    section{margin-top:22px}
+    .toolbar{position:static;margin-top:22px}
+    .tb-row .seg#tabs{order:3;width:100%;display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+    .seg button{padding:0 8px}
+    .goto{min-height:44px}
+
+    .sum,.sum tbody{display:block}
+    .sum thead{display:none}
+    .sum tr{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-areas:"name tg tg" "done avg gap" "next next next";gap:8px 12px;align-items:center;padding:12px 14px;border-bottom:1px solid var(--line)}
+    .sum tr.focus{background:var(--acc-soft)}
+    .sum tr.overall{border-top:2px solid var(--ink);border-bottom:0}
+    .sum th,.sum td,.sum tr.focus>*,.sum tr.overall>*{display:block;padding:0;border:0;background:transparent;text-align:left}
+    .sum .n{text-align:left}
+    .sum tbody th{grid-area:name;white-space:normal}
+    .sum td[data-l]::before{content:attr(data-l);display:block;font-size:12px;font-weight:600;color:var(--muted)}
+    .sum td[data-l="Selesai"]{grid-area:done}
+    .sum td[data-l="Rata-rata band"]{grid-area:avg}
+    .sum td[data-l="Selisih"]{grid-area:gap}
+    .sum td[data-l="Target"]{grid-area:tg;display:flex;align-items:center;justify-content:flex-end;gap:8px}
+    .sum td[data-l="Target"]::before{display:inline}
+    .sum select{width:132px}
+    .sum td.nextcell{grid-area:next}
+    .sum .spark{display:none}
+    .nx{flex-wrap:nowrap;justify-content:space-between}
+    .nx .acts{gap:6px}
+    .nx .acts .btn,.nx .acts button{padding:0 10px}
+    .bb-sq{gap:8px}
+    .grp i{width:12px;height:12px}
+
+    .list,.list tbody,.list tr,.list td,.list th{display:block}
+    .list thead{display:none}
+    .list tr.bookrow th{padding:14px 12px 8px}
+    .list tr.item{display:grid;grid-template-columns:auto minmax(0,1fr) auto auto auto;align-items:center;gap:6px;padding:6px 6px 6px 12px;border-bottom:1px solid var(--line)}
+    .list tr.item.done{background:var(--acc-soft)}
+    .list tr.item.done>td{background:transparent}
+    .list tr.flash{background:var(--flash)}
+    .list td{padding:0;border:0;width:auto}
+    .list td.testcell{order:1}
+    .list td.srccell{order:2;min-width:0}
+    .list td.scorecell{order:3}
+    .list td.donecell{order:4}
+    .list td.xcell{display:block;order:5}
+    .list td.notecell,.list td.tmcell{display:none}
+    .srccell .src:not(.main),.srccell .contoh,.srccell .opened,.donecell .date{display:none}
+    .xbtn,.xbtn:hover{width:44px;padding:0;border-color:transparent;background:transparent}
+    .scorecell input{width:60px;padding:0 8px}
+    .scorecell select{width:84px}
+    .band{min-width:30px;margin-left:4px}
+    .list tr.open td.srccell{order:6;grid-column:1/-1;padding-top:4px}
+    .list tr.open .srccell .src,.list tr.open .srccell .contoh,.list tr.open .srccell .opened{display:inline-flex}
+    .list tr.open td.notecell{display:flex;order:7;grid-column:1/-1;gap:10px;align-items:center;width:auto}
+    .list tr.open td.notecell .fl{flex-shrink:0;position:static;width:auto;height:auto;margin:0;clip:auto;font-size:12.5px;font-weight:600;color:var(--muted)}
+    .list tr.open td.tmcell{display:flex;order:8;grid-column:1/-1;gap:10px;align-items:center;padding-bottom:4px}
+    .list tr.open .donecell .date{display:none}
+  }
+  @media (max-width:420px){
+    .filters{gap:8px}
+  }
+</style>
+</head>
+<body>
+
+<header class="wrap">
+  <div>
+    <h1>IELTS Cambridge Test Hub</h1>
+    <p>Buka tes Cambridge IELTS Academic 1 sampai 21 di situs latihan, kerjakan di tab baru, lalu catat hasilnya di sini. Data tersimpan di browser ini.</p>
+  </div>
+  <button id="btnTheme" type="button">Tema: Sistem</button>
+</header>
+
+<main class="wrap">
+  <div class="warnbox hidden" id="storageWarn" role="alert">Browser ini memblokir penyimpanan lokal, jadi progres <b>tidak akan tersimpan</b> setelah halaman ditutup. Buka file ini di jendela biasa (bukan mode privat), atau gunakan Export sebelum menutup.</div>
+
+  <section aria-labelledby="hSum">
+    <div class="sec-head">
+      <h2 id="hSum">Ringkasan skill</h2>
+      <p class="muted small" id="sumHint"></p>
+    </div>
+    <div class="panel">
+      <div class="bookbar" id="bookbar"></div>
+      <table class="sum" id="sum"></table>
+    </div>
+  </section>
+
+  <div class="toolbar" id="toolbar">
+    <nav class="tb-row" aria-label="Tampilan dan modul">
+      <div class="seg" role="group" aria-label="Tampilan">
+        <button type="button" data-view="list" aria-pressed="true">Daftar</button>
+        <button type="button" data-view="map" aria-pressed="false">Peta buku</button>
+      </div>
+      <div class="seg" id="tabs" role="group" aria-label="Modul">
+        <button type="button" data-mod="L" aria-pressed="true">Listening</button>
+        <button type="button" data-mod="R" aria-pressed="false">Reading</button>
+        <button type="button" data-mod="W" aria-pressed="false">Writing</button>
+        <button type="button" data-mod="S" aria-pressed="false">Speaking</button>
+      </div>
+      <button id="btnTimer" class="push" type="button">Timer</button>
+    </nav>
+    <div class="filters">
+      <label><span>Buku</span>
+        <select id="fBook">
+          <option value="">Semua (C1–C21)</option>
+          <option value="r:10-21">C10–C21 (disarankan)</option>
+          <option value="r:15-21">C15–C21 (terbaru)</option>
+          <option value="r:1-9">C1–C9 (format lama)</option>
+          <optgroup label="Per buku" id="fBookOne"></optgroup>
+        </select>
+      </label>
+      <label><span>Status</span>
+        <select id="fStatus">
+          <option value="">Semua</option>
+          <option value="todo">Belum selesai</option>
+          <option value="opened">Dibuka, belum selesai</option>
+          <option value="done">Sudah selesai</option>
+        </select>
+      </label>
+      <label><span>Urutan</span>
+        <select id="fSort">
+          <option value="desc">C21 ke C1</option>
+          <option value="asc">C1 ke C21</option>
+        </select>
+      </label>
+      <label><span>Cari <kbd>/</kbd></span>
+        <input type="search" id="fSearch" placeholder="c18 t2 atau catatan">
+      </label>
+    </div>
+  </div>
+
+  <section id="listView" aria-labelledby="hList" style="margin-top:18px">
+    <div class="sec-head">
+      <h2 id="hList">Daftar Listening</h2>
+      <span class="muted small num" id="count" aria-live="polite"></span>
+    </div>
+    <div class="panel"><table class="list" id="table"></table></div>
+  </section>
+
+  <section class="hidden" id="mapView" aria-labelledby="hMap" style="margin-top:18px">
+    <div class="sec-head">
+      <h2 id="hMap">Peta buku</h2>
+      <span class="muted small num" id="mapCount"></span>
+    </div>
+    <div class="panel mapbox">
+      <p class="muted small" style="margin-bottom:12px" id="mapHint"></p>
+      <div class="map" id="map"></div>
+      <div class="legend">
+        <span><i style="background:var(--sq)"></i>Belum</span>
+        <span><i style="background:var(--sq);color:var(--acc-text)">•</i>Pernah dibuka</span>
+        <span><i style="background:var(--sq-dn);color:var(--sq-dn-ink)">✓</i>Selesai, tanpa band</span>
+        <span><i style="background:var(--sq-lo);color:var(--sq-lo-ink)">5</i>Band di bawah 6</span>
+        <span><i style="background:var(--sq-mid);color:var(--sq-mid-ink)">6</i>Band 6 sampai 6.5</span>
+        <span><i style="background:var(--sq-hi);color:var(--sq-hi-ink)">7</i>Band 7 ke atas</span>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="hFormat">
+    <h2 id="hFormat" class="sr">Format tes</h2>
+    <details class="panel">
+      <summary>Format tes dan cara mengisi</summary>
+      <ol>
+        <li>Klik sumber bergaris biru (sumber utama). Tes terbuka di tab baru. Tombol <b>Timer</b> menyalakan hitung mundur sesuai durasi modul.</li>
+        <li>Listening dan Reading: isi jumlah <b>jawaban benar dari 40</b>, band dihitung otomatis. Writing dan Speaking: pilih <b>band</b> hasil penilaian sendiri. Mengisi salah satunya otomatis menandai tes selesai.</li>
+        <li>Isi <b>target band</b> di Ringkasan skill. Skill dengan selisih terbesar ditandai Prioritas.</li>
+        <li>Catatan cocok untuk tipe soal yang sering salah, dan isinya bisa dicari.</li>
+      </ol>
+      <table class="plain">
+        <thead><tr><th scope="col">Modul</th><th scope="col">Isi per tes</th><th scope="col">Durasi</th></tr></thead>
+        <tbody>
+          <tr><td>Listening</td><td>4 part, 40 soal</td><td>±30 menit (+10 menit transfer di paper)</td></tr>
+          <tr><td>Reading</td><td>3 passage, 40 soal</td><td>60 menit</td></tr>
+          <tr><td>Writing</td><td>Task 1 (≥150 kata) dan Task 2 (≥250 kata)</td><td>60 menit (20 + 40)</td></tr>
+          <tr><td>Speaking</td><td>Part 1, Part 2 cue card (1 menit persiapan, 2 menit bicara), Part 3</td><td>11–14 menit</td></tr>
+        </tbody>
+      </table>
+      <p class="muted small" style="margin-bottom:12px">Pintasan keyboard: <kbd>/</kbd> cari, <kbd>1</kbd>–<kbd>4</kbd> ganti modul, <kbd>M</kbd> ganti daftar dan peta.</p>
+    </details>
+  </section>
+
+  <section aria-labelledby="hOfficial">
+    <h2 id="hOfficial" style="margin-bottom:6px">Sumber resmi gratis</h2>
+    <ul class="links">
+      <li><a href="https://ielts.org/take-a-test/preparation-resources/sample-test-questions" target="_blank" rel="noopener">IELTS.org: contoh soal</a></li>
+      <li><a href="https://ielts.idp.com/prepare/free-ielts-practice-test" target="_blank" rel="noopener">IDP: tes latihan gratis</a></li>
+      <li><a href="https://www.cambridgeenglish.org/exams-and-tests/ielts/preparation/" target="_blank" rel="noopener">Cambridge English: persiapan IELTS</a></li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="hData">
+    <h2 id="hData" style="margin-bottom:6px">Cadangan data</h2>
+    <p class="muted" style="font-size:14px;max-width:640px">Progres hanya tersimpan di browser ini. Export rutin untuk backup, atau untuk memindahkan progres ke perangkat lain.</p>
+    <div class="data-row">
+      <button id="btnExport" type="button">Export JSON</button>
+      <label class="btn" for="importFile">Import JSON</label>
+      <input type="file" id="importFile" accept="application/json,.json" class="sr" tabindex="-1">
+      <button id="btnReset" type="button" class="danger">Hapus semua progres</button>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <p id="linkNote"></p>
+  <p id="srcCount" style="margin-top:4px"></p>
+</footer>
+
+<div class="timer" id="timer" role="region" aria-label="Timer latihan">
+  <div><div class="tm" id="tmTime" role="timer" aria-live="off">00:00</div><div class="tl" id="tmLabel"></div></div>
+  <label>Durasi
+    <select id="tmPreset">
+      <option value="30">30 mnt (Listening)</option><option value="60">60 mnt (Reading/Writing)</option><option value="20">20 mnt (Writing Task 1)</option><option value="40">40 mnt (Writing Task 2)</option><option value="14">14 mnt (Speaking)</option><option value="1">1 mnt (persiapan Part 2)</option><option value="2">2 mnt (bicara Part 2)</option>
+    </select>
+  </label>
+  <button id="tmToggle" type="button">Mulai</button>
+  <button id="tmReset" type="button">Ulangi</button>
+  <button id="tmClose" type="button">Tutup</button>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+"use strict";
+// Every direct link below returned HTTP 200 on VERIFIED. How to add or update links: AGENTS.md §6.
+const VERIFIED = "31 Okt 2026";
+const BOOKS = Array.from({length:21},(_,i)=>i+1);
+const TESTS = [1,2,3,4];
+const MODS = {
+  L:{name:"Listening",slug:"listening",min:30},
+  R:{name:"Reading",  slug:"reading",  min:60},
+  W:{name:"Writing",  slug:"writing",  min:60},
+  S:{name:"Speaking", slug:"speaking", min:14}
+};
+const MOD_KEYS = ["L","R","W","S"];
+
+// Engnovate URLs follow one sitemap pattern (research/engnovate-links.txt); EN_MISSING lists the gaps.
+const EN_MISSING = new Set(["R-19-1"]);
+function enUrl(m,b,t){
+  if(EN_MISSING.has(m+"-"+b+"-"+t)) return null;
+  const s = MODS[m].slug;
+  return "https://engnovate.com/ielts-"+s+"-tests/cambridge-ielts-"+String(b).padStart(2,"0")+"-academic-"+s+"-test-"+t+"/";
+}
+
+// IELTSXpress slugs are inconsistent between books, so each one is listed exactly as published.
+const IX = "https://www.ieltsxpress.com/";
+const L = {
+  "4-2":IX+"practice-cambridge-ielts-4-listening-test-2/",
+  "4-3":IX+"practice-cambridge-ielts-4-listening-test-3/",
+  "4-4":IX+"practice-cambridge-ielts-4-listening-test-4/",
+  "5-1":IX+"practice-cambridge-ielts-5-listening-test-1/",
+  "5-2":IX+"practice-cambridge-ielts-5-listening-test-2/",
+  "5-3":IX+"practice-cambridge-ielts-5-listening-test-3/",
+  "5-4":IX+"practice-cambridge-ielts-5-listening-test-4/",
+  "6-1":IX+"practice-cambridge-ielts-6-listening-test-1/",
+  "6-2":IX+"practice-cambridge-ielts-6-listening-test-2/",
+  "6-3":IX+"practice-cambridge-ielts-6-listening-test-3/",
+  "6-4":IX+"practice-cambridge-ielts-6-listening-test-4/",
+  "7-1":IX+"practice-cambridge-ielts-7-listening-test-1/",
+  "7-2":IX+"ielts-practice-cambridge-7-listening-test-2/",
+  "7-3":IX+"ielts-practice-cambridge-7-listening-test-3/",
+  "7-4":IX+"practice-cambridge-ielts-7-listening-test-4/",
+  "8-1":IX+"ielts-practice-cambridge-8-listening-test-1/",
+  "8-2":IX+"practice-ielts-cambridge-8-listening-test-2/",
+  "8-3":IX+"ielts-practice-cambridge-8-listening-test-3/",
+  "8-4":IX+"ielts-practice-cambridge-8-listening-test-4/",
+  "9-1":IX+"practice-cambridge-ielts-9-listening-test-1/",
+  "9-2":IX+"practice-cambridge-ielts-9-listening-test-2/",
+  "9-3":IX+"practice-cambridge-ielts-9-listening-test-3/",
+  "9-4":IX+"practice-cambridge-ielts-9-listening-test-4/",
+  "10-1":IX+"ielts-practice-cambridge-10-listening-test-1/",
+  "10-2":IX+"ielts-practice-cambridge-10-listening-test-2/",
+  "10-3":IX+"practice-cambridge-ielts-10-listening-test-3/",
+  "10-4":IX+"practice-cambridge-ielts-10-listening-test-4/",
+  "11-1":IX+"ielts-practice-cambridge-11-listening-test-1/",
+  "11-2":IX+"ielts-practice-cambridge-11-listening-test-2/",
+  "11-3":IX+"ielts-practice-cambridge-11-listening-test-3/",
+  "11-4":IX+"ielts-practice-cambridge-11-listening-test-4/",
+  "12-1":IX+"ielts-practice-cambridge-12-listening-test-1/",
+  "12-2":IX+"ielts-practice-cambridge-12-listening-test-2/",
+  "12-3":IX+"ielts-practice-cambridge-12-listening-test-3/",
+  "12-4":IX+"ielts-practice-cambridge-12-listening-test-4/",
+  "13-1":IX+"ielts-practice-cambridge-13-listening-test-1/",
+  "13-2":IX+"ielts-practice-cambridge-13-listening-test-2/",
+  "13-3":IX+"ielts-practice-cambridge-13-listening-test-3/",
+  "13-4":IX+"ielts-practice-cambridge-13-listening-test-4/",
+  "14-1":IX+"practice-cambridge-ielts-14-listening-test-1/",
+  "14-2":IX+"practice-cambridge-ielts-14-listening-test-2/",
+  "14-3":IX+"practice-cambridge-ielts-14-listening-test-3/",
+  "14-4":IX+"practice-cambridge-ielts-14-listening-test-4/",
+  "15-1":IX+"cambridge-ielts-15-listening-test-1/",
+  "15-2":IX+"practice-cambridge-ielts-15-listening-test-2/",
+  "15-3":IX+"practice-cambridge-ielts-15-listening-test-3/",
+  "15-4":IX+"practice-cambridge-ielts-15-listening-test-4/",
+  "16-1":IX+"cambridge-ielts-16-listening-test-1-answers/",
+  "16-2":IX+"cambridge-ielts-16-listening-test-2-with-answers/",
+  "16-3":IX+"cambridge-ielts-16-listening-test-3-answers/",
+  "16-4":IX+"cambridge-ielts-16-listening-test-4-answers/",
+  "17-1":IX+"cambridge-ielts-17-listening-test-1/",
+  "17-2":IX+"cambridge-ielts-17-listening-test-2-answers/",
+  "17-3":IX+"cambridge-ielts-17-listening-test-3-answers/",
+  "17-4":IX+"cambridge-ielts-17-listening-test-4-answers/",
+  "18-1":IX+"cambridge-ielts-18-listening-test-1-answers/",
+  "18-2":IX+"cambridge-ielts-18-listening-test-2/",
+  "18-3":IX+"cambridge-ielts-18-listening-test-3-answers/",
+  "18-4":IX+"cambridge-ielts-18-listening-test-4-answers/",
+  "19-1":IX+"cambridge-ielts-19-listening-test-1/",
+  "19-2":IX+"cambridge-ielts-19-listening-test-2-with-answers/",
+  "19-3":IX+"cambridge-ielts-19-listening-test-3-with-answers/",
+  "19-4":IX+"cambridge-ielts-19-listening-test-4-with-answers/",
+  "20-1":IX+"cambridge-ielts-20-listening-test-1-with-answers/",
+  "20-2":IX+"cambridge-ielts-20-listening-test-2-with-answers/",
+  "20-3":IX+"cambridge-ielts-20-listening-test-3-with-answers/",
+  "20-4":IX+"cambridge-ielts-20-listening-test-4-with-answers/"
+};
+
+const R = {
+  "7-1":IX+"ielts-cambridge-7-academic-reading-test-1/",
+  "7-2":IX+"cambridge-ielts-7-academic-reading-test-2/",
+  "7-4":IX+"ielts-cambridge-7-academic-reading-test-4/",
+  "8-1":IX+"cambridge-ielts-8-academic-reading-test-1/",
+  "9-3":IX+"ielts-practice-cambridge-9-reading-test-3/",
+  "20-1":IX+"cambridge-ielts-20-academic-reading-test-1/"
+};
+for(const b of [10,11,12,13,14,15,17,18,19]) for(const t of TESTS) R[b+"-"+t] = IX+"cambridge-ielts-"+b+"-academic-reading-test-"+t+"/";
+for(const t of TESTS) R["16-"+t] = IX+"cambridge-ielts-16-academic-reading-"+t+"-answers/";
+
+// LangGo model answers: Writing per task, Speaking Part 1 (C18–C20).
+const LG = "https://langgo.edu.vn/";
+const W = {
+  "18-1":[{t:"Task 1",u:LG+"cam-18-test-1-writing-task-1-percentage-of-the-population-living-in-cities"},{t:"Task 2",u:LG+"cam-18-test-1-writing-task-2"}],
+  "18-2":[{t:"Task 1",u:LG+"cam-18-test-2-writing-task-1-number-of-us-households-in-millions-by-annual-income"},{t:"Task 2",u:LG+"cam-18-test-2-writing-task-2"}],
+  "18-3":[{t:"Task 1",u:LG+"cambridge-18-test-3-writing-task-1-outline-bai-mau"},{t:"Task 2",u:LG+"cam-18-test-3-writing-task-2"}],
+  "18-4":[{t:"Task 1",u:LG+"cam-18-test-4-writing-task-1-average-monthly-change-in-prices-of-copper-nickel-and-zinc"},{t:"Task 2",u:LG+"cam-18-test-4-writing-task-2"}],
+  "19-1":[{t:"Task 1",u:LG+"cam-19-test-1-writing-task-1-number-of-participants-by-activity-2000-to-2020"},{t:"Task 2",u:LG+"cam-19-test-1-writing-task-2"}],
+  "19-2":[{t:"Task 1",u:LG+"cam-19-test-2-writing-task-1"},{t:"Task 2",u:LG+"cam-19-test-2-writing-task-2"}],
+  "19-3":[{t:"Task 1",u:LG+"cam-19-test-3-writing-task-1-biofuel-production-how-ethanol-is-made"},{t:"Task 2",u:LG+"cam-19-test-3-writing-task-2"}],
+  "19-4":[{t:"Task 1",u:LG+"cam-19-test-4-writing-task-1"},{t:"Task 2",u:LG+"cam-19-test-4-writing-task-2"}],
+  "20-1":[{t:"Task 1",u:LG+"cam-20-test-1-writing-task-1"},{t:"Task 2",u:LG+"cam-20-test-1-writing-task-2"}],
+  "20-2":[{t:"Task 1",u:LG+"cam-20-test-2-writing-task-1"},{t:"Task 2",u:LG+"cam-20-test-2-writing-task-2"}],
+  "20-3":[{t:"Task 1",u:LG+"cam-20-test-3-writing-task-1"},{t:"Task 2",u:LG+"cam-20-test-3-writing-task-2"}],
+  "20-4":[{t:"Task 1",u:LG+"cam-20-test-4-writing-task-1"},{t:"Task 2",u:LG+"cam-20-test-4-writing-task-2"}]
+};
+const S = {
+  "18-1":[{t:"Part 1",u:LG+"cam-18-test-1-speaking-part-1-paying-bills"}],
+  "18-2":[{t:"Part 1",u:LG+"cam-18-test-2-speaking-part-1-science"}],
+  "18-3":[{t:"Part 1",u:LG+"cam-18-test-3-speaking-part-1-online-shopping"}],
+  "18-4":[{t:"Part 1",u:LG+"cam-18-test-4-speaking-part-1-sleep"}],
+  "19-1":[{t:"Part 1",u:LG+"cam-19-test-1-speaking-part-1-international-food"}],
+  "19-2":[{t:"Part 1",u:LG+"cam-19-test-2-speaking-part-1-travelling-by-plane"}],
+  "19-3":[{t:"Part 1",u:LG+"cam-19-test-3-speaking-part-1-holidays"}],
+  "19-4":[{t:"Part 1",u:LG+"cam-19-test-4-speaking-part-1-cafes"}],
+  "20-1":[{t:"Part 1",u:LG+"cam-20-test-1-speaking-part-1-topic-walking"}],
+  "20-2":[{t:"Part 1",u:LG+"cambridge-20-test-2-ielts-speaking-part-1-topic-fruit"}],
+  "20-3":[{t:"Part 1",u:LG+"cambridge-20-test-3-ielts-speaking-part-1-topic-museum"}],
+  "20-4":[{t:"Part 1",u:LG+"cambridge-20-test-4-speaking-part-1-topic-personal-qualities"}]
+};
+const BOOKPAGE = {};
+for(let b=5;b<=19;b++) BOOKPAGE[b] = IX+"cambridge-ielts-"+b+"-tests/";
+
+const searchUrl = q => "https://www.google.com/search?q=" + encodeURIComponent(q);
+// kind: main = primary source, alt = other source, ex = model answer, search = Google fallback.
+function linksFor(m,b,t){
+  const id=b+"-"+t, out=[];
+  const en=enUrl(m,b,t);
+  if(en) out.push({t:"Engnovate", u:en, kind:"main", src:"Engnovate", what: m==="W"?"Task 1 dan 2" : m==="S"?"Part 1 sampai 3" : ""});
+  if(m==="L" && L[id]) out.push({t:"IELTSXpress",u:L[id],kind:out.length?"alt":"main",src:"IELTSXpress"});
+  if(m==="R" && R[id]) out.push({t:"IELTSXpress",u:R[id],kind:out.length?"alt":"main",src:"IELTSXpress"});
+  if(m==="W" && W[id]) W[id].forEach(x=>out.push({t:x.t,u:x.u,kind:"ex",src:"LangGo"}));
+  if(m==="S" && S[id]) S[id].forEach(x=>out.push({t:x.t,u:x.u,kind:"ex",src:"LangGo"}));
+  out.push({t:"Cari", u:searchUrl("Cambridge IELTS "+b+" "+MODS[m].name+" Test "+t), kind:"search", src:"Google"});
+  return out;
+}
+
+const TBL = {
+  L:[[39,9],[37,8.5],[35,8],[32,7.5],[30,7],[26,6.5],[23,6],[18,5.5],[16,5],[13,4.5],[11,4]],
+  R:[[39,9],[37,8.5],[35,8],[33,7.5],[30,7],[27,6.5],[23,6],[19,5.5],[15,5],[13,4.5],[10,4],[8,3.5],[6,3],[4,2.5]]
+};
+// Scores below the table count as 3.5 (L) / 2.0 (R) in averages, but are labelled "< 4.0" / "< 2.5".
+function bandOf(m,s){
+  if(!s) return null;
+  if(m==="L"||m==="R"){
+    if(s.score===""||s.score==null) return null;
+    const n=+s.score;
+    for(const [min,b] of TBL[m]) if(n>=min) return b;
+    return m==="L" ? 3.5 : 2;
+  }
+  return (s.band===""||s.band==null) ? null : +s.band;
+}
+function bandLabel(m,s){
+  const b=bandOf(m,s); if(b==null) return "";
+  if((m==="L"&&+s.score<11)||(m==="R"&&+s.score<4)) return "<"+(m==="L"?"4.0":"2.5");
+  return b.toFixed(1);
+}
+const roundIELTS = x => Math.round(x*2)/2;   // IELTS rounds .25 up to .5 and .75 up to the next whole band.
+
+// Only the progress object is exported/imported; prefs (incl. target bands) and timer stay per browser.
+const KEY="ielts-hub-progress-v1", PKEY="ielts-hub-prefs-v1", TKEY="ielts-hub-timer-v1";
+const KEY_RE=/^[LRWS]-\d{1,2}-[1-4]$/;
+function load(k,d){ try{ const v=JSON.parse(localStorage.getItem(k)||"null"); return v&&typeof v==="object"?v:d; }catch(e){ return d; } }
+function storageOk(){ try{ localStorage.setItem("ielts-hub-test","1"); localStorage.removeItem("ielts-hub-test"); return true; }catch(e){ return false; } }
+const state = load(KEY,{});
+const prefs = Object.assign({mod:"L",view:"list",book:"",status:"",sort:"desc",theme:"auto",targets:{}}, load(PKEY,{}));
+if(!prefs.targets || typeof prefs.targets!=="object") prefs.targets={};
+const save = () => { try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){ toast("Gagal menyimpan. Penyimpanan browser diblokir?"); } };
+const savePrefs = () => { try{ localStorage.setItem(PKEY, JSON.stringify(prefs)); }catch(e){} };
+const k = (m,b,t) => m+"-"+b+"-"+t;
+const get = key => state[key] || null;
+const upd = key => state[key] || (state[key]={done:false,score:"",band:"",note:"",date:"",opened:false});
+const today = () => new Date().toLocaleDateString("id-ID");
+// Entries saved before `ts` existed only have an id-ID date string (dd/mm/yyyy).
+function tsOf(s){
+  if(s.ts) return s.ts;
+  const m=/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/.exec(s.date||"");
+  return m ? new Date(+m[3],+m[2]-1,+m[1]).getTime() : 0;
+}
+function markDone(s,on){ s.done=on; s.date=on?today():""; s.ts=on?Date.now():0; }
+const isDone = key => { const s=get(key); return !!(s&&s.done); };
+
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const esc = s => String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+let toastT;
+function toast(msg){ const el=$("#toast"); el.textContent=msg; el.classList.add("show"); clearTimeout(toastT); toastT=setTimeout(()=>el.classList.remove("show"),2400); }
+const compactMQ = window.matchMedia("(max-width:760px)");
+const CHEV = `<svg width="14" height="9" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+
+function inRange(b){
+  const f=prefs.book;
+  if(f.startsWith("r:")){ const [a,z]=f.slice(2).split("-").map(Number); return b>=a&&b<=z; }
+  return !f || String(b)===f;
+}
+function bookList(){
+  const bs=BOOKS.filter(inRange);
+  return prefs.sort==="asc" ? bs : bs.reverse();
+}
+function matches(m,b,t,s){
+  const st=prefs.status;
+  if(st==="done" && !(s&&s.done)) return false;
+  if(st==="todo" && s&&s.done) return false;
+  if(st==="opened" && !(s&&s.opened&&!s.done)) return false;
+  const q=$("#fSearch").value.trim().toLowerCase();
+  if(!q) return true;
+  const hay=("c"+b+" "+b+" t"+t+" test "+t+" "+MODS[m].name+" "+(s?s.note||"":"")).toLowerCase();
+  return q.split(/\s+/).every(w => hay.includes(w));
+}
+
+function modStats(m){
+  let d=0; const pts=[];
+  for(const b of BOOKS) for(const t of TESTS){
+    const s=get(k(m,b,t)); if(!s) continue;
+    if(s.done) d++;
+    const band=bandOf(m,s); if(band!=null) pts.push([tsOf(s),band]);
+  }
+  const bands=pts.sort((a,c)=>a[0]-c[0]).map(x=>x[1]);
+  return {d, total:BOOKS.length*TESTS.length, bands, avg: bands.length ? bands.reduce((a,c)=>a+c,0)/bands.length : null};
+}
+function nextTest(m){
+  for(const b of bookList()) for(const t of TESTS){ const s=get(k(m,b,t)); if(!(s&&s.done)) return {b,t,s}; }
+  return null;
+}
+function bookDone(b){ let d=0; for(const m of MOD_KEYS) for(const t of TESTS) if(isDone(k(m,b,t))) d++; return d; }
+function spark(vals){
+  if(vals.length<2) return "";
+  const w=44,h=16,p=2, lo=Math.min(...vals,4), hi=Math.max(...vals,9);
+  const pts=vals.map((v,i)=>[p+i*(w-2*p)/(vals.length-1), h-p-(v-lo)/(hi-lo||1)*(h-2*p)]);
+  const last=pts[pts.length-1];
+  return `<svg class="spark" viewBox="0 0 ${w} ${h}" aria-hidden="true"><polyline points="${pts.map(x=>x.map(n=>n.toFixed(1)).join(",")).join(" ")}"/><circle cx="${last[0].toFixed(1)}" cy="${last[1].toFixed(1)}" r="2"/></svg>`;
+}
+function targetOpts(cur){
+  let h=`<option value="">Belum diisi</option>`;
+  for(let x=9;x>=4;x-=.5){ const v=x.toFixed(1); h+=`<option value="${v}" ${cur===v?"selected":""}>${v}</option>`; }
+  return h;
+}
+function gapHtml(avg,tg){
+  if(!tg) return `<span class="muted">–</span>`;
+  if(avg==null) return `<span class="muted">belum ada band</span>`;
+  const g=+tg-avg;
+  return g<=0 ? `<span class="reached">tercapai</span>` : `kurang <b class="num">${g.toFixed(1)}</b>`;
+}
+
+// Running book = first book (in the current filter and order) that still has unfinished sessions.
+function renderBookbar(){
+  let b=null;
+  for(const x of bookList()) if(bookDone(x)<16){ b=x; break; }
+  if(b==null){ $("#bookbar").innerHTML=`<b>Semua buku di filter ini tuntas.</b>`; return; }
+  let sq="", sr=[];
+  for(const m of MOD_KEYS){
+    let dm=0; sq+=`<span class="grp"><span class="gl">${m}</span>`;
+    for(const t of TESTS){ const s=get(k(m,b,t)); const c=s&&s.done?"d":s&&s.opened?"o":""; if(c==="d") dm++; sq+=`<i class="${c}"></i>`; }
+    sq+=`</span>`; sr.push(`${MODS[m].name} ${dm} dari 4`);
+  }
+  $("#bookbar").innerHTML=`<span>Buku berjalan: <b>C${b}</b> <span class="muted num">· ${bookDone(b)} dari 16 sesi selesai</span></span><div class="bb-sq" role="img" aria-label="C${b}: ${sr.join(", ")}">${sq}</div>`;
+}
+
+function renderSummary(){
+  const st={}; for(const m of MOD_KEYS) st[m]=modStats(m);
+  const tg=prefs.targets;
+  // Priority = skill with the largest positive gap between target and average band.
+  let focus=null, best=0;
+  for(const m of MOD_KEYS) if(tg[m] && st[m].avg!=null){ const g=+tg[m]-st[m].avg; if(g>best){ best=g; focus=m; } }
+  const primary = focus || MOD_KEYS.filter(m=>nextTest(m)).sort((a,c)=>st[a].d-st[c].d)[0] || null;
+
+  let h=`<thead><tr><th scope="col">Skill</th><th scope="col" class="n">Selesai</th><th scope="col" class="n">Rata-rata band</th><th scope="col">Target</th><th scope="col" class="n">Selisih</th><th scope="col">Tes berikutnya</th></tr></thead><tbody>`;
+  for(const m of MOD_KEYS){
+    const s=st[m], nx=nextTest(m), name=MODS[m].name;
+    let next=`<span class="muted">Semua tes di filter ini selesai</span>`;
+    if(nx){
+      const key=k(m,nx.b,nx.t), main=linksFor(m,nx.b,nx.t)[0], lbl=`C${nx.b} Test ${nx.t} ${name}`;
+      next=`<div class="nx"><button type="button" class="goto" data-goto="${key}" aria-label="Lihat baris ${lbl}">C${nx.b} · Test ${nx.t}</button><span class="acts"><a class="btn${m===primary?" primary":""}" href="${esc(main.u)}" target="_blank" rel="noopener" data-open="${key}" aria-label="Buka tes ${lbl} di ${main.src} (tab baru)">Buka tes</a><button type="button" data-timer="${key}" aria-label="Mulai timer ${MODS[m].min} menit untuk ${lbl}">Timer ${MODS[m].min} mnt</button></span></div>`;
+    }
+    h+=`<tr class="${m===focus?"focus":""}">
+      <th scope="row"><span class="sk">${name}</span>${m===focus?'<span class="tag">Prioritas</span>':""}</th>
+      <td class="n" data-l="Selesai"><b class="num">${s.d}</b><span class="muted num">/${s.total}</span></td>
+      <td class="n" data-l="Rata-rata band">${s.avg!=null?`${spark(s.bands.slice(-12))}<span class="bandbig">${s.avg.toFixed(1)}</span> <span class="muted small">dari ${s.bands.length} tes</span>`:'<span class="muted">–</span>'}</td>
+      <td data-l="Target"><label class="sr" for="tg-${m}">Target band ${name}</label><select id="tg-${m}" data-target="${m}">${targetOpts(tg[m]||"")}</select></td>
+      <td class="n" data-l="Selisih">${gapHtml(s.avg,tg[m])}</td>
+      <td class="nextcell">${next}</td></tr>`;
+  }
+  const avgs=MOD_KEYS.map(m=>st[m].avg).filter(x=>x!=null);
+  const ov=avgs.length ? roundIELTS(avgs.reduce((a,c)=>a+c,0)/avgs.length) : null;
+  const totD=MOD_KEYS.reduce((a,m)=>a+st[m].d,0);
+  h+=`<tr class="overall">
+    <th scope="row"><span class="sk">Overall</span> <span class="muted small">estimasi</span></th>
+    <td class="n" data-l="Selesai"><b class="num">${totD}</b><span class="muted num">/${BOOKS.length*16}</span></td>
+    <td class="n" data-l="Rata-rata band">${ov!=null?`<span class="bandbig">${ov.toFixed(1)}</span> <span class="muted small">dari ${avgs.length} skill</span>`:'<span class="muted">–</span>'}</td>
+    <td data-l="Target"><label class="sr" for="tg-O">Target band overall</label><select id="tg-O" data-target="O">${targetOpts(tg.O||"")}</select></td>
+    <td class="n" data-l="Selisih">${gapHtml(ov,tg.O)}</td>
+    <td class="nextcell muted small">Rata-rata 4 skill, dibulatkan ke 0.5 terdekat.</td></tr></tbody>`;
+  const active=document.activeElement&&document.activeElement.dataset? document.activeElement.dataset.target : null;
+  $("#sum").innerHTML=h;
+  if(active) { const el=document.getElementById("tg-"+active); if(el) el.focus(); }
+  const anyTarget=MOD_KEYS.some(m=>tg[m]);
+  $("#sumHint").textContent = anyTarget ? "Prioritas = skill dengan selisih terbesar ke target." : "Isi target band supaya skill prioritas terlihat.";
+  renderBookbar();
+}
+
+function scoreCell(m,key,s,name){
+  if(m==="L"||m==="R"){
+    return `<label class="fl" for="sc-${key}">Benar dari 40</label><input id="sc-${key}" type="number" inputmode="numeric" min="0" max="40" value="${esc(s?s.score:"")}" data-score="${key}" placeholder="0–40" aria-label="Jawaban benar dari 40, ${name}"><span class="band" id="band-${key}" aria-live="polite">${esc(bandLabel(m,s))}</span>`;
+  }
+  const opts=[]; for(let x=9;x>=0;x-=.5) opts.push(x.toFixed(1).replace(/\.0$/,""));
+  const cur=s?String(s.band):"";
+  return `<label class="fl" for="sc-${key}">Band</label><select id="sc-${key}" data-band="${key}" aria-label="Band penilaian sendiri, ${name}"><option value="">Band</option>${opts.map(x=>`<option value="${x}" ${cur===x?"selected":""}>${x}</option>`).join("")}</select>`;
+}
+function chipsHtml(m,b,t,key,name){
+  const ls=linksFor(m,b,t); let h="", ex=false;
+  for(const l of ls){
+    if(l.kind==="ex" && !ex){ h+=`<span class="contoh">Contoh:</span>`; ex=true; }
+    const lbl = l.kind==="search" ? `Cari ${name} di Google` : l.kind==="ex" ? `Contoh jawaban ${l.t} untuk ${name} di LangGo` : `${name}${l.what?" ("+l.what+")":""} di ${l.src}`;
+    h+=`<a class="src ${l.kind}" href="${esc(l.u)}" target="_blank" rel="noopener" data-open="${key}" aria-label="${esc(lbl)} (tab baru)">${esc(l.t)}</a>`;
+  }
+  const s=get(key);
+  return `<div class="chips">${h}<span class="opened ${s&&s.opened&&!s.done?"":"hidden"}" id="op-${key}">pernah dibuka</span></div>`;
+}
+function rowHtml(m,b,t){
+  const key=k(m,b,t), s=get(key), name=`C${b} Test ${t} ${MODS[m].name}`;
+  return `<tr class="item${s&&s.done?" done":""}" id="row-${key}">
+    <td class="testcell">Test ${t}</td>
+    <td class="srccell">${chipsHtml(m,b,t,key,name)}</td>
+    <td class="scorecell n">${scoreCell(m,key,s,name)}</td>
+    <td class="donecell"><label class="hit"><input id="dn-${key}" type="checkbox" class="check" data-done="${key}" ${s&&s.done?"checked":""} aria-label="Selesai, ${name}"></label><span class="date" id="date-${key}">${esc(s?s.date:"")}</span></td>
+    <td class="notecell"><label class="fl" for="nt-${key}">Catatan</label><input id="nt-${key}" type="text" maxlength="300" value="${esc(s?s.note:"")}" data-note="${key}" placeholder="mis. salah di Part 3 (map)"></td>
+    <td class="tmcell"><button type="button" class="rowbtn" data-timer="${key}" aria-label="Mulai timer ${MODS[m].min} menit untuk ${name}">Timer ${MODS[m].min} mnt</button></td>
+    <td class="xcell"><button type="button" class="rowbtn xbtn" data-x="${key}" aria-expanded="false" aria-label="Detail ${name}: sumber lain, catatan, timer">${CHEV}</button></td>
+  </tr>`;
+}
+function bookCounts(m,b){ let d=0; for(const t of TESTS) if(isDone(k(m,b,t))) d++; return `${MODS[m].name} ${d}/4 · buku ${bookDone(b)}/16`; }
+function bookHead(m,b){
+  return `<span class="bk">C${b}</span><span class="bh num" id="bh-${m}-${b}">${bookCounts(m,b)}</span>${b<=6?'<span class="btag">format lama</span>':""}${b===21?'<span class="btag">edisi 2026</span>':""}${BOOKPAGE[b]?`<a href="${BOOKPAGE[b]}" target="_blank" rel="noopener" aria-label="Ringkasan buku C${b} di IELTSXpress (tab baru)">ringkasan buku ↗</a>`:""}`;
+}
+function renderList(){
+  const m=prefs.mod, lr=(m==="L"||m==="R");
+  let h=`<thead><tr><th scope="col">Tes</th><th scope="col">Sumber (tab baru)</th><th scope="col" class="n">${lr?"Benar /40 · band":"Band (nilai sendiri)"}</th><th scope="col">Selesai</th><th scope="col">Catatan</th><th scope="col"><span class="sr">Timer</span></th></tr></thead>`;
+  let n=0;
+  for(const b of bookList()){
+    const rows=TESTS.filter(t=>matches(m,b,t,get(k(m,b,t))));
+    if(!rows.length) continue;
+    n+=rows.length;
+    h+=`<tbody><tr class="bookrow"><th colspan="6" scope="rowgroup">${bookHead(m,b)}</th></tr>${rows.map(t=>rowHtml(m,b,t)).join("")}</tbody>`;
+  }
+  if(!n) h+=`<tbody><tr><td colspan="6" class="empty">Tidak ada tes yang cocok dengan filter. <button type="button" id="clearF">Hapus filter</button></td></tr></tbody>`;
+  $("#table").innerHTML=h;
+  $("#hList").textContent="Daftar "+MODS[m].name;
+  $("#count").textContent = n+" tes";
+}
+
+function sqClass(m,s){
+  if(!s) return "";
+  if(s.done){ const b=bandOf(m,s); if(b==null) return "dn"; return b>=7?"hi":b>=6?"mid":"lo"; }
+  return "";
+}
+function sqHtml(m,b,t){
+  const key=k(m,b,t), s=get(key), band=s&&s.done?bandOf(m,s):null;
+  const status = s&&s.done ? "selesai"+(band!=null?", band "+band.toFixed(1):"") : s&&s.opened ? "pernah dibuka" : "belum";
+  const lbl=`C${b} Test ${t} ${MODS[m].name}: ${status}. Buka barisnya.`;
+  const txt = band!=null ? band.toFixed(1).replace(/\.0$/,"") : s&&s.done ? "✓" : s&&s.opened ? "•" : "";
+  return `<button type="button" class="sq ${sqClass(m,s)}" data-goto="${key}" title="${esc(lbl)}" aria-label="${esc(lbl)}">${txt}</button>`;
+}
+// Phones show one module per map so every square can be a 44px target.
+function renderMap(){
+  const one = compactMQ.matches, m=prefs.mod;
+  const map=$("#map"); map.classList.toggle("one", one);
+  $("#mapHint").textContent = one
+    ? `Peta ${MODS[m].name}: satu kotak per tes. Ganti modul dengan tombol di atas. Ketuk kotak untuk membuka barisnya.`
+    : "Setiap kotak adalah satu sesi, urutan L, R, W, S per tes. Klik kotak untuk membuka barisnya di daftar.";
+  let h=`<div></div>`+TESTS.map(t=>`<div class="hd">Test ${t}${one?"":`<div class="quad lbl" aria-hidden="true">${MOD_KEYS.map(x=>`<span>${x}</span>`).join("")}</div>`}</div>`).join("");
+  let n=0;
+  for(const b of bookList()){
+    let d=0, tot=0;
+    for(const x of (one?[m]:MOD_KEYS)) for(const t of TESTS){ tot++; if(isDone(k(x,b,t))) d++; }
+    h+=`<div class="bl">C${b}<small class="num">${d}/${tot}</small></div>`;
+    for(const t of TESTS) h += one ? sqHtml(m,b,t) : `<div class="quad">${MOD_KEYS.map(x=>sqHtml(x,b,t)).join("")}</div>`;
+    n++;
+  }
+  map.innerHTML=h;
+  $("#mapCount").textContent = n+" buku";
+}
+
+function renderChrome(){
+  $$("#tabs button").forEach(x=>x.setAttribute("aria-pressed", String(x.dataset.mod===prefs.mod)));
+  $$("[data-view]").forEach(x=>x.setAttribute("aria-pressed", String(x.dataset.view===prefs.view)));
+  $("#tabs").classList.toggle("hidden", prefs.view==="map" && !compactMQ.matches);
+  $("#listView").classList.toggle("hidden", prefs.view!=="list");
+  $("#mapView").classList.toggle("hidden", prefs.view!=="map");
+  $("#fStatus").disabled = prefs.view==="map";
+  $("#fSearch").disabled = prefs.view==="map";
+}
+function renderMain(){ renderChrome(); prefs.view==="map" ? renderMap() : renderList(); }
+function render(){ renderSummary(); renderMain(); }
+
+// Update one row in place so the input the user is typing in keeps focus.
+function refreshRow(key){
+  const [m,b]=key.split("-"), s=get(key);
+  const row=document.getElementById("row-"+key);
+  if(row){
+    row.classList.toggle("done",!!(s&&s.done));
+    const cb=row.querySelector("[data-done]"); if(cb) cb.checked=!!(s&&s.done);
+    const dt=document.getElementById("date-"+key); if(dt) dt.textContent=s?s.date||"":"";
+    const bd=document.getElementById("band-"+key); if(bd) bd.textContent=bandLabel(m,s);
+    const op=document.getElementById("op-"+key); if(op) op.classList.toggle("hidden",!(s&&s.opened&&!s.done));
+    const bh=document.getElementById("bh-"+m+"-"+b); if(bh) bh.textContent=bookCounts(m,+b);
+  }
+  renderSummary();
+}
+
+let flashT;
+function goTo(key){
+  const [m,b]=key.split("-");
+  prefs.mod=m; prefs.view="list";
+  if(!inRange(+b)){ prefs.book=""; $("#fBook").value=""; }
+  prefs.status=""; $("#fStatus").value=""; $("#fSearch").value="";
+  savePrefs(); render();
+  const row=document.getElementById("row-"+key);
+  if(row){
+    row.scrollIntoView({block:"center"});
+    $$("tr.flash").forEach(x=>x.classList.remove("flash"));
+    row.classList.add("flash"); clearTimeout(flashT); flashT=setTimeout(()=>row.classList.remove("flash"),2000);
+    const f=row.querySelector("[data-score],[data-band]"); if(f) f.focus({preventScroll:true});
+  }
+}
+
+document.addEventListener("click", e=>{
+  const a=e.target.closest("a[data-open]");
+  // Deferred so re-rendering never removes the link before the browser follows it.
+  if(a){ const key=a.dataset.open; if(KEY_RE.test(key)){ const s=upd(key); if(!s.opened){ s.opened=true; save(); setTimeout(()=>refreshRow(key),0); } } return; }
+  const x=e.target.closest("[data-x]");
+  if(x){ const row=document.getElementById("row-"+x.dataset.x); const open=!row.classList.contains("open"); row.classList.toggle("open",open); x.setAttribute("aria-expanded",String(open)); return; }
+  const g=e.target.closest("[data-goto]"); if(g){ goTo(g.dataset.goto); return; }
+  const tm=e.target.closest("[data-timer]"); if(tm){ const [m,b,t]=tm.dataset.timer.split("-"); startTimer(MODS[m].min, `C${b} T${t} ${MODS[m].name}`); return; }
+  const md=e.target.closest("[data-mod]"); if(md){ prefs.mod=md.dataset.mod; if(!(prefs.view==="map"&&compactMQ.matches)) prefs.view="list"; savePrefs(); renderMain(); return; }
+  const vw=e.target.closest("[data-view]"); if(vw){ prefs.view=vw.dataset.view; savePrefs(); renderMain(); return; }
+  if(e.target.id==="clearF"){ prefs.book="";prefs.status=""; $("#fBook").value="";$("#fStatus").value="";$("#fSearch").value=""; savePrefs(); render(); }
+});
+
+$("#sum").addEventListener("change", e=>{
+  const m=e.target.dataset.target; if(!m) return;
+  if(e.target.value) prefs.targets[m]=e.target.value; else delete prefs.targets[m];
+  savePrefs(); renderSummary();
+});
+$("#table").addEventListener("change", e=>{
+  const el=e.target;
+  if(el.dataset.done){
+    const s=upd(el.dataset.done); markDone(s,el.checked); save(); refreshRow(el.dataset.done);
+    if(el.checked) toast("Ditandai selesai");
+  } else if(el.dataset.score!==undefined){
+    const key=el.dataset.score, s=upd(key);
+    let v=el.value.trim(); if(v!==""){ v=String(Math.max(0,Math.min(40,parseInt(v,10)||0))); el.value=v; }
+    s.score=v;
+    if(v!=="" && !s.done){ markDone(s,true); toast("Jawaban benar tersimpan, tes ditandai selesai"); }
+    save(); refreshRow(key);
+  } else if(el.dataset.band!==undefined){
+    const key=el.dataset.band, s=upd(key);
+    s.band=el.value;
+    if(el.value!=="" && !s.done){ markDone(s,true); toast("Band tersimpan, tes ditandai selesai"); }
+    save(); refreshRow(key);
+  }
+});
+let noteT;
+$("#table").addEventListener("input", e=>{
+  if(e.target.dataset.note){ upd(e.target.dataset.note).note=e.target.value; clearTimeout(noteT); noteT=setTimeout(save,300); }
+});
+
+$("#fBook").addEventListener("change", e=>{ prefs.book=e.target.value; savePrefs(); render(); });
+$("#fStatus").addEventListener("change", e=>{ prefs.status=e.target.value; savePrefs(); renderMain(); });
+$("#fSort").addEventListener("change", e=>{ prefs.sort=e.target.value; savePrefs(); render(); });
+$("#fSearch").addEventListener("input", renderMain);
+compactMQ.addEventListener("change", renderMain);
+
+document.addEventListener("keydown", e=>{
+  const typing=/^(INPUT|SELECT|TEXTAREA)$/.test(document.activeElement.tagName);
+  if(e.key==="Escape" && document.activeElement===$("#fSearch")){ $("#fSearch").value=""; renderMain(); $("#fSearch").blur(); return; }
+  if(typing||e.metaKey||e.ctrlKey||e.altKey) return;
+  if(e.key==="/"){ e.preventDefault(); if(prefs.view==="map"){ prefs.view="list"; savePrefs(); renderMain(); } $("#fSearch").focus(); }
+  else if(/^[1-4]$/.test(e.key)){ prefs.mod=MOD_KEYS[+e.key-1]; if(!(prefs.view==="map"&&compactMQ.matches)) prefs.view="list"; savePrefs(); renderMain(); }
+  else if(e.key==="m"||e.key==="M"){ prefs.view=prefs.view==="map"?"list":"map"; savePrefs(); renderMain(); }
+});
+
+$("#btnExport").onclick=()=>{
+  const blob=new Blob([JSON.stringify(state,null,2)],{type:"application/json"});
+  const a=document.createElement("a"); a.href=URL.createObjectURL(blob);
+  a.download="ielts-progress-"+new Date().toISOString().slice(0,10)+".json"; a.click();
+  setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+  toast("Backup diunduh");
+};
+$("#importFile").onchange=e=>{
+  const f=e.target.files[0]; if(!f) return;
+  const r=new FileReader();
+  r.onload=()=>{
+    try{
+      const obj=JSON.parse(r.result); if(!obj||typeof obj!=="object"||Array.isArray(obj)) throw 0;
+      let n=0;
+      for(const [key,v] of Object.entries(obj)){ if(KEY_RE.test(key) && v && typeof v==="object"){ state[key]=Object.assign({done:false,score:"",band:"",note:"",date:"",opened:false},v); n++; } }
+      if(!n) throw 0;
+      save(); render(); toast(n+" entri progres diimpor");
+    }catch(err){ alert("File tidak valid. Pilih file JSON hasil Export."); }
+    e.target.value="";
+  };
+  r.readAsText(f);
+};
+$("#btnReset").onclick=()=>{
+  if(!confirm("Hapus SEMUA progres (centang, skor, catatan)?\nTip: Export dulu untuk backup.")) return;
+  for(const kk of Object.keys(state)) delete state[kk];
+  save(); render(); toast("Progres dihapus");
+};
+
+const THEME_NAME={auto:"Sistem",light:"Terang",dark:"Gelap"};
+function applyTheme(){
+  if(prefs.theme==="auto") document.documentElement.removeAttribute("data-theme");
+  else document.documentElement.setAttribute("data-theme",prefs.theme);
+  $("#btnTheme").textContent = "Tema: "+THEME_NAME[prefs.theme];
+}
+$("#btnTheme").onclick=()=>{ prefs.theme={auto:"light",light:"dark",dark:"auto"}[prefs.theme]||"auto"; savePrefs(); applyTheme(); };
+
+// The timer stores its end time, so it keeps counting across reloads.
+const timer = Object.assign({endAt:0,left:0,running:false,label:"",total:0,shown:false}, load(TKEY,{}));
+let tick=null, beeped=false;
+const saveTimer=()=>{ try{ localStorage.setItem(TKEY,JSON.stringify(timer)); }catch(e){} };
+function fmt(ms){ const s=Math.max(0,Math.ceil(ms/1000)); return String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0"); }
+function remaining(){ return timer.running ? timer.endAt-Date.now() : timer.left; }
+function drawTimer(){
+  const el=$("#timer"); el.classList.toggle("on",timer.shown);
+  const ms=remaining();
+  $("#tmTime").textContent=fmt(ms);
+  $("#tmLabel").textContent=timer.label||"Timer latihan";
+  $("#tmToggle").textContent=timer.running?"Jeda":"Mulai";
+  const ended = timer.shown && timer.total>0 && ms<=0;
+  el.classList.toggle("end", ended);
+  document.title = timer.running ? fmt(ms)+" · IELTS Hub" : ended ? "Waktu habis · IELTS Hub" : "IELTS Cambridge Test Hub";
+  if(ended && timer.running){ timer.running=false; timer.left=0; saveTimer(); beep(); clearInterval(tick); tick=null; $("#tmToggle").textContent="Mulai"; }
+}
+function beep(){
+  if(beeped) return; beeped=true;
+  try{ const ctx=new (window.AudioContext||window.webkitAudioContext)();
+    [0,.35,.7].forEach(d=>{ const o=ctx.createOscillator(), g=ctx.createGain(); o.frequency.value=880; o.connect(g); g.connect(ctx.destination); g.gain.setValueAtTime(.2,ctx.currentTime+d); g.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+d+.3); o.start(ctx.currentTime+d); o.stop(ctx.currentTime+d+.3); });
+  }catch(e){}
+  toast("Waktu habis");
+}
+function run(){ clearInterval(tick); tick=setInterval(drawTimer,250); drawTimer(); }
+function startTimer(min,label){
+  timer.total=min*60000; timer.left=timer.total; timer.endAt=Date.now()+timer.total; timer.running=true; timer.label=label; timer.shown=true; beeped=false;
+  const ps=$("#tmPreset"); if([...ps.options].some(o=>+o.value===min)) ps.value=String(min);
+  saveTimer(); run(); toast("Timer "+min+" menit dimulai");
+}
+$("#btnTimer").onclick=()=>{ timer.shown=true; if(!timer.total){ timer.total=timer.left=(+$("#tmPreset").value)*60000; } saveTimer(); drawTimer(); $("#tmToggle").focus(); };
+$("#tmToggle").onclick=()=>{
+  if(timer.running){ timer.left=remaining(); timer.running=false; clearInterval(tick); tick=null; }
+  else { if(timer.left<=0) timer.left=timer.total||(+$("#tmPreset").value)*60000; timer.endAt=Date.now()+timer.left; timer.running=true; beeped=false; run(); }
+  saveTimer(); drawTimer();
+};
+$("#tmReset").onclick=()=>{ timer.total=(+$("#tmPreset").value)*60000; timer.left=timer.total; timer.running=false; beeped=false; clearInterval(tick); tick=null; saveTimer(); drawTimer(); };
+$("#tmPreset").onchange=()=>{ if(!timer.running){ timer.total=timer.left=(+$("#tmPreset").value)*60000; saveTimer(); drawTimer(); } };
+$("#tmClose").onclick=()=>{ timer.running=false; timer.shown=false; clearInterval(tick); tick=null; saveTimer(); drawTimer(); $("#btnTimer").focus(); };
+
+(function init(){
+  $("#fBookOne").innerHTML = BOOKS.map(b=>`<option value="${b}">C${b}</option>`).join("");
+  $("#fBook").value=prefs.book; if($("#fBook").value!==prefs.book){ prefs.book=""; $("#fBook").value=""; }
+  $("#fStatus").value=prefs.status; $("#fSort").value=prefs.sort;
+  if(!MODS[prefs.mod]) prefs.mod="L";
+  if(prefs.view!=="map") prefs.view="list";
+  if(!THEME_NAME[prefs.theme]) prefs.theme="auto";
+  applyTheme();
+  if(!storageOk()) $("#storageWarn").classList.remove("hidden");
+  let nEN=0;
+  for(const m of MOD_KEYS) for(const b of BOOKS) for(const t of TESTS) if(enUrl(m,b,t)) nEN++;
+  const nIX=Object.keys(L).length+Object.keys(R).length;
+  const nLG=Object.values(W).flat().length+Object.values(S).flat().length;
+  $("#linkNote").textContent=`Semua tautan langsung dicek HTTP 200 pada ${VERIFIED}. Situs pihak ketiga bisa berubah, jadi tautan Cari (Google) selalu ada sebagai cadangan.`;
+  $("#srcCount").textContent=`Tautan langsung: Engnovate ${nEN} tes interaktif, IELTSXpress ${nIX} halaman Listening/Reading, LangGo ${nLG} contoh jawaban Writing/Speaking. Hub ini hanya berisi tautan dan catatan Anda; konten tes tetap di situs sumber.`;
+  if(timer.total && [...$("#tmPreset").options].some(o=>+o.value*60000===timer.total)) $("#tmPreset").value=String(timer.total/60000);
+  render();
+  if(timer.shown){ if(timer.running) run(); else drawTimer(); }
+})();
+</script>
+</body>
+</html>
