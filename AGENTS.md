@@ -1,14 +1,15 @@
 # AGENTS.md: IELTS Cambridge Test Hub
 
 Hub tautan + pelacak progres latihan IELTS Cambridge.
-Buka `index.html` → isi target band → buka tes berikutnya (opsional: nyalakan Timer) → kerjakan di situs latihan → catat **jawaban benar/40 atau band** di hub (otomatis ditandai selesai).
+Buka `index.html` → isi target band → klik **Open test** (opsional: nyalakan Timer) → kerjakan di situs latihan → catat **jawaban benar/40 atau band** di hub (otomatis ditandai selesai).
+Semua teks UI (label, tombol, aria-label, toast, alert) berbahasa Inggris; dokumentasi repo tetap berbahasa Indonesia.
 
 ---
 
 ## 1. Prinsip teknis
 
 1. Hub ini hanya menyimpan **tautan, status, skor, band, catatan, dan tanggal**. Konten tes tetap berada di situs sumber dan dibuka di tab baru.
-2. Tautan langsung wajib dicek **HTTP 200** sebelum dimasukkan. Jika belum ada, gunakan tombol **Cari** (query Google), jangan menebak URL.
+2. Tautan langsung wajib dicek **HTTP 200** sebelum dimasukkan. Jika belum ada, gunakan tautan **Search** (query Google), jangan menebak URL.
 3. Progres disimpan lokal di browser (`localStorage`), dengan Export/Import JSON. Tidak ada server.
 4. Jangan menautkan file PDF/audio unduhan; tautkan halaman latihan/penjelasan.
 
@@ -44,7 +45,7 @@ Tautan langsung terverifikasi (HTTP 200, 31 Okt 2026): **setiap baris kini punya
 | IELTSXpress | 67 (C4 T2 sampai C20) | 46 (C7–C20, sebagian C7–C9) | - | - | Halaman soal + kunci |
 | LangGo | - | - | 24 (C18–C20 Task 1/2) | 12 (C18–C20 Part 1) | Contoh jawaban |
 
-Ditambah 15 halaman ringkasan buku IELTSXpress (C5–C19). Tombol **Cari** (Google) tetap ada di setiap baris sebagai cadangan.
+Ditambah 15 halaman ringkasan buku IELTSXpress (C5–C19). Tautan **Search** (Google) tetap ada di setiap baris sebagai cadangan.
 
 Catatan:
 - C1–C6 formatnya lebih lama dan kurang relevan untuk persiapan saat ini.
@@ -89,17 +90,17 @@ const S = { "18-1": [{t:"Part 1",u:"..."}] };      // LangGo contoh jawaban
 const BOOKPAGE = { 18: IX+"cambridge-ielts-18-tests/" };            // ringkasan buku
 ```
 
-- `linksFor(m,b,t)` menyusun tautan dengan `kind`: `main` (bergaris biru), `alt` (sumber lain), `ex` (contoh jawaban LangGo), lalu `search` (**Cari**) sebagai cadangan.
+- `linksFor(m,b,t)` menyusun tautan dengan `kind`: `main` (bergaris biru), `alt` (sumber lain), `ex` (contoh jawaban LangGo), lalu `search` (**Search**) sebagai cadangan.
 - localStorage:
   - `ielts-hub-progress-v1`: progres. Kunci `L-18-1`, `R-18-1`, `W-18-1`, `S-18-1`; nilai `{done, score, band, note, date, opened, ts}` (`ts` = epoch ms saat selesai, untuk tren; entri lama tanpa `ts` di-parse dari `date`). **Hanya objek ini yang di-Export/Import.**
   - `ielts-hub-prefs-v1`: modul/tampilan/filter/urutan/tema terakhir, plus `targets` (`{L,R,W,S,O}` → `"6.5"`, target band per skill dan overall).
   - `ielts-hub-timer-v1`: status timer (tetap jalan setelah reload).
 - Listening/Reading: input benar/40 → band otomatis (`TBL.L` / `TBL.R`). Skor di bawah tabel ditampilkan "band < 4.0" (L) / "< 2.5" (R) dan dihitung ≈3.5 / ≈2.0 untuk rata-rata.
 - Writing/Speaking: band self-assessment 0–9 (kelipatan 0.5).
-- Mengisi skor/band otomatis mencentang **Selesai**.
+- Mengisi skor/band otomatis mencentang **Done**.
 - Estimasi overall = rata-rata dari rata-rata tiap modul, dibulatkan ala IELTS (`Math.round(x*2)/2`).
-- Prioritas = skill dengan selisih positif terbesar antara target dan rata-rata band. Tanpa target, tombol utama ada di skill dengan tes selesai paling sedikit.
-- Buku berjalan = buku pertama (sesuai filter dan urutan) yang belum tuntas 16 sesi.
+- Priority = skill dengan selisih positif terbesar antara target dan rata-rata band. Tanpa target, tombol utama ada di skill dengan tes selesai paling sedikit.
+- Current book = buku pertama (sesuai filter dan urutan) yang belum tuntas 16 sesi.
 
 Tabel band Listening: 39–40→9.0 · 37–38→8.5 · 35–36→8.0 · 32–34→7.5 · 30–31→7.0 · 26–29→6.5 · 23–25→6.0 · 18–22→5.5 · 16–17→5.0 · 13–15→4.5 · 11–12→4.0.
 Tabel band Academic Reading: 39–40→9.0 · 37–38→8.5 · 35–36→8.0 · 33–34→7.5 · 30–32→7.0 · 27–29→6.5 · 23–26→6.0 · 19–22→5.5 · 15–18→5.0 · 13–14→4.5 · 10–12→4.0 · 8–9→3.5 · 6–7→3.0 · 4–5→2.5.
@@ -112,7 +113,7 @@ Tabel band Academic Reading: 39–40→9.0 · 37–38→8.5 · 35–36→8.0 · 
 2. Verifikasi status: `curl -s -o /dev/null --max-redirs 0 -w "%{http_code}" <url>` → harus `200`.
 3. Tambahkan ke objek `L`/`R`/`W`/`S` dengan kunci `<book>-<test>` (atau hapus dari `EN_MISSING` bila Engnovate menambah tes).
 4. Perbarui konstanta `VERIFIED` di `index.html` dan tabel di §3.
-5. Jika tautan mati: hapus dari objek (atau tambahkan ke `EN_MISSING`) atau ganti dengan URL baru yang 200. Tombol **Cari** tetap tersedia.
+5. Jika tautan mati: hapus dari objek (atau tambahkan ke `EN_MISSING`) atau ganti dengan URL baru yang 200. Tautan **Search** tetap tersedia.
 6. Jangan mengubah format kunci progres agar data pengguna tidak hilang.
 
 ---
@@ -122,12 +123,12 @@ Tabel band Academic Reading: 39–40→9.0 · 37–38→8.5 · 35–36→8.0 · 
 - [ ] `index.html` terbuka tanpa error JS (terang & gelap, desktop & ±390px tanpa scroll horizontal).
 - [ ] 84 baris per modul (336 total untuk C1–C21), setiap baris punya chip utama.
 - [ ] Semua tautan langsung HTTP 200.
-- [ ] Tombol **Cari** berfungsi di setiap baris.
+- [ ] Tautan **Search** berfungsi di setiap baris.
 - [ ] Centang + skor + band + catatan tersimpan setelah reload; skor otomatis menandai selesai.
-- [ ] Filter buku/status/urutan/cari, Peta buku (klik kotak → baris), Ringkasan skill (target, prioritas, "Buka tes", lompat ke baris), dan tombol detail baris di HP bekerja.
+- [ ] Filter Book/Status/Order/Search, Book map (klik kotak → baris), Skill summary (target, Priority, "Open test", lompat ke baris), dan tombol detail baris di HP bekerja.
 - [ ] Timer mulai/jeda/ulang, bertahan setelah reload, berbunyi saat habis.
 - [ ] Export menghasilkan JSON; Import memulihkan progres (kunci tidak valid diabaikan).
-- [ ] Perubahan UI mengikuti `DESIGN.md` dan lolos Delivery Gate antislop: kontras teks ≥ 4.5:1 di kedua tema, target sentuh ≥ 44px di HP, tanpa em dash, setiap kontrol punya nama aksesibel.
+- [ ] Perubahan UI mengikuti `DESIGN.md` dan lolos Delivery Gate antislop: kontras teks ≥ 4.5:1 di kedua tema, target sentuh ≥ 44px di HP, tanpa em dash, setiap kontrol punya nama aksesibel, dan tidak ada teks UI berbahasa Indonesia.
 
 ---
 

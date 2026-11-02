@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -230,9 +230,9 @@
     .sum .n{text-align:left}
     .sum tbody th{grid-area:name;white-space:normal}
     .sum td[data-l]::before{content:attr(data-l);display:block;font-size:12px;font-weight:600;color:var(--muted)}
-    .sum td[data-l="Selesai"]{grid-area:done}
-    .sum td[data-l="Rata-rata band"]{grid-area:avg}
-    .sum td[data-l="Selisih"]{grid-area:gap}
+    .sum td[data-l="Done"]{grid-area:done}
+    .sum td[data-l="Average band"]{grid-area:avg}
+    .sum td[data-l="Gap"]{grid-area:gap}
     .sum td[data-l="Target"]{grid-area:tg;display:flex;align-items:center;justify-content:flex-end;gap:8px}
     .sum td[data-l="Target"]::before{display:inline}
     .sum select{width:132px}
@@ -280,17 +280,17 @@
 <header class="wrap">
   <div>
     <h1>IELTS Cambridge Test Hub</h1>
-    <p>Buka tes Cambridge IELTS Academic 1 sampai 21 di situs latihan, kerjakan di tab baru, lalu catat hasilnya di sini. Data tersimpan di browser ini.</p>
+    <p>Open Cambridge IELTS Academic 1 to 21 tests on practice sites, take them in a new tab, then record your results here. Your data stays in this browser.</p>
   </div>
-  <button id="btnTheme" type="button">Tema: Sistem</button>
+  <button id="btnTheme" type="button">Theme: System</button>
 </header>
 
 <main class="wrap">
-  <div class="warnbox hidden" id="storageWarn" role="alert">Browser ini memblokir penyimpanan lokal, jadi progres <b>tidak akan tersimpan</b> setelah halaman ditutup. Buka file ini di jendela biasa (bukan mode privat), atau gunakan Export sebelum menutup.</div>
+  <div class="warnbox hidden" id="storageWarn" role="alert">This browser blocks local storage, so your progress <b>will not be saved</b> after you close the page. Open this file in a normal window (not private mode), or use Export before you close it.</div>
 
   <section aria-labelledby="hSum">
     <div class="sec-head">
-      <h2 id="hSum">Ringkasan skill</h2>
+      <h2 id="hSum">Skill summary</h2>
       <p class="muted small" id="sumHint"></p>
     </div>
     <div class="panel">
@@ -300,12 +300,12 @@
   </section>
 
   <div class="toolbar" id="toolbar">
-    <nav class="tb-row" aria-label="Tampilan dan modul">
-      <div class="seg" role="group" aria-label="Tampilan">
-        <button type="button" data-view="list" aria-pressed="true">Daftar</button>
-        <button type="button" data-view="map" aria-pressed="false">Peta buku</button>
+    <nav class="tb-row" aria-label="View and module">
+      <div class="seg" role="group" aria-label="View">
+        <button type="button" data-view="list" aria-pressed="true">List</button>
+        <button type="button" data-view="map" aria-pressed="false">Book map</button>
       </div>
-      <div class="seg" id="tabs" role="group" aria-label="Modul">
+      <div class="seg" id="tabs" role="group" aria-label="Module">
         <button type="button" data-mod="L" aria-pressed="true">Listening</button>
         <button type="button" data-mod="R" aria-pressed="false">Reading</button>
         <button type="button" data-mod="W" aria-pressed="false">Writing</button>
@@ -314,38 +314,38 @@
       <button id="btnTimer" class="push" type="button">Timer</button>
     </nav>
     <div class="filters">
-      <label><span>Buku</span>
+      <label><span>Book</span>
         <select id="fBook">
-          <option value="">Semua (C1–C21)</option>
-          <option value="r:10-21">C10–C21 (disarankan)</option>
-          <option value="r:15-21">C15–C21 (terbaru)</option>
-          <option value="r:1-9">C1–C9 (format lama)</option>
-          <optgroup label="Per buku" id="fBookOne"></optgroup>
+          <option value="">All (C1–C21)</option>
+          <option value="r:10-21">C10–C21 (recommended)</option>
+          <option value="r:15-21">C15–C21 (newest)</option>
+          <option value="r:1-9">C1–C9 (old format)</option>
+          <optgroup label="Single book" id="fBookOne"></optgroup>
         </select>
       </label>
       <label><span>Status</span>
         <select id="fStatus">
-          <option value="">Semua</option>
-          <option value="todo">Belum selesai</option>
-          <option value="opened">Dibuka, belum selesai</option>
-          <option value="done">Sudah selesai</option>
+          <option value="">All</option>
+          <option value="todo">Not done</option>
+          <option value="opened">Opened, not done</option>
+          <option value="done">Done</option>
         </select>
       </label>
-      <label><span>Urutan</span>
+      <label><span>Order</span>
         <select id="fSort">
-          <option value="desc">C21 ke C1</option>
-          <option value="asc">C1 ke C21</option>
+          <option value="desc">C21 to C1</option>
+          <option value="asc">C1 to C21</option>
         </select>
       </label>
-      <label><span>Cari <kbd>/</kbd></span>
-        <input type="search" id="fSearch" placeholder="c18 t2 atau catatan">
+      <label><span>Search <kbd>/</kbd></span>
+        <input type="search" id="fSearch" placeholder="c18 t2 or a note">
       </label>
     </div>
   </div>
 
   <section id="listView" aria-labelledby="hList" style="margin-top:18px">
     <div class="sec-head">
-      <h2 id="hList">Daftar Listening</h2>
+      <h2 id="hList">Listening list</h2>
       <span class="muted small num" id="count" aria-live="polite"></span>
     </div>
     <div class="panel"><table class="list" id="table"></table></div>
@@ -353,63 +353,63 @@
 
   <section class="hidden" id="mapView" aria-labelledby="hMap" style="margin-top:18px">
     <div class="sec-head">
-      <h2 id="hMap">Peta buku</h2>
+      <h2 id="hMap">Book map</h2>
       <span class="muted small num" id="mapCount"></span>
     </div>
     <div class="panel mapbox">
       <p class="muted small" style="margin-bottom:12px" id="mapHint"></p>
       <div class="map" id="map"></div>
       <div class="legend">
-        <span><i style="background:var(--sq)"></i>Belum</span>
-        <span><i style="background:var(--sq);color:var(--acc-text)">•</i>Pernah dibuka</span>
-        <span><i style="background:var(--sq-dn);color:var(--sq-dn-ink)">✓</i>Selesai, tanpa band</span>
-        <span><i style="background:var(--sq-lo);color:var(--sq-lo-ink)">5</i>Band di bawah 6</span>
-        <span><i style="background:var(--sq-mid);color:var(--sq-mid-ink)">6</i>Band 6 sampai 6.5</span>
-        <span><i style="background:var(--sq-hi);color:var(--sq-hi-ink)">7</i>Band 7 ke atas</span>
+        <span><i style="background:var(--sq)"></i>Not started</span>
+        <span><i style="background:var(--sq);color:var(--acc-text)">•</i>Opened</span>
+        <span><i style="background:var(--sq-dn);color:var(--sq-dn-ink)">✓</i>Done, no band</span>
+        <span><i style="background:var(--sq-lo);color:var(--sq-lo-ink)">5</i>Band below 6</span>
+        <span><i style="background:var(--sq-mid);color:var(--sq-mid-ink)">6</i>Band 6 to 6.5</span>
+        <span><i style="background:var(--sq-hi);color:var(--sq-hi-ink)">7</i>Band 7 and above</span>
       </div>
     </div>
   </section>
 
   <section aria-labelledby="hFormat">
-    <h2 id="hFormat" class="sr">Format tes</h2>
+    <h2 id="hFormat" class="sr">Test format</h2>
     <details class="panel">
-      <summary>Format tes dan cara mengisi</summary>
+      <summary>Test format and how to record results</summary>
       <ol>
-        <li>Klik sumber bergaris biru (sumber utama). Tes terbuka di tab baru. Tombol <b>Timer</b> menyalakan hitung mundur sesuai durasi modul.</li>
-        <li>Listening dan Reading: isi jumlah <b>jawaban benar dari 40</b>, band dihitung otomatis. Writing dan Speaking: pilih <b>band</b> hasil penilaian sendiri. Mengisi salah satunya otomatis menandai tes selesai.</li>
-        <li>Isi <b>target band</b> di Ringkasan skill. Skill dengan selisih terbesar ditandai Prioritas.</li>
-        <li>Catatan cocok untuk tipe soal yang sering salah, dan isinya bisa dicari.</li>
+        <li>Click the source with the blue border (the main source). The test opens in a new tab. The <b>Timer</b> button starts a countdown for the length of the module.</li>
+        <li>Listening and Reading: enter your <b>correct answers out of 40</b> and the band is calculated for you. Writing and Speaking: pick your self-assessed <b>band</b>. Filling in either one marks the test as done.</li>
+        <li>Set a <b>target band</b> in the skill summary. The skill with the largest gap gets the Priority label.</li>
+        <li>Use notes for question types you often get wrong. The search box also searches your notes.</li>
       </ol>
       <table class="plain">
-        <thead><tr><th scope="col">Modul</th><th scope="col">Isi per tes</th><th scope="col">Durasi</th></tr></thead>
+        <thead><tr><th scope="col">Module</th><th scope="col">Per test</th><th scope="col">Time</th></tr></thead>
         <tbody>
-          <tr><td>Listening</td><td>4 part, 40 soal</td><td>±30 menit (+10 menit transfer di paper)</td></tr>
-          <tr><td>Reading</td><td>3 passage, 40 soal</td><td>60 menit</td></tr>
-          <tr><td>Writing</td><td>Task 1 (≥150 kata) dan Task 2 (≥250 kata)</td><td>60 menit (20 + 40)</td></tr>
-          <tr><td>Speaking</td><td>Part 1, Part 2 cue card (1 menit persiapan, 2 menit bicara), Part 3</td><td>11–14 menit</td></tr>
+          <tr><td>Listening</td><td>4 parts, 40 questions</td><td>±30 min (+10 min to transfer answers on paper)</td></tr>
+          <tr><td>Reading</td><td>3 passages, 40 questions</td><td>60 min</td></tr>
+          <tr><td>Writing</td><td>Task 1 (≥150 words) and Task 2 (≥250 words)</td><td>60 min (20 + 40)</td></tr>
+          <tr><td>Speaking</td><td>Part 1, Part 2 cue card (1 min to prepare, 2 min to speak), Part 3</td><td>11–14 min</td></tr>
         </tbody>
       </table>
-      <p class="muted small" style="margin-bottom:12px">Pintasan keyboard: <kbd>/</kbd> cari, <kbd>1</kbd>–<kbd>4</kbd> ganti modul, <kbd>M</kbd> ganti daftar dan peta.</p>
+      <p class="muted small" style="margin-bottom:12px">Keyboard shortcuts: <kbd>/</kbd> search, <kbd>1</kbd>–<kbd>4</kbd> switch module, <kbd>M</kbd> switch between list and map.</p>
     </details>
   </section>
 
   <section aria-labelledby="hOfficial">
-    <h2 id="hOfficial" style="margin-bottom:6px">Sumber resmi gratis</h2>
+    <h2 id="hOfficial" style="margin-bottom:6px">Free official sources</h2>
     <ul class="links">
-      <li><a href="https://ielts.org/take-a-test/preparation-resources/sample-test-questions" target="_blank" rel="noopener">IELTS.org: contoh soal</a></li>
-      <li><a href="https://ielts.idp.com/prepare/free-ielts-practice-test" target="_blank" rel="noopener">IDP: tes latihan gratis</a></li>
-      <li><a href="https://www.cambridgeenglish.org/exams-and-tests/ielts/preparation/" target="_blank" rel="noopener">Cambridge English: persiapan IELTS</a></li>
+      <li><a href="https://ielts.org/take-a-test/preparation-resources/sample-test-questions" target="_blank" rel="noopener">IELTS.org: sample questions</a></li>
+      <li><a href="https://ielts.idp.com/prepare/free-ielts-practice-test" target="_blank" rel="noopener">IDP: free practice test</a></li>
+      <li><a href="https://www.cambridgeenglish.org/exams-and-tests/ielts/preparation/" target="_blank" rel="noopener">Cambridge English: IELTS preparation</a></li>
     </ul>
   </section>
 
   <section aria-labelledby="hData">
-    <h2 id="hData" style="margin-bottom:6px">Cadangan data</h2>
-    <p class="muted" style="font-size:14px;max-width:640px">Progres hanya tersimpan di browser ini. Export rutin untuk backup, atau untuk memindahkan progres ke perangkat lain.</p>
+    <h2 id="hData" style="margin-bottom:6px">Data backup</h2>
+    <p class="muted" style="font-size:14px;max-width:640px">Your progress is saved only in this browser. Export it regularly to keep a backup or to move it to another device.</p>
     <div class="data-row">
       <button id="btnExport" type="button">Export JSON</button>
       <label class="btn" for="importFile">Import JSON</label>
       <input type="file" id="importFile" accept="application/json,.json" class="sr" tabindex="-1">
-      <button id="btnReset" type="button" class="danger">Hapus semua progres</button>
+      <button id="btnReset" type="button" class="danger">Delete all progress</button>
     </div>
   </section>
 </main>
@@ -419,23 +419,23 @@
   <p id="srcCount" style="margin-top:4px"></p>
 </footer>
 
-<div class="timer" id="timer" role="region" aria-label="Timer latihan">
+<div class="timer" id="timer" role="region" aria-label="Practice timer">
   <div><div class="tm" id="tmTime" role="timer" aria-live="off">00:00</div><div class="tl" id="tmLabel"></div></div>
-  <label>Durasi
+  <label>Duration
     <select id="tmPreset">
-      <option value="30">30 mnt (Listening)</option><option value="60">60 mnt (Reading/Writing)</option><option value="20">20 mnt (Writing Task 1)</option><option value="40">40 mnt (Writing Task 2)</option><option value="14">14 mnt (Speaking)</option><option value="1">1 mnt (persiapan Part 2)</option><option value="2">2 mnt (bicara Part 2)</option>
+      <option value="30">30 min (Listening)</option><option value="60">60 min (Reading/Writing)</option><option value="20">20 min (Writing Task 1)</option><option value="40">40 min (Writing Task 2)</option><option value="14">14 min (Speaking)</option><option value="1">1 min (Part 2 prep)</option><option value="2">2 min (Part 2 talk)</option>
     </select>
   </label>
-  <button id="tmToggle" type="button">Mulai</button>
-  <button id="tmReset" type="button">Ulangi</button>
-  <button id="tmClose" type="button">Tutup</button>
+  <button id="tmToggle" type="button">Start</button>
+  <button id="tmReset" type="button">Reset</button>
+  <button id="tmClose" type="button">Close</button>
 </div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
 "use strict";
 // Every direct link below returned HTTP 200 on VERIFIED. How to add or update links: AGENTS.md §6.
-const VERIFIED = "31 Okt 2026";
+const VERIFIED = "31 Oct 2026";
 const BOOKS = Array.from({length:21},(_,i)=>i+1);
 const TESTS = [1,2,3,4];
 const MODS = {
@@ -575,12 +575,12 @@ const searchUrl = q => "https://www.google.com/search?q=" + encodeURIComponent(q
 function linksFor(m,b,t){
   const id=b+"-"+t, out=[];
   const en=enUrl(m,b,t);
-  if(en) out.push({t:"Engnovate", u:en, kind:"main", src:"Engnovate", what: m==="W"?"Task 1 dan 2" : m==="S"?"Part 1 sampai 3" : ""});
+  if(en) out.push({t:"Engnovate", u:en, kind:"main", src:"Engnovate", what: m==="W"?"Tasks 1 and 2" : m==="S"?"Parts 1 to 3" : ""});
   if(m==="L" && L[id]) out.push({t:"IELTSXpress",u:L[id],kind:out.length?"alt":"main",src:"IELTSXpress"});
   if(m==="R" && R[id]) out.push({t:"IELTSXpress",u:R[id],kind:out.length?"alt":"main",src:"IELTSXpress"});
   if(m==="W" && W[id]) W[id].forEach(x=>out.push({t:x.t,u:x.u,kind:"ex",src:"LangGo"}));
   if(m==="S" && S[id]) S[id].forEach(x=>out.push({t:x.t,u:x.u,kind:"ex",src:"LangGo"}));
-  out.push({t:"Cari", u:searchUrl("Cambridge IELTS "+b+" "+MODS[m].name+" Test "+t), kind:"search", src:"Google"});
+  out.push({t:"Search", u:searchUrl("Cambridge IELTS "+b+" "+MODS[m].name+" Test "+t), kind:"search", src:"Google"});
   return out;
 }
 
@@ -604,6 +604,7 @@ function bandLabel(m,s){
   if((m==="L"&&+s.score<11)||(m==="R"&&+s.score<4)) return "<"+(m==="L"?"4.0":"2.5");
   return b.toFixed(1);
 }
+const plural = (n,w) => n+" "+w+(n===1?"":"s");
 const roundIELTS = x => Math.round(x*2)/2;   // IELTS rounds .25 up to .5 and .75 up to the next whole band.
 
 // Only the progress object is exported/imported; prefs (incl. target bands) and timer stay per browser.
@@ -614,13 +615,13 @@ function storageOk(){ try{ localStorage.setItem("ielts-hub-test","1"); localStor
 const state = load(KEY,{});
 const prefs = Object.assign({mod:"L",view:"list",book:"",status:"",sort:"desc",theme:"auto",targets:{}}, load(PKEY,{}));
 if(!prefs.targets || typeof prefs.targets!=="object") prefs.targets={};
-const save = () => { try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){ toast("Gagal menyimpan. Penyimpanan browser diblokir?"); } };
+const save = () => { try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){ toast("Could not save. Is browser storage blocked?"); } };
 const savePrefs = () => { try{ localStorage.setItem(PKEY, JSON.stringify(prefs)); }catch(e){} };
 const k = (m,b,t) => m+"-"+b+"-"+t;
 const get = key => state[key] || null;
 const upd = key => state[key] || (state[key]={done:false,score:"",band:"",note:"",date:"",opened:false});
-const today = () => new Date().toLocaleDateString("id-ID");
-// Entries saved before `ts` existed only have an id-ID date string (dd/mm/yyyy).
+const today = () => new Date().toLocaleDateString("en-GB");
+// Entries saved before `ts` existed only have a dd/mm/yyyy date string (id-ID then, en-GB now: same shape).
 function tsOf(s){
   if(s.ts) return s.ts;
   const m=/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/.exec(s.date||"");
@@ -680,29 +681,29 @@ function spark(vals){
   return `<svg class="spark" viewBox="0 0 ${w} ${h}" aria-hidden="true"><polyline points="${pts.map(x=>x.map(n=>n.toFixed(1)).join(",")).join(" ")}"/><circle cx="${last[0].toFixed(1)}" cy="${last[1].toFixed(1)}" r="2"/></svg>`;
 }
 function targetOpts(cur){
-  let h=`<option value="">Belum diisi</option>`;
+  let h=`<option value="">Not set</option>`;
   for(let x=9;x>=4;x-=.5){ const v=x.toFixed(1); h+=`<option value="${v}" ${cur===v?"selected":""}>${v}</option>`; }
   return h;
 }
 function gapHtml(avg,tg){
   if(!tg) return `<span class="muted">–</span>`;
-  if(avg==null) return `<span class="muted">belum ada band</span>`;
+  if(avg==null) return `<span class="muted">no band yet</span>`;
   const g=+tg-avg;
-  return g<=0 ? `<span class="reached">tercapai</span>` : `kurang <b class="num">${g.toFixed(1)}</b>`;
+  return g<=0 ? `<span class="reached">reached</span>` : `<b class="num">${g.toFixed(1)}</b> to go`;
 }
 
 // Running book = first book (in the current filter and order) that still has unfinished sessions.
 function renderBookbar(){
   let b=null;
   for(const x of bookList()) if(bookDone(x)<16){ b=x; break; }
-  if(b==null){ $("#bookbar").innerHTML=`<b>Semua buku di filter ini tuntas.</b>`; return; }
+  if(b==null){ $("#bookbar").innerHTML=`<b>Every book in this filter is complete.</b>`; return; }
   let sq="", sr=[];
   for(const m of MOD_KEYS){
     let dm=0; sq+=`<span class="grp"><span class="gl">${m}</span>`;
     for(const t of TESTS){ const s=get(k(m,b,t)); const c=s&&s.done?"d":s&&s.opened?"o":""; if(c==="d") dm++; sq+=`<i class="${c}"></i>`; }
-    sq+=`</span>`; sr.push(`${MODS[m].name} ${dm} dari 4`);
+    sq+=`</span>`; sr.push(`${MODS[m].name} ${dm} of 4`);
   }
-  $("#bookbar").innerHTML=`<span>Buku berjalan: <b>C${b}</b> <span class="muted num">· ${bookDone(b)} dari 16 sesi selesai</span></span><div class="bb-sq" role="img" aria-label="C${b}: ${sr.join(", ")}">${sq}</div>`;
+  $("#bookbar").innerHTML=`<span>Current book: <b>C${b}</b> <span class="muted num">· ${bookDone(b)} of 16 sessions done</span></span><div class="bb-sq" role="img" aria-label="C${b}: ${sr.join(", ")}">${sq}</div>`;
 }
 
 function renderSummary(){
@@ -713,57 +714,57 @@ function renderSummary(){
   for(const m of MOD_KEYS) if(tg[m] && st[m].avg!=null){ const g=+tg[m]-st[m].avg; if(g>best){ best=g; focus=m; } }
   const primary = focus || MOD_KEYS.filter(m=>nextTest(m)).sort((a,c)=>st[a].d-st[c].d)[0] || null;
 
-  let h=`<thead><tr><th scope="col">Skill</th><th scope="col" class="n">Selesai</th><th scope="col" class="n">Rata-rata band</th><th scope="col">Target</th><th scope="col" class="n">Selisih</th><th scope="col">Tes berikutnya</th></tr></thead><tbody>`;
+  let h=`<thead><tr><th scope="col">Skill</th><th scope="col" class="n">Done</th><th scope="col" class="n">Average band</th><th scope="col">Target</th><th scope="col" class="n">Gap</th><th scope="col">Next test</th></tr></thead><tbody>`;
   for(const m of MOD_KEYS){
     const s=st[m], nx=nextTest(m), name=MODS[m].name;
-    let next=`<span class="muted">Semua tes di filter ini selesai</span>`;
+    let next=`<span class="muted">All tests in this filter are done</span>`;
     if(nx){
       const key=k(m,nx.b,nx.t), main=linksFor(m,nx.b,nx.t)[0], lbl=`C${nx.b} Test ${nx.t} ${name}`;
-      next=`<div class="nx"><button type="button" class="goto" data-goto="${key}" aria-label="Lihat baris ${lbl}">C${nx.b} · Test ${nx.t}</button><span class="acts"><a class="btn${m===primary?" primary":""}" href="${esc(main.u)}" target="_blank" rel="noopener" data-open="${key}" aria-label="Buka tes ${lbl} di ${main.src} (tab baru)">Buka tes</a><button type="button" data-timer="${key}" aria-label="Mulai timer ${MODS[m].min} menit untuk ${lbl}">Timer ${MODS[m].min} mnt</button></span></div>`;
+      next=`<div class="nx"><button type="button" class="goto" data-goto="${key}" aria-label="Go to row ${lbl}">C${nx.b} · Test ${nx.t}</button><span class="acts"><a class="btn${m===primary?" primary":""}" href="${esc(main.u)}" target="_blank" rel="noopener" data-open="${key}" aria-label="Open test ${lbl} on ${main.src} (new tab)">Open test</a><button type="button" data-timer="${key}" aria-label="Start ${MODS[m].min}-minute timer for ${lbl}">Timer ${MODS[m].min} min</button></span></div>`;
     }
     h+=`<tr class="${m===focus?"focus":""}">
-      <th scope="row"><span class="sk">${name}</span>${m===focus?'<span class="tag">Prioritas</span>':""}</th>
-      <td class="n" data-l="Selesai"><b class="num">${s.d}</b><span class="muted num">/${s.total}</span></td>
-      <td class="n" data-l="Rata-rata band">${s.avg!=null?`${spark(s.bands.slice(-12))}<span class="bandbig">${s.avg.toFixed(1)}</span> <span class="muted small">dari ${s.bands.length} tes</span>`:'<span class="muted">–</span>'}</td>
+      <th scope="row"><span class="sk">${name}</span>${m===focus?'<span class="tag">Priority</span>':""}</th>
+      <td class="n" data-l="Done"><b class="num">${s.d}</b><span class="muted num">/${s.total}</span></td>
+      <td class="n" data-l="Average band">${s.avg!=null?`${spark(s.bands.slice(-12))}<span class="bandbig">${s.avg.toFixed(1)}</span> <span class="muted small">from ${plural(s.bands.length,"test")}</span>`:'<span class="muted">–</span>'}</td>
       <td data-l="Target"><label class="sr" for="tg-${m}">Target band ${name}</label><select id="tg-${m}" data-target="${m}">${targetOpts(tg[m]||"")}</select></td>
-      <td class="n" data-l="Selisih">${gapHtml(s.avg,tg[m])}</td>
+      <td class="n" data-l="Gap">${gapHtml(s.avg,tg[m])}</td>
       <td class="nextcell">${next}</td></tr>`;
   }
   const avgs=MOD_KEYS.map(m=>st[m].avg).filter(x=>x!=null);
   const ov=avgs.length ? roundIELTS(avgs.reduce((a,c)=>a+c,0)/avgs.length) : null;
   const totD=MOD_KEYS.reduce((a,m)=>a+st[m].d,0);
   h+=`<tr class="overall">
-    <th scope="row"><span class="sk">Overall</span> <span class="muted small">estimasi</span></th>
-    <td class="n" data-l="Selesai"><b class="num">${totD}</b><span class="muted num">/${BOOKS.length*16}</span></td>
-    <td class="n" data-l="Rata-rata band">${ov!=null?`<span class="bandbig">${ov.toFixed(1)}</span> <span class="muted small">dari ${avgs.length} skill</span>`:'<span class="muted">–</span>'}</td>
+    <th scope="row"><span class="sk">Overall</span> <span class="muted small">estimate</span></th>
+    <td class="n" data-l="Done"><b class="num">${totD}</b><span class="muted num">/${BOOKS.length*16}</span></td>
+    <td class="n" data-l="Average band">${ov!=null?`<span class="bandbig">${ov.toFixed(1)}</span> <span class="muted small">from ${plural(avgs.length,"skill")}</span>`:'<span class="muted">–</span>'}</td>
     <td data-l="Target"><label class="sr" for="tg-O">Target band overall</label><select id="tg-O" data-target="O">${targetOpts(tg.O||"")}</select></td>
-    <td class="n" data-l="Selisih">${gapHtml(ov,tg.O)}</td>
-    <td class="nextcell muted small">Rata-rata 4 skill, dibulatkan ke 0.5 terdekat.</td></tr></tbody>`;
+    <td class="n" data-l="Gap">${gapHtml(ov,tg.O)}</td>
+    <td class="nextcell muted small">Average of the 4 skills, rounded to the nearest 0.5.</td></tr></tbody>`;
   const active=document.activeElement&&document.activeElement.dataset? document.activeElement.dataset.target : null;
   $("#sum").innerHTML=h;
   if(active) { const el=document.getElementById("tg-"+active); if(el) el.focus(); }
   const anyTarget=MOD_KEYS.some(m=>tg[m]);
-  $("#sumHint").textContent = anyTarget ? "Prioritas = skill dengan selisih terbesar ke target." : "Isi target band supaya skill prioritas terlihat.";
+  $("#sumHint").textContent = anyTarget ? "Priority = the skill with the largest gap to its target." : "Set target bands to see which skill needs the most work.";
   renderBookbar();
 }
 
 function scoreCell(m,key,s,name){
   if(m==="L"||m==="R"){
-    return `<label class="fl" for="sc-${key}">Benar dari 40</label><input id="sc-${key}" type="number" inputmode="numeric" min="0" max="40" value="${esc(s?s.score:"")}" data-score="${key}" placeholder="0–40" aria-label="Jawaban benar dari 40, ${name}"><span class="band" id="band-${key}" aria-live="polite">${esc(bandLabel(m,s))}</span>`;
+    return `<label class="fl" for="sc-${key}">Correct out of 40</label><input id="sc-${key}" type="number" inputmode="numeric" min="0" max="40" value="${esc(s?s.score:"")}" data-score="${key}" placeholder="0–40" aria-label="Correct answers out of 40, ${name}"><span class="band" id="band-${key}" aria-live="polite">${esc(bandLabel(m,s))}</span>`;
   }
   const opts=[]; for(let x=9;x>=0;x-=.5) opts.push(x.toFixed(1).replace(/\.0$/,""));
   const cur=s?String(s.band):"";
-  return `<label class="fl" for="sc-${key}">Band</label><select id="sc-${key}" data-band="${key}" aria-label="Band penilaian sendiri, ${name}"><option value="">Band</option>${opts.map(x=>`<option value="${x}" ${cur===x?"selected":""}>${x}</option>`).join("")}</select>`;
+  return `<label class="fl" for="sc-${key}">Band</label><select id="sc-${key}" data-band="${key}" aria-label="Self-assessed band, ${name}"><option value="">Band</option>${opts.map(x=>`<option value="${x}" ${cur===x?"selected":""}>${x}</option>`).join("")}</select>`;
 }
 function chipsHtml(m,b,t,key,name){
   const ls=linksFor(m,b,t); let h="", ex=false;
   for(const l of ls){
-    if(l.kind==="ex" && !ex){ h+=`<span class="contoh">Contoh:</span>`; ex=true; }
-    const lbl = l.kind==="search" ? `Cari ${name} di Google` : l.kind==="ex" ? `Contoh jawaban ${l.t} untuk ${name} di LangGo` : `${name}${l.what?" ("+l.what+")":""} di ${l.src}`;
-    h+=`<a class="src ${l.kind}" href="${esc(l.u)}" target="_blank" rel="noopener" data-open="${key}" aria-label="${esc(lbl)} (tab baru)">${esc(l.t)}</a>`;
+    if(l.kind==="ex" && !ex){ h+=`<span class="contoh">Model answers:</span>`; ex=true; }
+    const lbl = l.kind==="search" ? `Search Google for ${name}` : l.kind==="ex" ? `${l.t} model answer for ${name} on LangGo` : `${name}${l.what?" ("+l.what+")":""} on ${l.src}`;
+    h+=`<a class="src ${l.kind}" href="${esc(l.u)}" target="_blank" rel="noopener" data-open="${key}" aria-label="${esc(lbl)} (new tab)">${esc(l.t)}</a>`;
   }
   const s=get(key);
-  return `<div class="chips">${h}<span class="opened ${s&&s.opened&&!s.done?"":"hidden"}" id="op-${key}">pernah dibuka</span></div>`;
+  return `<div class="chips">${h}<span class="opened ${s&&s.opened&&!s.done?"":"hidden"}" id="op-${key}">opened</span></div>`;
 }
 function rowHtml(m,b,t){
   const key=k(m,b,t), s=get(key), name=`C${b} Test ${t} ${MODS[m].name}`;
@@ -771,19 +772,19 @@ function rowHtml(m,b,t){
     <td class="testcell">Test ${t}</td>
     <td class="srccell">${chipsHtml(m,b,t,key,name)}</td>
     <td class="scorecell n">${scoreCell(m,key,s,name)}</td>
-    <td class="donecell"><label class="hit"><input id="dn-${key}" type="checkbox" class="check" data-done="${key}" ${s&&s.done?"checked":""} aria-label="Selesai, ${name}"></label><span class="date" id="date-${key}">${esc(s?s.date:"")}</span></td>
-    <td class="notecell"><label class="fl" for="nt-${key}">Catatan</label><input id="nt-${key}" type="text" maxlength="300" value="${esc(s?s.note:"")}" data-note="${key}" placeholder="mis. salah di Part 3 (map)"></td>
-    <td class="tmcell"><button type="button" class="rowbtn" data-timer="${key}" aria-label="Mulai timer ${MODS[m].min} menit untuk ${name}">Timer ${MODS[m].min} mnt</button></td>
-    <td class="xcell"><button type="button" class="rowbtn xbtn" data-x="${key}" aria-expanded="false" aria-label="Detail ${name}: sumber lain, catatan, timer">${CHEV}</button></td>
+    <td class="donecell"><label class="hit"><input id="dn-${key}" type="checkbox" class="check" data-done="${key}" ${s&&s.done?"checked":""} aria-label="Done, ${name}"></label><span class="date" id="date-${key}">${esc(s?s.date:"")}</span></td>
+    <td class="notecell"><label class="fl" for="nt-${key}">Note</label><input id="nt-${key}" type="text" maxlength="300" value="${esc(s?s.note:"")}" data-note="${key}" placeholder="e.g. missed Part 3 (map)"></td>
+    <td class="tmcell"><button type="button" class="rowbtn" data-timer="${key}" aria-label="Start ${MODS[m].min}-minute timer for ${name}">Timer ${MODS[m].min} min</button></td>
+    <td class="xcell"><button type="button" class="rowbtn xbtn" data-x="${key}" aria-expanded="false" aria-label="Details for ${name}: other sources, note, timer">${CHEV}</button></td>
   </tr>`;
 }
-function bookCounts(m,b){ let d=0; for(const t of TESTS) if(isDone(k(m,b,t))) d++; return `${MODS[m].name} ${d}/4 · buku ${bookDone(b)}/16`; }
+function bookCounts(m,b){ let d=0; for(const t of TESTS) if(isDone(k(m,b,t))) d++; return `${MODS[m].name} ${d}/4 · book ${bookDone(b)}/16`; }
 function bookHead(m,b){
-  return `<span class="bk">C${b}</span><span class="bh num" id="bh-${m}-${b}">${bookCounts(m,b)}</span>${b<=6?'<span class="btag">format lama</span>':""}${b===21?'<span class="btag">edisi 2026</span>':""}${BOOKPAGE[b]?`<a href="${BOOKPAGE[b]}" target="_blank" rel="noopener" aria-label="Ringkasan buku C${b} di IELTSXpress (tab baru)">ringkasan buku ↗</a>`:""}`;
+  return `<span class="bk">C${b}</span><span class="bh num" id="bh-${m}-${b}">${bookCounts(m,b)}</span>${b<=6?'<span class="btag">old format</span>':""}${b===21?'<span class="btag">2026 edition</span>':""}${BOOKPAGE[b]?`<a href="${BOOKPAGE[b]}" target="_blank" rel="noopener" aria-label="Book overview for C${b} on IELTSXpress (new tab)">book overview ↗</a>`:""}`;
 }
 function renderList(){
   const m=prefs.mod, lr=(m==="L"||m==="R");
-  let h=`<thead><tr><th scope="col">Tes</th><th scope="col">Sumber (tab baru)</th><th scope="col" class="n">${lr?"Benar /40 · band":"Band (nilai sendiri)"}</th><th scope="col">Selesai</th><th scope="col">Catatan</th><th scope="col"><span class="sr">Timer</span></th></tr></thead>`;
+  let h=`<thead><tr><th scope="col">Test</th><th scope="col">Sources (new tab)</th><th scope="col" class="n">${lr?"Correct /40 · band":"Band (self-assessed)"}</th><th scope="col">Done</th><th scope="col">Note</th><th scope="col"><span class="sr">Timer</span></th></tr></thead>`;
   let n=0;
   for(const b of bookList()){
     const rows=TESTS.filter(t=>matches(m,b,t,get(k(m,b,t))));
@@ -791,10 +792,10 @@ function renderList(){
     n+=rows.length;
     h+=`<tbody><tr class="bookrow"><th colspan="6" scope="rowgroup">${bookHead(m,b)}</th></tr>${rows.map(t=>rowHtml(m,b,t)).join("")}</tbody>`;
   }
-  if(!n) h+=`<tbody><tr><td colspan="6" class="empty">Tidak ada tes yang cocok dengan filter. <button type="button" id="clearF">Hapus filter</button></td></tr></tbody>`;
+  if(!n) h+=`<tbody><tr><td colspan="6" class="empty">No tests match these filters. <button type="button" id="clearF">Clear filters</button></td></tr></tbody>`;
   $("#table").innerHTML=h;
-  $("#hList").textContent="Daftar "+MODS[m].name;
-  $("#count").textContent = n+" tes";
+  $("#hList").textContent=MODS[m].name+" list";
+  $("#count").textContent = plural(n,"test");
 }
 
 function sqClass(m,s){
@@ -804,8 +805,8 @@ function sqClass(m,s){
 }
 function sqHtml(m,b,t){
   const key=k(m,b,t), s=get(key), band=s&&s.done?bandOf(m,s):null;
-  const status = s&&s.done ? "selesai"+(band!=null?", band "+band.toFixed(1):"") : s&&s.opened ? "pernah dibuka" : "belum";
-  const lbl=`C${b} Test ${t} ${MODS[m].name}: ${status}. Buka barisnya.`;
+  const status = s&&s.done ? "done"+(band!=null?", band "+band.toFixed(1):"") : s&&s.opened ? "opened" : "not started";
+  const lbl=`C${b} Test ${t} ${MODS[m].name}: ${status}. Go to its row.`;
   const txt = band!=null ? band.toFixed(1).replace(/\.0$/,"") : s&&s.done ? "✓" : s&&s.opened ? "•" : "";
   return `<button type="button" class="sq ${sqClass(m,s)}" data-goto="${key}" title="${esc(lbl)}" aria-label="${esc(lbl)}">${txt}</button>`;
 }
@@ -814,8 +815,8 @@ function renderMap(){
   const one = compactMQ.matches, m=prefs.mod;
   const map=$("#map"); map.classList.toggle("one", one);
   $("#mapHint").textContent = one
-    ? `Peta ${MODS[m].name}: satu kotak per tes. Ganti modul dengan tombol di atas. Ketuk kotak untuk membuka barisnya.`
-    : "Setiap kotak adalah satu sesi, urutan L, R, W, S per tes. Klik kotak untuk membuka barisnya di daftar.";
+    ? `${MODS[m].name} map: one square per test. Switch module with the buttons above. Tap a square to go to its row.`
+    : "Each square is one session, in L, R, W, S order within each test. Click a square to go to its row in the list.";
   let h=`<div></div>`+TESTS.map(t=>`<div class="hd">Test ${t}${one?"":`<div class="quad lbl" aria-hidden="true">${MOD_KEYS.map(x=>`<span>${x}</span>`).join("")}</div>`}</div>`).join("");
   let n=0;
   for(const b of bookList()){
@@ -826,7 +827,7 @@ function renderMap(){
     n++;
   }
   map.innerHTML=h;
-  $("#mapCount").textContent = n+" buku";
+  $("#mapCount").textContent = plural(n,"book");
 }
 
 function renderChrome(){
@@ -894,17 +895,17 @@ $("#table").addEventListener("change", e=>{
   const el=e.target;
   if(el.dataset.done){
     const s=upd(el.dataset.done); markDone(s,el.checked); save(); refreshRow(el.dataset.done);
-    if(el.checked) toast("Ditandai selesai");
+    if(el.checked) toast("Marked as done");
   } else if(el.dataset.score!==undefined){
     const key=el.dataset.score, s=upd(key);
     let v=el.value.trim(); if(v!==""){ v=String(Math.max(0,Math.min(40,parseInt(v,10)||0))); el.value=v; }
     s.score=v;
-    if(v!=="" && !s.done){ markDone(s,true); toast("Jawaban benar tersimpan, tes ditandai selesai"); }
+    if(v!=="" && !s.done){ markDone(s,true); toast("Score saved, test marked as done"); }
     save(); refreshRow(key);
   } else if(el.dataset.band!==undefined){
     const key=el.dataset.band, s=upd(key);
     s.band=el.value;
-    if(el.value!=="" && !s.done){ markDone(s,true); toast("Band tersimpan, tes ditandai selesai"); }
+    if(el.value!=="" && !s.done){ markDone(s,true); toast("Band saved, test marked as done"); }
     save(); refreshRow(key);
   }
 });
@@ -933,7 +934,7 @@ $("#btnExport").onclick=()=>{
   const a=document.createElement("a"); a.href=URL.createObjectURL(blob);
   a.download="ielts-progress-"+new Date().toISOString().slice(0,10)+".json"; a.click();
   setTimeout(()=>URL.revokeObjectURL(a.href),1000);
-  toast("Backup diunduh");
+  toast("Backup downloaded");
 };
 $("#importFile").onchange=e=>{
   const f=e.target.files[0]; if(!f) return;
@@ -944,23 +945,23 @@ $("#importFile").onchange=e=>{
       let n=0;
       for(const [key,v] of Object.entries(obj)){ if(KEY_RE.test(key) && v && typeof v==="object"){ state[key]=Object.assign({done:false,score:"",band:"",note:"",date:"",opened:false},v); n++; } }
       if(!n) throw 0;
-      save(); render(); toast(n+" entri progres diimpor");
-    }catch(err){ alert("File tidak valid. Pilih file JSON hasil Export."); }
+      save(); render(); toast((n===1?"1 progress entry":n+" progress entries")+" imported");
+    }catch(err){ alert("This file is not valid. Choose a JSON file made with Export."); }
     e.target.value="";
   };
   r.readAsText(f);
 };
 $("#btnReset").onclick=()=>{
-  if(!confirm("Hapus SEMUA progres (centang, skor, catatan)?\nTip: Export dulu untuk backup.")) return;
+  if(!confirm("Delete ALL progress (check marks, scores, notes)?\nTip: Export first to keep a backup.")) return;
   for(const kk of Object.keys(state)) delete state[kk];
-  save(); render(); toast("Progres dihapus");
+  save(); render(); toast("Progress deleted");
 };
 
-const THEME_NAME={auto:"Sistem",light:"Terang",dark:"Gelap"};
+const THEME_NAME={auto:"System",light:"Light",dark:"Dark"};
 function applyTheme(){
   if(prefs.theme==="auto") document.documentElement.removeAttribute("data-theme");
   else document.documentElement.setAttribute("data-theme",prefs.theme);
-  $("#btnTheme").textContent = "Tema: "+THEME_NAME[prefs.theme];
+  $("#btnTheme").textContent = "Theme: "+THEME_NAME[prefs.theme];
 }
 $("#btnTheme").onclick=()=>{ prefs.theme={auto:"light",light:"dark",dark:"auto"}[prefs.theme]||"auto"; savePrefs(); applyTheme(); };
 
@@ -974,25 +975,25 @@ function drawTimer(){
   const el=$("#timer"); el.classList.toggle("on",timer.shown);
   const ms=remaining();
   $("#tmTime").textContent=fmt(ms);
-  $("#tmLabel").textContent=timer.label||"Timer latihan";
-  $("#tmToggle").textContent=timer.running?"Jeda":"Mulai";
+  $("#tmLabel").textContent=timer.label||"Practice timer";
+  $("#tmToggle").textContent=timer.running?"Pause":"Start";
   const ended = timer.shown && timer.total>0 && ms<=0;
   el.classList.toggle("end", ended);
-  document.title = timer.running ? fmt(ms)+" · IELTS Hub" : ended ? "Waktu habis · IELTS Hub" : "IELTS Cambridge Test Hub";
-  if(ended && timer.running){ timer.running=false; timer.left=0; saveTimer(); beep(); clearInterval(tick); tick=null; $("#tmToggle").textContent="Mulai"; }
+  document.title = timer.running ? fmt(ms)+" · IELTS Hub" : ended ? "Time is up · IELTS Hub" : "IELTS Cambridge Test Hub";
+  if(ended && timer.running){ timer.running=false; timer.left=0; saveTimer(); beep(); clearInterval(tick); tick=null; $("#tmToggle").textContent="Start"; }
 }
 function beep(){
   if(beeped) return; beeped=true;
   try{ const ctx=new (window.AudioContext||window.webkitAudioContext)();
     [0,.35,.7].forEach(d=>{ const o=ctx.createOscillator(), g=ctx.createGain(); o.frequency.value=880; o.connect(g); g.connect(ctx.destination); g.gain.setValueAtTime(.2,ctx.currentTime+d); g.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+d+.3); o.start(ctx.currentTime+d); o.stop(ctx.currentTime+d+.3); });
   }catch(e){}
-  toast("Waktu habis");
+  toast("Time is up");
 }
 function run(){ clearInterval(tick); tick=setInterval(drawTimer,250); drawTimer(); }
 function startTimer(min,label){
   timer.total=min*60000; timer.left=timer.total; timer.endAt=Date.now()+timer.total; timer.running=true; timer.label=label; timer.shown=true; beeped=false;
   const ps=$("#tmPreset"); if([...ps.options].some(o=>+o.value===min)) ps.value=String(min);
-  saveTimer(); run(); toast("Timer "+min+" menit dimulai");
+  saveTimer(); run(); toast(min+"-minute timer started");
 }
 $("#btnTimer").onclick=()=>{ timer.shown=true; if(!timer.total){ timer.total=timer.left=(+$("#tmPreset").value)*60000; } saveTimer(); drawTimer(); $("#tmToggle").focus(); };
 $("#tmToggle").onclick=()=>{
@@ -1017,8 +1018,8 @@ $("#tmClose").onclick=()=>{ timer.running=false; timer.shown=false; clearInterva
   for(const m of MOD_KEYS) for(const b of BOOKS) for(const t of TESTS) if(enUrl(m,b,t)) nEN++;
   const nIX=Object.keys(L).length+Object.keys(R).length;
   const nLG=Object.values(W).flat().length+Object.values(S).flat().length;
-  $("#linkNote").textContent=`Semua tautan langsung dicek HTTP 200 pada ${VERIFIED}. Situs pihak ketiga bisa berubah, jadi tautan Cari (Google) selalu ada sebagai cadangan.`;
-  $("#srcCount").textContent=`Tautan langsung: Engnovate ${nEN} tes interaktif, IELTSXpress ${nIX} halaman Listening/Reading, LangGo ${nLG} contoh jawaban Writing/Speaking. Hub ini hanya berisi tautan dan catatan Anda; konten tes tetap di situs sumber.`;
+  $("#linkNote").textContent=`Every direct link returned HTTP 200 on ${VERIFIED}. Third-party sites can change, so every row also has a Search (Google) link as a backup.`;
+  $("#srcCount").textContent=`Direct links: Engnovate ${nEN} interactive tests, IELTSXpress ${nIX} Listening/Reading pages, LangGo ${nLG} Writing/Speaking model answers. This hub holds only links and your notes; the test content stays on the source sites.`;
   if(timer.total && [...$("#tmPreset").options].some(o=>+o.value*60000===timer.total)) $("#tmPreset").value=String(timer.total/60000);
   render();
   if(timer.shown){ if(timer.running) run(); else drawTimer(); }

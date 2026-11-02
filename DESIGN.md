@@ -22,9 +22,9 @@ Dial: ENERGY 1 / RHYTHM 2 / MOTION 1
 
 ## Fokus, aksen, motif
 
-- **Fokus layar:** tabel "Ringkasan skill" di atas, dengan kolom selesai, rata-rata band, target, selisih, dan tes berikutnya.
-  - Skill dengan selisih terbesar ke target diberi label "Prioritas".
-  - Hanya tombol "Buka tes" di baris itu yang berwarna penuh.
+- **Fokus layar:** tabel "Skill summary" di atas, dengan kolom selesai, rata-rata band, target, selisih, dan tes berikutnya.
+  - Skill dengan selisih terbesar ke target diberi label "Priority".
+  - Hanya tombol "Open test" di baris itu yang berwarna penuh.
 - **Satu aksen:** biru tinta, terang `#24408f`, gelap `#a9bdf2`. Dipakai untuk:
   - tombol utama;
   - tautan sumber utama;
@@ -53,12 +53,13 @@ Semua pasangan teks sudah dicek ≥ 4.5:1 di kedua tema.
 - **Judul (h1, h2):** serif sistem (`Iowan Old Style, Palatino, Georgia`). Alasannya, buku Cambridge adalah buku cetak, dan serif memberi suara "lembar ujian" tanpa web font (hub harus jalan offline).
 - **UI dan angka:** sans sistem. Angka memakai `tabular-nums` supaya kolom sejajar.
 - Sentence case, tanpa label huruf kapital berjarak lebar.
+- Bahasa UI: Inggris, kalimat pendek dan langsung (mis. "Open test", "0.5 to go", "Clear filters").
 
 ## Tata letak
 
 - Satu kolom, lebar maksimum 1080px, dengan urutan berikut:
   1. header;
-  2. Ringkasan skill;
+  2. Skill summary;
   3. toolbar;
   4. daftar atau peta;
   5. format tes;
@@ -83,8 +84,8 @@ Semua pasangan teks sudah dicek ≥ 4.5:1 di kedua tema.
 
 - **Tanpa emoji.** Nama modul ditulis sebagai teks, karena teks sudah cukup membedakan.
 - **Chevron SVG** dipakai untuk select dan tombol detail baris. Artinya "buka lebih banyak".
-- **↗** setelah "ringkasan buku" menandai tautan ke situs lain di tab baru.
-- **✓ dan •** di kotak peta berarti "selesai tanpa skor" dan "pernah dibuka".
+- **↗** setelah "book overview" menandai tautan ke situs lain di tab baru.
+- **✓ dan •** di kotak peta berarti "Done, no band" dan "Opened".
 
 ## Gerak (MOTION 1)
 
@@ -95,7 +96,7 @@ Semua pasangan teks sudah dicek ≥ 4.5:1 di kedua tema.
 ## Keadaan
 
 - **Kosong:**
-  - filter yang tidak cocok menampilkan pesan dan tombol "Hapus filter";
+  - filter yang tidak cocok menampilkan pesan dan tombol "Clear filters";
   - tanpa target, ringkasan menampilkan ajakan mengisi target;
   - tanpa skor, rata-rata tampil "–".
 - **Memuat:** tidak perlu, karena semua data ada di file dan localStorage.
