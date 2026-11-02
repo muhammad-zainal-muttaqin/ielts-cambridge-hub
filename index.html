@@ -5,38 +5,42 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>IELTS Cambridge Test Hub</title>
 <style>
-  /* Tokens and choices: DESIGN.md ("Lembar skor", ENERGY 1 / RHYTHM 2 / MOTION 1). */
+  /* Tokens and choices: DESIGN.md v2 ("Lembar skor IELTS", ENERGY 2 / RHYTHM 2 / MOTION 1).
+     --brand is IELTS red (identity + one primary action per screen); --acc is indigo (progress, links, focus). */
   :root{
-    --bg:#f5f3ee;--surface:#fffdf9;--ink:#1d1c19;--muted:#5f5b53;--line:#e2ddd2;--line-in:#8c867a;--hover:#f0ede6;
-    --acc:#24408f;--acc-hover:#1b3273;--on-acc:#fff;--acc-text:#24408f;--acc-soft:#e8ecf6;--focus:#24408f;
-    --sq:#e9e5db;--sq-lo:#d3dbef;--sq-lo-ink:#1d1c19;--sq-mid:#8fa3d6;--sq-mid-ink:#1d1c19;--sq-hi:#24408f;--sq-hi-ink:#fff;--sq-dn:#5f5b53;--sq-dn-ink:#fff;
-    --warn-bg:#fbf1dc;--warn-line:#b7791f;--warn-ink:#6b4410;--danger:#a3261b;
-    --inv:#1d1c19;--inv-ink:#fffdf9;--timer-end:#ff8a7a;--flash:#f8e7a6;
-    --chev:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%235f5b53' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-    --chev-inv:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23fffdf9' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    --bg:#f4f4f7;--surface:#fff;--ink:#1c1b26;--muted:#555466;--line:#dfdee7;--line-in:#8b899b;--hover:#efeef5;
+    --brand:#e31837;--brand-hover:#c41430;--on-brand:#fff;--brand-text:#b3122c;
+    --acc:#33298a;--acc-hover:#271f6e;--on-acc:#fff;--acc-text:#33298a;--acc-soft:#eceaf8;--focus:#33298a;
+    --sq:#e8e7ef;--sq-lo:#dad6f3;--sq-lo-ink:#1c1b26;--sq-mid:#9d95dd;--sq-mid-ink:#1c1b26;--sq-hi:#33298a;--sq-hi-ink:#fff;--sq-dn:#555466;--sq-dn-ink:#fff;
+    --warn-bg:#fbf1dc;--warn-line:#b7791f;--warn-ink:#6b4410;--danger:#b3122c;
+    --inv:#1c1b26;--inv-ink:#fff;--timer-end:#ff8a7a;--flash:#f9e9a8;--shade:rgba(18,17,25,.55);
+    --chev:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23555466' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    --chev-inv:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23ffffff' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
     --h:40px;--hr:34px;
     color-scheme:light;
   }
   @media (prefers-color-scheme: dark){
     :root:not([data-theme="light"]){
-      --bg:#171613;--surface:#201f1b;--ink:#ece8df;--muted:#a8a296;--line:#34322c;--line-in:#7a756b;--hover:#2a2924;
-      --acc:#a9bdf2;--acc-hover:#c3d1f6;--on-acc:#121a33;--acc-text:#a9bdf2;--acc-soft:#1f2a45;--focus:#a9bdf2;
-      --sq:#2e2c27;--sq-lo:#2a3556;--sq-lo-ink:#ece8df;--sq-mid:#4c64a8;--sq-mid-ink:#fff;--sq-hi:#a9bdf2;--sq-hi-ink:#121a33;--sq-dn:#4a463f;--sq-dn-ink:#fff;
-      --warn-bg:#2b2212;--warn-line:#a8741d;--warn-ink:#f3d9a4;--danger:#f2a69c;
-      --inv:#ece8df;--inv-ink:#171613;--timer-end:#b3261e;--flash:#4a3d14;
-      --chev:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23a8a296' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-      --chev-inv:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23171613' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      --bg:#121119;--surface:#1b1a25;--ink:#ecebf4;--muted:#a9a7bc;--line:#2f2d3e;--line-in:#77748c;--hover:#252433;
+      --brand:#c8102e;--brand-hover:#a80d27;--on-brand:#fff;--brand-text:#ff8e9c;
+      --acc:#b4adf6;--acc-hover:#cbc6fa;--on-acc:#16132e;--acc-text:#b4adf6;--acc-soft:#262250;--focus:#b4adf6;
+      --sq:#2b2a38;--sq-lo:#2c2858;--sq-lo-ink:#ecebf4;--sq-mid:#5b50be;--sq-mid-ink:#fff;--sq-hi:#b4adf6;--sq-hi-ink:#16132e;--sq-dn:#4a4859;--sq-dn-ink:#fff;
+      --warn-bg:#2b2212;--warn-line:#a8741d;--warn-ink:#f3d9a4;--danger:#ff8e9c;
+      --inv:#ecebf4;--inv-ink:#121119;--timer-end:#b3261e;--flash:#4a3d14;--shade:rgba(0,0,0,.65);
+      --chev:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23a9a7bc' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      --chev-inv:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23121119' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
       color-scheme:dark;
     }
   }
   :root[data-theme="dark"]{
-    --bg:#171613;--surface:#201f1b;--ink:#ece8df;--muted:#a8a296;--line:#34322c;--line-in:#7a756b;--hover:#2a2924;
-    --acc:#a9bdf2;--acc-hover:#c3d1f6;--on-acc:#121a33;--acc-text:#a9bdf2;--acc-soft:#1f2a45;--focus:#a9bdf2;
-    --sq:#2e2c27;--sq-lo:#2a3556;--sq-lo-ink:#ece8df;--sq-mid:#4c64a8;--sq-mid-ink:#fff;--sq-hi:#a9bdf2;--sq-hi-ink:#121a33;--sq-dn:#4a463f;--sq-dn-ink:#fff;
-    --warn-bg:#2b2212;--warn-line:#a8741d;--warn-ink:#f3d9a4;--danger:#f2a69c;
-    --inv:#ece8df;--inv-ink:#171613;--timer-end:#b3261e;--flash:#4a3d14;
-    --chev:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23a8a296' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-    --chev-inv:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23171613' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    --bg:#121119;--surface:#1b1a25;--ink:#ecebf4;--muted:#a9a7bc;--line:#2f2d3e;--line-in:#77748c;--hover:#252433;
+    --brand:#c8102e;--brand-hover:#a80d27;--on-brand:#fff;--brand-text:#ff8e9c;
+    --acc:#b4adf6;--acc-hover:#cbc6fa;--on-acc:#16132e;--acc-text:#b4adf6;--acc-soft:#262250;--focus:#b4adf6;
+    --sq:#2b2a38;--sq-lo:#2c2858;--sq-lo-ink:#ecebf4;--sq-mid:#5b50be;--sq-mid-ink:#fff;--sq-hi:#b4adf6;--sq-hi-ink:#16132e;--sq-dn:#4a4859;--sq-dn-ink:#fff;
+    --warn-bg:#2b2212;--warn-line:#a8741d;--warn-ink:#f3d9a4;--danger:#ff8e9c;
+    --inv:#ecebf4;--inv-ink:#121119;--timer-end:#b3261e;--flash:#4a3d14;--shade:rgba(0,0,0,.65);
+    --chev:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23a9a7bc' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    --chev-inv:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23121119' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
     color-scheme:dark;
   }
   /* Touch screens and phones: every control becomes a 44px target. */
@@ -44,9 +48,10 @@
 
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
-  h1,h2,.bk{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif}
+  h1,h2,h3,.bk{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif}
   h1{margin:0;font-size:28px;line-height:1.2}
   h2{margin:0;font-size:20px;line-height:1.3}
+  h3{margin:0;font-size:17px;line-height:1.3}
   a{color:var(--acc-text);text-underline-offset:3px}
   p{margin:0}
   .wrap{max-width:1080px;margin:0 auto;padding:0 16px}
@@ -62,8 +67,9 @@
   button,.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:0 14px;border:1px solid var(--line-in);background:var(--surface);font-weight:600;text-decoration:none;white-space:nowrap}
   button:hover,.btn:hover{background:var(--hover);border-color:var(--ink)}
   button:active,.btn:active{transform:translateY(1px)}
-  .primary,.primary:hover{background:var(--acc);border-color:var(--acc);color:var(--on-acc)}
-  .primary:hover{background:var(--acc-hover);border-color:var(--acc-hover);text-decoration:underline}
+  /* IELTS red marks the single primary action on a screen. */
+  .primary,.primary:hover{background:var(--brand);border-color:var(--brand);color:var(--on-brand)}
+  .primary:hover{background:var(--brand-hover);border-color:var(--brand-hover);text-decoration:underline}
   .danger{color:var(--danger)}
   select,input[type=text],input[type=number],input[type=search]{border:1px solid var(--line-in);background:var(--surface);padding:0 12px;min-width:0}
   select:hover,input:hover{border-color:var(--ink)}
@@ -76,11 +82,35 @@
   :focus-visible{outline:2px solid var(--focus);outline-offset:2px}
   .panel{background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden}
 
-  header.wrap{padding-top:28px;display:flex;gap:16px;align-items:flex-start;justify-content:space-between}
-  header p{margin-top:6px;color:var(--muted);font-size:14.5px;max-width:620px}
+  /* Header: full-width IELTS red band, the identity moment. White text is 4.72:1 (light) and 5.88:1 (dark). */
+  .brandbar{background:var(--brand);color:var(--on-brand)}
+  .brandbar .wrap{padding-top:22px;padding-bottom:22px;display:flex;gap:14px 20px;align-items:center;justify-content:space-between}
+  .brandbar p{margin-top:6px;font-size:15px;max-width:640px}
+  .hd-acts{display:flex;gap:8px;flex-wrap:wrap}
+  .brandbar button{background:transparent;color:var(--on-brand);border-color:var(--on-brand)}
+  .brandbar button:hover{background:rgba(0,0,0,.18);border-color:var(--on-brand);text-decoration:underline}
+  .brandbar :focus-visible{outline-color:var(--on-brand)}
   main.wrap{padding-bottom:110px}
   section{margin-top:28px}
   .sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:6px 16px;flex-wrap:wrap;margin-bottom:10px}
+  .hint{font-size:14px;color:var(--muted);margin:-2px 0 10px;max-width:780px}
+
+  /* Start here: the first-visit focal point. Boxes tick from real data, not by hand. */
+  .guide{padding:16px 18px 18px;margin-top:22px}
+  .guide-head{display:flex;align-items:center;justify-content:space-between;gap:8px 16px;flex-wrap:wrap}
+  .guide .lead{margin-top:4px;color:var(--muted);font-size:14px}
+  .steps{list-style:none;margin:14px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+  .step{display:flex;gap:10px;align-items:flex-start;border-top:2px solid var(--line);padding-top:12px}
+  .step.done{border-top-color:var(--acc)}
+  .box{flex:none;width:24px;height:24px;margin-top:1px;border:2px solid var(--line-in);border-radius:5px;display:inline-flex;align-items:center;justify-content:center;font:800 14px/1 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:var(--on-acc)}
+  .step.done .box{background:var(--acc);border-color:var(--acc)}
+  .step p{margin-top:4px;font-size:14px;color:var(--muted)}
+  .step .ctl{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+  .step .ctl label{font-size:13px;font-weight:600;color:var(--muted)}
+  .step .ctl select{width:132px}
+
+  /* Motif: a band number in a ruled box, like the score boxes on an exam sheet. */
+  .bandbox{display:inline-block;min-width:3em;padding:0 6px;border:1.5px solid currentColor;border-radius:6px;text-align:center}
 
   /* Skill summary: the focal point. */
   .bookbar{display:flex;align-items:center;justify-content:space-between;gap:10px 20px;flex-wrap:wrap;padding:12px 14px;border-bottom:1px solid var(--line);font-size:14px}
@@ -90,16 +120,17 @@
   .grp i{width:14px;height:14px;border-radius:3px;background:var(--sq)}
   .grp i.o{box-shadow:inset 0 0 0 2px var(--acc)}
   .grp i.d{background:var(--acc)}
+  .bb-key{flex-basis:100%;font-size:12.5px;color:var(--muted)}
   .sum{width:100%;border-collapse:collapse}
   .sum th,.sum td{padding:10px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:middle}
   .sum thead th{font-size:12.5px;font-weight:600;color:var(--muted);padding-top:9px;padding-bottom:9px}
   .sum .n{text-align:right;white-space:nowrap}
   .sum tbody th{white-space:nowrap}
   .sk{font-weight:700}
-  .tag{display:inline-block;margin-left:8px;font-size:12px;font-weight:700;color:var(--acc-text);border:1px solid currentColor;border-radius:5px;padding:0 6px;line-height:18px}
+  .tag{display:inline-block;margin-left:8px;font-size:12px;font-weight:700;color:var(--brand-text);border:1px solid currentColor;border-radius:5px;padding:0 6px;line-height:18px}
   .sum tr.focus>*{background:var(--acc-soft)}
   .sum tr.overall>*{border-top:2px solid var(--ink);border-bottom:0}
-  .bandbig{font-size:20px;font-weight:800;font-variant-numeric:tabular-nums}
+  .bandbig{font-size:20px;font-weight:800;font-variant-numeric:tabular-nums;line-height:1.35}
   .reached{font-weight:700;color:var(--acc-text)}
   .sum select{width:118px}
   .nx{display:flex;align-items:center;gap:8px 12px}
@@ -139,7 +170,7 @@
   .chips{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
   .src{display:inline-flex;align-items:center;height:var(--hr);padding:0 10px;border:1px solid var(--line-in);border-radius:7px;font-size:13px;font-weight:600;color:var(--ink);text-decoration:none;white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis}
   .src:hover{background:var(--hover);border-color:var(--ink);text-decoration:underline}
-  .src.main{color:var(--acc-text);border-color:var(--acc-text)}
+  .src.main{color:var(--acc-text);border-color:var(--acc);background:var(--acc-soft)}
   .src.search{border-color:transparent;color:var(--muted);text-decoration:underline}
   .src.search:hover{border-color:var(--line-in)}
   .contoh{font-size:12.5px;color:var(--muted);margin-left:4px}
@@ -147,7 +178,9 @@
   .scorecell{white-space:nowrap;width:1%}
   .scorecell input{width:62px;height:var(--hr)}
   .scorecell select{width:96px;height:var(--hr)}
-  .band{display:inline-block;min-width:36px;text-align:right;font-weight:800;font-variant-numeric:tabular-nums;margin-left:6px;vertical-align:middle}
+  /* Same ruled box as the summary; dashed while empty, so it shows where the band will appear. */
+  .band{display:inline-block;min-width:44px;min-height:26px;padding:0 4px;border:1.5px solid var(--ink);border-radius:6px;text-align:center;line-height:23px;font-weight:800;font-variant-numeric:tabular-nums;margin-left:6px;vertical-align:middle}
+  .band:empty{border-style:dashed;border-color:var(--line-in)}
   .donecell{white-space:nowrap;width:1%}
   .hit{display:inline-flex;align-items:center;justify-content:center;width:var(--hr);height:var(--hr);vertical-align:middle}
   .check{width:18px;height:18px;margin:0;accent-color:var(--acc)}
@@ -188,13 +221,28 @@
   .plain{width:100%;border-collapse:collapse;font-size:14px;margin:4px 0 12px}
   .plain th,.plain td{text-align:left;padding:7px 10px 7px 0;border-bottom:1px solid var(--line);vertical-align:top}
   .plain th{font-size:12.5px;font-weight:600;color:var(--muted)}
-  details ol{margin:4px 0 10px;padding-left:20px;font-size:14px}
-  details li{margin:3px 0}
   .links{margin:0;padding-left:20px;font-size:14.5px}
   .links a{display:inline-flex;align-items:center;min-height:var(--h)}
   .links li{margin:0}
   .data-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:10px}
   footer.wrap{padding-bottom:40px;color:var(--muted);font-size:13px}
+  .about{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);max-width:820px}
+  .about h2{font-size:16px;color:var(--ink);margin-bottom:6px}
+  .about p+p{margin-top:6px}
+
+  /* Help: a modal dialog above the page, so it is the one other place with a shadow. */
+  dialog.help{width:min(680px,calc(100vw - 24px));max-height:min(86vh,900px);overflow:auto;padding:0;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--ink);box-shadow:0 18px 50px rgba(0,0,0,.35)}
+  dialog.help::backdrop{background:var(--shade)}
+  .dlg-head{position:sticky;top:0;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 18px;background:var(--surface);border-bottom:1px solid var(--line)}
+  .dlg-body{padding:4px 18px 22px;font-size:14.5px}
+  .dlg-body h3{margin:20px 0 6px}
+  .dlg-body ol{margin:0;padding-left:20px}
+  .dlg-body li{margin:3px 0}
+  .dlg-body p+p,.dlg-body ol+p,.dlg-body table+p{margin-top:8px}
+  .gloss{margin:0;display:grid;grid-template-columns:max-content minmax(0,1fr);gap:6px 14px}
+  .gloss dt{font-weight:700}
+  .gloss dd{margin:0}
+  .plain td.n,.plain th.n{text-align:right;padding-right:16px;font-variant-numeric:tabular-nums}
 
   .timer{position:fixed;right:16px;bottom:16px;z-index:50;background:var(--inv);color:var(--inv-ink);border-radius:10px;padding:10px 12px;display:none;align-items:center;gap:8px;flex-wrap:wrap;box-shadow:0 8px 24px rgba(0,0,0,.28);max-width:calc(100vw - 32px)}
   .timer.on{display:flex}
@@ -211,11 +259,16 @@
 
   @media (max-width:860px){
     .filters{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .steps{grid-template-columns:1fr;gap:12px}
   }
   @media (max-width:760px){
     h1{font-size:24px}
     select,input[type=text],input[type=number],input[type=search]{font-size:16px}
     section{margin-top:22px}
+    .brandbar .wrap{flex-direction:column;align-items:flex-start;padding-top:18px;padding-bottom:18px}
+    .guide{padding:14px 14px 16px}
+    .gloss{grid-template-columns:1fr;gap:2px}
+    .gloss dd{margin-bottom:8px}
     .toolbar{position:static;margin-top:22px}
     .tb-row .seg#tabs{order:3;width:100%;display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
     .seg button{padding:0 8px}
@@ -230,11 +283,12 @@
     .sum .n{text-align:left}
     .sum tbody th{grid-area:name;white-space:normal}
     .sum td[data-l]::before{content:attr(data-l);display:block;font-size:12px;font-weight:600;color:var(--muted)}
-    .sum td[data-l="Done"]{grid-area:done}
-    .sum td[data-l="Average band"]{grid-area:avg}
-    .sum td[data-l="Gap"]{grid-area:gap}
-    .sum td[data-l="Target"]{grid-area:tg;display:flex;align-items:center;justify-content:flex-end;gap:8px}
-    .sum td[data-l="Target"]::before{display:inline}
+    .sum td.c-done{grid-area:done}
+    .sum td.c-avg{grid-area:avg}
+    .sum td.c-gap{grid-area:gap}
+    .sum td.c-tg{grid-area:tg;display:flex;align-items:center;justify-content:flex-end;gap:8px}
+    .sum td.c-tg::before{display:inline}
+    .sum td.c-avg .small{display:block}
     .sum select{width:132px}
     .sum td.nextcell{grid-area:next}
     .sum .spark{display:none}
@@ -261,8 +315,8 @@
     .srccell .src:not(.main),.srccell .contoh,.srccell .opened,.donecell .date{display:none}
     .xbtn,.xbtn:hover{width:44px;padding:0;border-color:transparent;background:transparent}
     .scorecell input{width:60px;padding:0 8px}
-    .scorecell select{width:84px}
-    .band{min-width:30px;margin-left:4px}
+    .scorecell select{width:96px;padding:0 30px 0 10px;background-position:right 10px center}
+    .band{min-width:38px;margin-left:4px}
     .list tr.open td.srccell{order:6;grid-column:1/-1;padding-top:4px}
     .list tr.open .srccell .src,.list tr.open .srccell .contoh,.list tr.open .srccell .opened{display:inline-flex}
     .list tr.open td.notecell{display:flex;order:7;grid-column:1/-1;gap:10px;align-items:center;width:auto}
@@ -277,20 +331,59 @@
 </head>
 <body>
 
-<header class="wrap">
-  <div>
-    <h1>IELTS Cambridge Test Hub</h1>
-    <p>Open Cambridge IELTS Academic 1 to 21 tests on practice sites, take them in a new tab, then record your results here. Your data stays in this browser.</p>
+<header class="brandbar">
+  <div class="wrap">
+    <div>
+      <h1>IELTS Cambridge Test Hub</h1>
+      <p>Open any Cambridge IELTS Academic test (books 1 to 21) on a free practice site, then track your band here.</p>
+    </div>
+    <div class="hd-acts">
+      <button id="btnHelp" type="button" aria-haspopup="dialog">Help</button>
+      <button id="btnTheme" type="button">Theme: System</button>
+    </div>
   </div>
-  <button id="btnTheme" type="button">Theme: System</button>
 </header>
 
 <main class="wrap">
-  <div class="warnbox hidden" id="storageWarn" role="alert">This browser blocks local storage, so your progress <b>will not be saved</b> after you close the page. Open this file in a normal window (not private mode), or use Export before you close it.</div>
+  <div class="warnbox hidden" id="storageWarn" role="alert">This browser blocks local storage, so your progress <b>will not be saved</b> after you close the page. Open this page in a normal window (not private mode), or download a backup before you close it.</div>
+
+  <section class="panel guide hidden" id="guide" aria-labelledby="hGuide">
+    <div class="guide-head">
+      <h2 id="hGuide">Start here</h2>
+      <button type="button" id="guideHide">Hide guide</button>
+    </div>
+    <p class="lead">Three steps for your first practice test. Each box ticks itself when you finish the step.</p>
+    <ol class="steps">
+      <li class="step" id="st1">
+        <span class="box" aria-hidden="true"></span>
+        <div>
+          <h3>Choose your target band <span class="sr st-state"></span></h3>
+          <p>The band you need, for example 6.5. This sets all four skills. You can change each skill later.</p>
+          <div class="ctl"><label for="quickTarget">Target band</label><select id="quickTarget"></select></div>
+        </div>
+      </li>
+      <li class="step" id="st2">
+        <span class="box" aria-hidden="true"></span>
+        <div>
+          <h3>Open your first test <span class="sr st-state"></span></h3>
+          <p>Start with Listening. It opens on Engnovate, a free practice site, in a new tab. It takes about 30 minutes.</p>
+          <div class="ctl"><a class="btn primary" id="guideOpen" href="#" target="_blank" rel="noopener">Open Listening test</a></div>
+        </div>
+      </li>
+      <li class="step" id="st3">
+        <span class="box" aria-hidden="true"></span>
+        <div>
+          <h3>Record your score <span class="sr st-state"></span></h3>
+          <p>Come back to this tab. Type how many answers you got right out of 40. The hub turns it into a band.</p>
+          <div class="ctl"><button type="button" id="guideScore">Go to the score box</button></div>
+        </div>
+      </li>
+    </ol>
+  </section>
 
   <section aria-labelledby="hSum">
     <div class="sec-head">
-      <h2 id="hSum">Skill summary</h2>
+      <h2 id="hSum">Your progress</h2>
       <p class="muted small" id="sumHint"></p>
     </div>
     <div class="panel">
@@ -300,12 +393,12 @@
   </section>
 
   <div class="toolbar" id="toolbar">
-    <nav class="tb-row" aria-label="View and module">
+    <nav class="tb-row" aria-label="View and skill">
       <div class="seg" role="group" aria-label="View">
         <button type="button" data-view="list" aria-pressed="true">List</button>
         <button type="button" data-view="map" aria-pressed="false">Book map</button>
       </div>
-      <div class="seg" id="tabs" role="group" aria-label="Module">
+      <div class="seg" id="tabs" role="group" aria-label="Skill">
         <button type="button" data-mod="L" aria-pressed="true">Listening</button>
         <button type="button" data-mod="R" aria-pressed="false">Reading</button>
         <button type="button" data-mod="W" aria-pressed="false">Writing</button>
@@ -345,9 +438,10 @@
 
   <section id="listView" aria-labelledby="hList" style="margin-top:18px">
     <div class="sec-head">
-      <h2 id="hList">Listening list</h2>
+      <h2 id="hList">Listening tests</h2>
       <span class="muted small num" id="count" aria-live="polite"></span>
     </div>
+    <p class="hint" id="listHint"></p>
     <div class="panel"><table class="list" id="table"></table></div>
   </section>
 
@@ -371,15 +465,10 @@
   </section>
 
   <section aria-labelledby="hFormat">
-    <h2 id="hFormat" class="sr">Test format</h2>
+    <h2 id="hFormat" class="sr">IELTS test format</h2>
     <details class="panel">
-      <summary>Test format and how to record results</summary>
-      <ol>
-        <li>Click the source with the blue border (the main source). The test opens in a new tab. The <b>Timer</b> button starts a countdown for the length of the module.</li>
-        <li>Listening and Reading: enter your <b>correct answers out of 40</b> and the band is calculated for you. Writing and Speaking: pick your self-assessed <b>band</b>. Filling in either one marks the test as done.</li>
-        <li>Set a <b>target band</b> in the skill summary. The skill with the largest gap gets the Priority label.</li>
-        <li>Use notes for question types you often get wrong. The search box also searches your notes.</li>
-      </ol>
+      <summary>IELTS Academic test format</summary>
+      <p class="muted" style="font-size:14px;margin:2px 0 6px">Each Cambridge book has 4 full tests. One test has the 4 skills below, so one book gives you 16 practice sessions.</p>
       <table class="plain">
         <thead><tr><th scope="col">Module</th><th scope="col">Per test</th><th scope="col">Time</th></tr></thead>
         <tbody>
@@ -389,7 +478,6 @@
           <tr><td>Speaking</td><td>Part 1, Part 2 cue card (1 min to prepare, 2 min to speak), Part 3</td><td>11–14 min</td></tr>
         </tbody>
       </table>
-      <p class="muted small" style="margin-bottom:12px">Keyboard shortcuts: <kbd>/</kbd> search, <kbd>1</kbd>–<kbd>4</kbd> switch module, <kbd>M</kbd> switch between list and map.</p>
     </details>
   </section>
 
@@ -403,12 +491,12 @@
   </section>
 
   <section aria-labelledby="hData">
-    <h2 id="hData" style="margin-bottom:6px">Data backup</h2>
-    <p class="muted" style="font-size:14px;max-width:640px">Your progress is saved only in this browser. Export it regularly to keep a backup or to move it to another device.</p>
+    <h2 id="hData" style="margin-bottom:6px">Backup</h2>
+    <p class="muted" style="font-size:14px;max-width:640px">Your progress is saved only in this browser on this device. Download a backup file now and then. You can restore it here or on another device.</p>
     <div class="data-row">
-      <button id="btnExport" type="button">Export JSON</button>
-      <label class="btn" for="importFile">Import JSON</label>
-      <input type="file" id="importFile" accept="application/json,.json" class="sr" tabindex="-1">
+      <button id="btnExport" type="button">Download backup</button>
+      <button id="btnImport" type="button">Restore backup</button>
+      <input type="file" id="importFile" accept="application/json,.json" class="sr" tabindex="-1" aria-hidden="true">
       <button id="btnReset" type="button" class="danger">Delete all progress</button>
     </div>
   </section>
@@ -417,7 +505,59 @@
 <footer class="wrap">
   <p id="linkNote"></p>
   <p id="srcCount" style="margin-top:4px"></p>
+  <section class="about" id="about" aria-labelledby="hAbout">
+    <h2 id="hAbout">About this site</h2>
+    <div id="aboutText">
+      <p>IELTS Cambridge Test Hub is an independent study tool. It only collects links to practice pages that other websites publish. It does not host, copy or store any test questions, audio, answer keys or books. Your progress stays in your own browser, and this page does not send it anywhere.</p>
+      <p>Cambridge IELTS books and the tests in them are the copyright of Cambridge University Press &amp; Assessment. IELTS is a trade mark of the IELTS Partners: British Council, IDP IELTS and Cambridge University Press &amp; Assessment. Content on linked websites belongs to those websites and their rights holders. This site is not affiliated with or endorsed by any of them.</p>
+    </div>
+  </section>
 </footer>
+
+<dialog class="help" id="help" aria-labelledby="hHelp">
+  <div class="dlg-head">
+    <h2 id="hHelp">Help</h2>
+    <button type="button" id="helpClose">Close</button>
+  </div>
+  <div class="dlg-body">
+    <h3>How the hub works</h3>
+    <ol>
+      <li>Set a target band for each skill in Your progress.</li>
+      <li>Open a test. It opens on a practice site in a new tab.</li>
+      <li>Take the test there. Then come back and record your result in the list. The hub marks the test as done.</li>
+    </ol>
+    <p><button type="button" id="helpGuide">Show the Start here guide</button></p>
+
+    <h3>Words used here</h3>
+    <dl class="gloss">
+      <dt>C21</dt><dd>Cambridge IELTS 21, a book in the Cambridge IELTS Academic series. A higher number is a newer book. C1 to C6 use an older test format.</dd>
+      <dt>Test 1 to 4</dt><dd>Each book has four full practice tests.</dd>
+      <dt>Session</dt><dd>One skill of one test, for example Listening Test 2. A book has 16 sessions: 4 tests × 4 skills.</dd>
+      <dt>Current book</dt><dd>The first book in your list that still has sessions to do.</dd>
+      <dt>Main link</dt><dd>The link in a coloured box, usually Engnovate. It opens the full interactive test.</dd>
+      <dt>Other links</dt><dd>IELTSXpress pages show the questions with answers. LangGo has model answers for Writing and Speaking (books 18 to 20). Search opens a Google search in case a link stops working.</dd>
+      <dt>Band</dt><dd>The IELTS score scale, from 0 to 9 in half steps.</dd>
+      <dt>Priority</dt><dd>The skill with the biggest gap between your average band and your target.</dd>
+    </dl>
+
+    <h3>How your band is worked out</h3>
+    <p>Listening and Reading: type your correct answers out of 40. The hub converts them with this table. It is a guide, not an official score.</p>
+    <table class="plain" id="bandTable"></table>
+    <p>Listening under 11 correct shows as &lt; 4.0. Reading under 4 correct shows as &lt; 2.5.</p>
+    <p>Writing and Speaking: pick the band you think your answer deserves. Model answers can help you judge.</p>
+    <p>Overall: the average of the skills that have a band, rounded to the nearest 0.5.</p>
+
+    <h3>Your data</h3>
+    <p>Your progress is saved only in this browser on this device. Clearing your browser data deletes it. Use Download backup now and then. Use Restore backup to bring it back or to move it to another device.</p>
+    <p>The backup file holds your results, notes and dates. Target bands and display settings stay in this browser.</p>
+
+    <h3>Keyboard shortcuts</h3>
+    <p><kbd>?</kbd> help, <kbd>/</kbd> search, <kbd>1</kbd>–<kbd>4</kbd> switch skill, <kbd>M</kbd> list or book map, <kbd>Esc</kbd> close this window.</p>
+
+    <h3>About this site</h3>
+    <div id="helpAbout"></div>
+  </div>
+</dialog>
 
 <div class="timer" id="timer" role="region" aria-label="Practice timer">
   <div><div class="tm" id="tmTime" role="timer" aria-live="off">00:00</div><div class="tl" id="tmLabel"></div></div>
@@ -613,7 +753,8 @@ const KEY_RE=/^[LRWS]-\d{1,2}-[1-4]$/;
 function load(k,d){ try{ const v=JSON.parse(localStorage.getItem(k)||"null"); return v&&typeof v==="object"?v:d; }catch(e){ return d; } }
 function storageOk(){ try{ localStorage.setItem("ielts-hub-test","1"); localStorage.removeItem("ielts-hub-test"); return true; }catch(e){ return false; } }
 const state = load(KEY,{});
-const prefs = Object.assign({mod:"L",view:"list",book:"",status:"",sort:"desc",theme:"auto",targets:{}}, load(PKEY,{}));
+// guide: "" = show until the first result, "hidden" = user hid it, "show" = reopened from Help.
+const prefs = Object.assign({mod:"L",view:"list",book:"",status:"",sort:"desc",theme:"auto",targets:{},guide:""}, load(PKEY,{}));
 if(!prefs.targets || typeof prefs.targets!=="object") prefs.targets={};
 const save = () => { try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){ toast("Could not save. Is browser storage blocked?"); } };
 const savePrefs = () => { try{ localStorage.setItem(PKEY, JSON.stringify(prefs)); }catch(e){} };
@@ -703,7 +844,33 @@ function renderBookbar(){
     for(const t of TESTS){ const s=get(k(m,b,t)); const c=s&&s.done?"d":s&&s.opened?"o":""; if(c==="d") dm++; sq+=`<i class="${c}"></i>`; }
     sq+=`</span>`; sr.push(`${MODS[m].name} ${dm} of 4`);
   }
-  $("#bookbar").innerHTML=`<span>Current book: <b>C${b}</b> <span class="muted num">· ${bookDone(b)} of 16 sessions done</span></span><div class="bb-sq" role="img" aria-label="C${b}: ${sr.join(", ")}">${sq}</div>`;
+  $("#bookbar").innerHTML=`<span>Current book: <b>Cambridge ${b}</b> <span class="muted num">(C${b}) · ${bookDone(b)} of 16 sessions done</span></span><div class="bb-sq" role="img" aria-label="C${b}: ${sr.join(", ")}">${sq}</div><span class="bb-key" aria-hidden="true">One square per test, for each skill. Filled: done. Outlined: opened.</span>`;
+}
+
+// Start here: shown until the first result is saved, unless hidden. Each step ticks from saved data.
+const anyEntry = fn => Object.keys(state).some(key => KEY_RE.test(key) && state[key] && fn(state[key]));
+const guideShown = () => prefs.guide==="show" || (prefs.guide!=="hidden" && !anyEntry(s=>s.done));
+function renderGuide(){
+  const on=guideShown();
+  $("#guide").classList.toggle("hidden",!on);
+  if(!on) return false;
+  const tg=prefs.targets;
+  const steps=[MOD_KEYS.some(m=>tg[m])||!!tg.O, anyEntry(s=>s.opened||s.done), anyEntry(s=>s.done)];
+  steps.forEach((done,i)=>{
+    const li=$("#st"+(i+1));
+    li.classList.toggle("done",done);
+    li.querySelector(".box").textContent=done?"✓":"";
+    li.querySelector(".st-state").textContent=done?"(done)":"";
+  });
+  const qt=$("#quickTarget"), want=tg.O||tg.L||"";
+  if(document.activeElement!==qt) qt.innerHTML=targetOpts(want).replace(">Not set<",">Choose<");
+  const nx=nextTest("L") || {b:bookList()[0]||BOOKS[BOOKS.length-1], t:1};
+  const key=k("L",nx.b,nx.t), main=linksFor("L",nx.b,nx.t)[0], a=$("#guideOpen");
+  a.href=main.u; a.dataset.open=key;
+  a.textContent=`Open C${nx.b} Test ${nx.t} Listening`;
+  a.setAttribute("aria-label",`Open C${nx.b} Test ${nx.t} Listening on ${main.src} (new tab)`);
+  $("#guideScore").dataset.goto=key;
+  return true;
 }
 
 function renderSummary(){
@@ -712,9 +879,11 @@ function renderSummary(){
   // Priority = skill with the largest positive gap between target and average band.
   let focus=null, best=0;
   for(const m of MOD_KEYS) if(tg[m] && st[m].avg!=null){ const g=+tg[m]-st[m].avg; if(g>best){ best=g; focus=m; } }
-  const primary = focus || MOD_KEYS.filter(m=>nextTest(m)).sort((a,c)=>st[a].d-st[c].d)[0] || null;
+  // While Start here is open, its button is the one primary action on screen.
+  const guideOn=renderGuide();
+  const primary = guideOn ? null : focus || MOD_KEYS.filter(m=>nextTest(m)).sort((a,c)=>st[a].d-st[c].d)[0] || null;
 
-  let h=`<thead><tr><th scope="col">Skill</th><th scope="col" class="n">Done</th><th scope="col" class="n">Average band</th><th scope="col">Target</th><th scope="col" class="n">Gap</th><th scope="col">Next test</th></tr></thead><tbody>`;
+  let h=`<thead><tr><th scope="col">Skill</th><th scope="col" class="n">Tests done</th><th scope="col" class="n">Average band</th><th scope="col">Target band</th><th scope="col" class="n">To target</th><th scope="col">Next test</th></tr></thead><tbody>`;
   for(const m of MOD_KEYS){
     const s=st[m], nx=nextTest(m), name=MODS[m].name;
     let next=`<span class="muted">All tests in this filter are done</span>`;
@@ -724,10 +893,10 @@ function renderSummary(){
     }
     h+=`<tr class="${m===focus?"focus":""}">
       <th scope="row"><span class="sk">${name}</span>${m===focus?'<span class="tag">Priority</span>':""}</th>
-      <td class="n" data-l="Done"><b class="num">${s.d}</b><span class="muted num">/${s.total}</span></td>
-      <td class="n" data-l="Average band">${s.avg!=null?`${spark(s.bands.slice(-12))}<span class="bandbig">${s.avg.toFixed(1)}</span> <span class="muted small">from ${plural(s.bands.length,"test")}</span>`:'<span class="muted">–</span>'}</td>
-      <td data-l="Target"><label class="sr" for="tg-${m}">Target band ${name}</label><select id="tg-${m}" data-target="${m}">${targetOpts(tg[m]||"")}</select></td>
-      <td class="n" data-l="Gap">${gapHtml(s.avg,tg[m])}</td>
+      <td class="n c-done" data-l="Tests done"><b class="num">${s.d}</b><span class="muted num">/${s.total}</span></td>
+      <td class="n c-avg" data-l="Average band">${s.avg!=null?`${spark(s.bands.slice(-12))}<span class="bandbig bandbox">${s.avg.toFixed(1)}</span> <span class="muted small">from ${plural(s.bands.length,"test")}</span>`:'<span class="muted small">No score yet</span>'}</td>
+      <td class="c-tg" data-l="Target band"><label class="sr" for="tg-${m}">Target band ${name}</label><select id="tg-${m}" data-target="${m}">${targetOpts(tg[m]||"")}</select></td>
+      <td class="n c-gap" data-l="To target">${gapHtml(s.avg,tg[m])}</td>
       <td class="nextcell">${next}</td></tr>`;
   }
   const avgs=MOD_KEYS.map(m=>st[m].avg).filter(x=>x!=null);
@@ -735,16 +904,18 @@ function renderSummary(){
   const totD=MOD_KEYS.reduce((a,m)=>a+st[m].d,0);
   h+=`<tr class="overall">
     <th scope="row"><span class="sk">Overall</span> <span class="muted small">estimate</span></th>
-    <td class="n" data-l="Done"><b class="num">${totD}</b><span class="muted num">/${BOOKS.length*16}</span></td>
-    <td class="n" data-l="Average band">${ov!=null?`<span class="bandbig">${ov.toFixed(1)}</span> <span class="muted small">from ${plural(avgs.length,"skill")}</span>`:'<span class="muted">–</span>'}</td>
-    <td data-l="Target"><label class="sr" for="tg-O">Target band overall</label><select id="tg-O" data-target="O">${targetOpts(tg.O||"")}</select></td>
-    <td class="n" data-l="Gap">${gapHtml(ov,tg.O)}</td>
-    <td class="nextcell muted small">Average of the 4 skills, rounded to the nearest 0.5.</td></tr></tbody>`;
+    <td class="n c-done" data-l="Tests done"><b class="num">${totD}</b><span class="muted num">/${BOOKS.length*16}</span></td>
+    <td class="n c-avg" data-l="Average band">${ov!=null?`<span class="bandbig bandbox">${ov.toFixed(1)}</span> <span class="muted small">from ${plural(avgs.length,"skill")}</span>`:'<span class="muted small">No score yet</span>'}</td>
+    <td class="c-tg" data-l="Target band"><label class="sr" for="tg-O">Target band overall</label><select id="tg-O" data-target="O">${targetOpts(tg.O||"")}</select></td>
+    <td class="n c-gap" data-l="To target">${gapHtml(ov,tg.O)}</td>
+    <td class="nextcell muted small">Average of the skills that have a band, rounded to the nearest 0.5.</td></tr></tbody>`;
   const active=document.activeElement&&document.activeElement.dataset? document.activeElement.dataset.target : null;
   $("#sum").innerHTML=h;
   if(active) { const el=document.getElementById("tg-"+active); if(el) el.focus(); }
   const anyTarget=MOD_KEYS.some(m=>tg[m]);
-  $("#sumHint").textContent = anyTarget ? "Priority = the skill with the largest gap to its target." : "Set target bands to see which skill needs the most work.";
+  $("#sumHint").textContent = anyTarget
+    ? "Priority marks the skill furthest below its target. Bands are estimates from the tests you finish."
+    : "Set a target band for each skill to see which one needs the most work.";
   renderBookbar();
 }
 
@@ -780,11 +951,18 @@ function rowHtml(m,b,t){
 }
 function bookCounts(m,b){ let d=0; for(const t of TESTS) if(isDone(k(m,b,t))) d++; return `${MODS[m].name} ${d}/4 · book ${bookDone(b)}/16`; }
 function bookHead(m,b){
-  return `<span class="bk">C${b}</span><span class="bh num" id="bh-${m}-${b}">${bookCounts(m,b)}</span>${b<=6?'<span class="btag">old format</span>':""}${b===21?'<span class="btag">2026 edition</span>':""}${BOOKPAGE[b]?`<a href="${BOOKPAGE[b]}" target="_blank" rel="noopener" aria-label="Book overview for C${b} on IELTSXpress (new tab)">book overview ↗</a>`:""}`;
+  return `<span class="bk">Cambridge ${b}</span><span class="bh num" id="bh-${m}-${b}">${bookCounts(m,b)}</span>${b<=6?'<span class="btag">old format</span>':""}${b===21?'<span class="btag">2026 edition</span>':""}${BOOKPAGE[b]?`<a href="${BOOKPAGE[b]}" target="_blank" rel="noopener" aria-label="Book overview for C${b} on IELTSXpress (new tab)">book overview ↗</a>`:""}`;
 }
+// One line of help above the list, written for the skill on screen.
+const LIST_HINT = {
+  L:"Open the main link and take the test. Then type how many answers you got right out of 40. Your band appears in the box.",
+  R:"Open the main link and take the test. Then type how many answers you got right out of 40. Your band appears in the box.",
+  W:"Open the main link and write both tasks. Then pick the band you think your writing deserves. Model answers (books 18 to 20) can help you judge.",
+  S:"Open the main link and practise speaking out loud. Then pick the band you think you earned. Model answers (books 18 to 20) can help you judge."
+};
 function renderList(){
   const m=prefs.mod, lr=(m==="L"||m==="R");
-  let h=`<thead><tr><th scope="col">Test</th><th scope="col">Sources (new tab)</th><th scope="col" class="n">${lr?"Correct /40 · band":"Band (self-assessed)"}</th><th scope="col">Done</th><th scope="col">Note</th><th scope="col"><span class="sr">Timer</span></th></tr></thead>`;
+  let h=`<thead><tr><th scope="col">Test</th><th scope="col">Practice links (open in a new tab)</th><th scope="col" class="n">${lr?"Correct out of 40, band":"Your band (self-assessed)"}</th><th scope="col">Done</th><th scope="col">Note (optional)</th><th scope="col"><span class="sr">Timer</span></th></tr></thead>`;
   let n=0;
   for(const b of bookList()){
     const rows=TESTS.filter(t=>matches(m,b,t,get(k(m,b,t))));
@@ -794,7 +972,8 @@ function renderList(){
   }
   if(!n) h+=`<tbody><tr><td colspan="6" class="empty">No tests match these filters. <button type="button" id="clearF">Clear filters</button></td></tr></tbody>`;
   $("#table").innerHTML=h;
-  $("#hList").textContent=MODS[m].name+" list";
+  $("#hList").textContent=MODS[m].name+" tests";
+  $("#listHint").textContent=LIST_HINT[m];
   $("#count").textContent = plural(n,"test");
 }
 
@@ -897,18 +1076,28 @@ $("#table").addEventListener("change", e=>{
     const s=upd(el.dataset.done); markDone(s,el.checked); save(); refreshRow(el.dataset.done);
     if(el.checked) toast("Marked as done");
   } else if(el.dataset.score!==undefined){
-    const key=el.dataset.score, s=upd(key);
+    const key=el.dataset.score, first=!anyEntry(x=>x.done), s=upd(key);
     let v=el.value.trim(); if(v!==""){ v=String(Math.max(0,Math.min(40,parseInt(v,10)||0))); el.value=v; }
     s.score=v;
-    if(v!=="" && !s.done){ markDone(s,true); toast("Score saved, test marked as done"); }
+    if(v!=="" && !s.done){ markDone(s,true); toast(first ? "First result saved. Your band now shows in Your progress." : "Score saved, test marked as done"); }
     save(); refreshRow(key);
   } else if(el.dataset.band!==undefined){
-    const key=el.dataset.band, s=upd(key);
+    const key=el.dataset.band, first=!anyEntry(x=>x.done), s=upd(key);
     s.band=el.value;
-    if(el.value!=="" && !s.done){ markDone(s,true); toast("Band saved, test marked as done"); }
+    if(el.value!=="" && !s.done){ markDone(s,true); toast(first ? "First result saved. Your band now shows in Your progress." : "Band saved, test marked as done"); }
     save(); refreshRow(key);
   }
 });
+
+$("#quickTarget").addEventListener("change", e=>{
+  const v=e.target.value; if(!v) return;
+  for(const m of [...MOD_KEYS,"O"]) prefs.targets[m]=v;
+  savePrefs(); renderSummary(); toast("Target "+v+" set for all skills");
+});
+$("#guideHide").onclick=()=>{
+  prefs.guide="hidden"; savePrefs(); renderSummary();
+  $("#btnHelp").focus(); toast("Guide hidden. Open Help to show it again.");
+};
 let noteT;
 $("#table").addEventListener("input", e=>{
   if(e.target.dataset.note){ upd(e.target.dataset.note).note=e.target.value; clearTimeout(noteT); noteT=setTimeout(save,300); }
@@ -920,11 +1109,37 @@ $("#fSort").addEventListener("change", e=>{ prefs.sort=e.target.value; savePrefs
 $("#fSearch").addEventListener("input", renderMain);
 compactMQ.addEventListener("change", renderMain);
 
+// Help: a native modal dialog, so Esc closes it and focus stays inside while it is open.
+const help=$("#help");
+let helpReturn=null, afterHelp=null;
+function openHelp(){ if(help.open) return; helpReturn=document.activeElement; help.showModal(); }
+help.addEventListener("close", ()=>{
+  if(afterHelp){ afterHelp(); afterHelp=null; }
+  else if(helpReturn && document.contains(helpReturn)) helpReturn.focus();
+});
+help.addEventListener("click", e=>{ if(e.target===help) help.close(); });
+$("#btnHelp").onclick=openHelp;
+$("#helpClose").onclick=()=>help.close();
+$("#helpGuide").onclick=()=>{
+  prefs.guide="show"; savePrefs(); renderSummary();
+  afterHelp=()=>{ $("#guide").scrollIntoView({block:"start"}); $("#guideHide").focus({preventScroll:true}); };
+  help.close();
+};
+function bandTableHtml(){
+  const range=(tbl,band)=>{ const i=tbl.findIndex(x=>x[1]===band); if(i<0) return "–"; const lo=tbl[i][0], hi=i ? tbl[i-1][0]-1 : 40; return lo===hi ? String(lo) : lo+"–"+hi; };
+  const bands=[...new Set([...TBL.L,...TBL.R].map(x=>x[1]))].sort((a,c)=>c-a);
+  return `<caption class="sr">Correct answers out of 40 needed for each band</caption><thead><tr><th scope="col">Band</th><th scope="col" class="n">Listening, correct</th><th scope="col" class="n">Reading, correct</th></tr></thead><tbody>`
+    + bands.map(b=>`<tr><td><b class="num">${b.toFixed(1)}</b></td><td class="n">${range(TBL.L,b)}</td><td class="n">${range(TBL.R,b)}</td></tr>`).join("")
+    + `</tbody>`;
+}
+
 document.addEventListener("keydown", e=>{
+  if(help.open) return;
   const typing=/^(INPUT|SELECT|TEXTAREA)$/.test(document.activeElement.tagName);
   if(e.key==="Escape" && document.activeElement===$("#fSearch")){ $("#fSearch").value=""; renderMain(); $("#fSearch").blur(); return; }
   if(typing||e.metaKey||e.ctrlKey||e.altKey) return;
-  if(e.key==="/"){ e.preventDefault(); if(prefs.view==="map"){ prefs.view="list"; savePrefs(); renderMain(); } $("#fSearch").focus(); }
+  if(e.key==="?"){ e.preventDefault(); openHelp(); }
+  else if(e.key==="/"){ e.preventDefault(); if(prefs.view==="map"){ prefs.view="list"; savePrefs(); renderMain(); } $("#fSearch").focus(); }
   else if(/^[1-4]$/.test(e.key)){ prefs.mod=MOD_KEYS[+e.key-1]; if(!(prefs.view==="map"&&compactMQ.matches)) prefs.view="list"; savePrefs(); renderMain(); }
   else if(e.key==="m"||e.key==="M"){ prefs.view=prefs.view==="map"?"list":"map"; savePrefs(); renderMain(); }
 });
@@ -936,6 +1151,7 @@ $("#btnExport").onclick=()=>{
   setTimeout(()=>URL.revokeObjectURL(a.href),1000);
   toast("Backup downloaded");
 };
+$("#btnImport").onclick=()=>$("#importFile").click();
 $("#importFile").onchange=e=>{
   const f=e.target.files[0]; if(!f) return;
   const r=new FileReader();
@@ -945,14 +1161,14 @@ $("#importFile").onchange=e=>{
       let n=0;
       for(const [key,v] of Object.entries(obj)){ if(KEY_RE.test(key) && v && typeof v==="object"){ state[key]=Object.assign({done:false,score:"",band:"",note:"",date:"",opened:false},v); n++; } }
       if(!n) throw 0;
-      save(); render(); toast((n===1?"1 progress entry":n+" progress entries")+" imported");
-    }catch(err){ alert("This file is not valid. Choose a JSON file made with Export."); }
+      save(); render(); toast((n===1?"1 progress entry":n+" progress entries")+" restored");
+    }catch(err){ alert("This file is not a valid backup. Choose a file made with Download backup."); }
     e.target.value="";
   };
   r.readAsText(f);
 };
 $("#btnReset").onclick=()=>{
-  if(!confirm("Delete ALL progress (check marks, scores, notes)?\nTip: Export first to keep a backup.")) return;
+  if(!confirm("Delete all progress, including scores and notes? This cannot be undone.\nTip: download a backup first.")) return;
   for(const kk of Object.keys(state)) delete state[kk];
   save(); render(); toast("Progress deleted");
 };
@@ -1019,7 +1235,9 @@ $("#tmClose").onclick=()=>{ timer.running=false; timer.shown=false; clearInterva
   const nIX=Object.keys(L).length+Object.keys(R).length;
   const nLG=Object.values(W).flat().length+Object.values(S).flat().length;
   $("#linkNote").textContent=`Every direct link returned HTTP 200 on ${VERIFIED}. Third-party sites can change, so every row also has a Search (Google) link as a backup.`;
-  $("#srcCount").textContent=`Direct links: Engnovate ${nEN} interactive tests, IELTSXpress ${nIX} Listening/Reading pages, LangGo ${nLG} Writing/Speaking model answers. This hub holds only links and your notes; the test content stays on the source sites.`;
+  $("#srcCount").textContent=`Direct links: Engnovate ${nEN} interactive tests, IELTSXpress ${nIX} Listening/Reading pages, LangGo ${nLG} Writing/Speaking model answers.`;
+  $("#bandTable").innerHTML=bandTableHtml();
+  $("#helpAbout").innerHTML=$("#aboutText").innerHTML;
   if(timer.total && [...$("#tmPreset").options].some(o=>+o.value*60000===timer.total)) $("#tmPreset").value=String(timer.total/60000);
   render();
   if(timer.shown){ if(timer.running) run(); else drawTimer(); }

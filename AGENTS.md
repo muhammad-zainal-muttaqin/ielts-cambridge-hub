@@ -1,7 +1,7 @@
 # AGENTS.md: IELTS Cambridge Test Hub
 
 Hub tautan + pelacak progres latihan IELTS Cambridge.
-Buka `index.html` → isi target band → klik **Open test** (opsional: nyalakan Timer) → kerjakan di situs latihan → catat **jawaban benar/40 atau band** di hub (otomatis ditandai selesai).
+Buka `index.html` → ikuti panel **Start here** (pilih target band, buka tes pertama, catat skor) → selanjutnya klik **Open test** (opsional: nyalakan Timer) → kerjakan di situs latihan → catat **jawaban benar/40 atau band** di hub (otomatis ditandai selesai). Tombol **Help** (atau `?`) menjelaskan semua istilah.
 Semua teks UI (label, tombol, aria-label, toast, alert) berbahasa Inggris; dokumentasi repo tetap berbahasa Indonesia.
 
 ---
@@ -10,8 +10,9 @@ Semua teks UI (label, tombol, aria-label, toast, alert) berbahasa Inggris; dokum
 
 1. Hub ini hanya menyimpan **tautan, status, skor, band, catatan, dan tanggal**. Konten tes tetap berada di situs sumber dan dibuka di tab baru.
 2. Tautan langsung wajib dicek **HTTP 200** sebelum dimasukkan. Jika belum ada, gunakan tautan **Search** (query Google), jangan menebak URL.
-3. Progres disimpan lokal di browser (`localStorage`), dengan Export/Import JSON. Tidak ada server.
+3. Progres disimpan lokal di browser (`localStorage`), dengan **Download backup / Restore backup** (file JSON). Tidak ada server, dan halaman tidak boleh mengirim data atau memuat aset dari situs lain (tanpa `fetch`, skrip CDN, atau web font).
 4. Jangan menautkan file PDF/audio unduhan; tautkan halaman latihan/penjelasan.
+5. Jangan memakai logo IELTS atau logo situs sumber. Teks **About this site** (footer, disalin otomatis ke Help) wajib tetap sesuai fakta: hub hanya menyusun tautan, tidak meng-host atau menyimpan konten tes, progres hanya di browser, hak cipta buku milik Cambridge University Press & Assessment, IELTS merek dagang IELTS Partners, dan hub tidak berafiliasi. Jika fitur berubah (mis. ada server), perbarui teks itu, README, dan `DESIGN.md`.
 
 ---
 
@@ -93,7 +94,8 @@ const BOOKPAGE = { 18: IX+"cambridge-ielts-18-tests/" };            // ringkasan
 - `linksFor(m,b,t)` menyusun tautan dengan `kind`: `main` (bergaris biru), `alt` (sumber lain), `ex` (contoh jawaban LangGo), lalu `search` (**Search**) sebagai cadangan.
 - localStorage:
   - `ielts-hub-progress-v1`: progres. Kunci `L-18-1`, `R-18-1`, `W-18-1`, `S-18-1`; nilai `{done, score, band, note, date, opened, ts}` (`ts` = epoch ms saat selesai, untuk tren; entri lama tanpa `ts` di-parse dari `date`). **Hanya objek ini yang di-Export/Import.**
-  - `ielts-hub-prefs-v1`: modul/tampilan/filter/urutan/tema terakhir, plus `targets` (`{L,R,W,S,O}` → `"6.5"`, target band per skill dan overall).
+  - `ielts-hub-prefs-v1`: modul/tampilan/filter/urutan/tema terakhir, plus `targets` (`{L,R,W,S,O}` → `"6.5"`, target band per skill dan overall) dan `guide` (`""` = panel Start here tampil sampai ada tes selesai, `"hidden"` = disembunyikan pengguna, `"show"` = dibuka lagi dari Help).
+- Panel Start here: langkah 1 tercentang jika ada target, langkah 2 jika ada tes yang pernah dibuka, langkah 3 jika ada tes selesai. Selama panel tampil, tombol merahnya satu-satunya tombol utama (ringkasan tidak memberi `.primary`).
   - `ielts-hub-timer-v1`: status timer (tetap jalan setelah reload).
 - Listening/Reading: input benar/40 → band otomatis (`TBL.L` / `TBL.R`). Skor di bawah tabel ditampilkan "band < 4.0" (L) / "< 2.5" (R) dan dihitung ≈3.5 / ≈2.0 untuk rata-rata.
 - Writing/Speaking: band self-assessment 0–9 (kelipatan 0.5).
@@ -125,9 +127,12 @@ Tabel band Academic Reading: 39–40→9.0 · 37–38→8.5 · 35–36→8.0 · 
 - [ ] Semua tautan langsung HTTP 200.
 - [ ] Tautan **Search** berfungsi di setiap baris.
 - [ ] Centang + skor + band + catatan tersimpan setelah reload; skor otomatis menandai selesai.
-- [ ] Filter Book/Status/Order/Search, Book map (klik kotak → baris), Skill summary (target, Priority, "Open test", lompat ke baris), dan tombol detail baris di HP bekerja.
+- [ ] Filter Book/Status/Order/Search, Book map (klik kotak → baris), Your progress (target, Priority, "Open test", lompat ke baris), dan tombol detail baris di HP bekerja.
+- [ ] Kunjungan pertama (localStorage kosong): panel Start here tampil; pilih target mencentang langkah 1, tombol Open mencentang langkah 2, "Go to the score box" memfokuskan kotak skor, dan skor pertama menyembunyikan panel. Hide guide menyembunyikan panel, dan Help bisa memunculkannya lagi.
+- [ ] Help terbuka lewat tombol dan `?`, tertutup lewat Close, Esc, dan klik di luar dialog; fokus kembali ke tombol asal; tabel band cocok dengan `TBL`.
 - [ ] Timer mulai/jeda/ulang, bertahan setelah reload, berbunyi saat habis.
-- [ ] Export menghasilkan JSON; Import memulihkan progres (kunci tidak valid diabaikan).
+- [ ] Download backup menghasilkan JSON; Restore backup (tombol, bisa dengan keyboard) memulihkan progres (kunci tidak valid diabaikan).
+- [ ] Teks About this site di footer dan Help masih sesuai fakta (lihat §1 butir 5).
 - [ ] Perubahan UI mengikuti `DESIGN.md` dan lolos Delivery Gate antislop: kontras teks ≥ 4.5:1 di kedua tema, target sentuh ≥ 44px di HP, tanpa em dash, setiap kontrol punya nama aksesibel, dan tidak ada teks UI berbahasa Indonesia.
 
 ---
