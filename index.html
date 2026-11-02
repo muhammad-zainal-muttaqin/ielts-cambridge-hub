@@ -273,6 +273,10 @@
     .guide{padding:14px 14px 16px}
     .gloss{grid-template-columns:1fr;gap:2px}
     .gloss dd{margin-bottom:8px}
+    /* Phone: the two backup buttons share one row; Delete gets its own full row with a gap. */
+    .data-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+    .data-row .danger{grid-column:1/-1;margin:8px 0 0}
+    .data-row button{padding:0 10px}
     .toolbar{position:static;margin-top:22px}
     .tb-row .seg#tabs{order:3;width:100%;display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
     .seg button{padding:0 8px}
