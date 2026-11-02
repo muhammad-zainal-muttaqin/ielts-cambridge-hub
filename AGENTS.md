@@ -114,7 +114,7 @@ Tabel band Academic Reading: 39–40→9.0 · 37–38→8.5 · 35–36→8.0 · 
 1. Cari halaman tes di situs latihan (Engnovate, IELTSXpress, LangGo, DOL, dll.). Sitemap paling andal (`/sitemap_index.xml`, `/post-sitemap*.xml`).
 2. Verifikasi status: `curl -s -o /dev/null --max-redirs 0 -w "%{http_code}" <url>` → harus `200`.
 3. Tambahkan ke objek `L`/`R`/`W`/`S` dengan kunci `<book>-<test>` (atau hapus dari `EN_MISSING` bila Engnovate menambah tes).
-4. Perbarui konstanta `VERIFIED` di `index.html` dan tabel di §3.
+4. Perbarui tanggal cek di README (bagian Catatan) dan tabel di §3. Tanggal cek dan jumlah tautan tidak ditampilkan di halaman, karena pengguna tidak membutuhkannya.
 5. Jika tautan mati: hapus dari objek (atau tambahkan ke `EN_MISSING`) atau ganti dengan URL baru yang 200. Tautan **Search** tetap tersedia.
 6. Jangan mengubah format kunci progres agar data pengguna tidak hilang.
 

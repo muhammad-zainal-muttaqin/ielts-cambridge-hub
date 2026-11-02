@@ -90,7 +90,9 @@
   .brandbar button{background:transparent;color:var(--on-brand);border-color:var(--on-brand)}
   .brandbar button:hover{background:rgba(0,0,0,.18);border-color:var(--on-brand);text-decoration:underline}
   .brandbar :focus-visible{outline-color:var(--on-brand)}
-  main.wrap{padding-bottom:110px}
+  main.wrap{padding-bottom:32px}
+  /* Room for the floating timer only while it is on screen. */
+  body.timer-on main.wrap{padding-bottom:110px}
   section{margin-top:28px}
   .sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:6px 16px;flex-wrap:wrap;margin-bottom:10px}
   .hint{font-size:14px;color:var(--muted);margin:-2px 0 10px;max-width:780px}
@@ -225,6 +227,8 @@
   .links a{display:inline-flex;align-items:center;min-height:var(--h)}
   .links li{margin:0}
   .data-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:10px}
+  /* Delete sits apart from the two safe actions, so it is not tapped by mistake. */
+  .data-row .danger{margin-left:auto}
   footer.wrap{padding-bottom:40px;color:var(--muted);font-size:13px}
   .about{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);max-width:820px}
   .about h2{font-size:16px;color:var(--ink);margin-bottom:6px}
@@ -503,13 +507,11 @@
 </main>
 
 <footer class="wrap">
-  <p id="linkNote"></p>
-  <p id="srcCount" style="margin-top:4px"></p>
   <section class="about" id="about" aria-labelledby="hAbout">
     <h2 id="hAbout">About this site</h2>
     <div id="aboutText">
-      <p>IELTS Cambridge Test Hub is an independent study tool. It only collects links to practice pages that other websites publish. It does not host, copy or store any test questions, audio, answer keys or books. Your progress stays in your own browser, and this page does not send it anywhere.</p>
-      <p>Cambridge IELTS books and the tests in them are the copyright of Cambridge University Press &amp; Assessment. IELTS is a trade mark of the IELTS Partners: British Council, IDP IELTS and Cambridge University Press &amp; Assessment. Content on linked websites belongs to those websites and their rights holders. This site is not affiliated with or endorsed by any of them.</p>
+      <p>An independent study tool. It only lists links to practice pages on other websites. It does not host or store any test questions, audio, answers or books. Your progress stays in your browser and is not sent anywhere.</p>
+      <p>Cambridge IELTS books and tests are the copyright of Cambridge University Press &amp; Assessment. IELTS is a trade mark of the IELTS Partners (British Council, IDP IELTS, Cambridge University Press &amp; Assessment). Linked content belongs to its owners. This site is not affiliated with any of them.</p>
     </div>
   </section>
 </footer>
@@ -574,8 +576,7 @@
 
 <script>
 "use strict";
-// Every direct link below returned HTTP 200 on VERIFIED. How to add or update links: AGENTS.md §6.
-const VERIFIED = "31 Oct 2026";
+// Every direct link below returned HTTP 200 on the date in README.md (Catatan). How to add or update links: AGENTS.md §6.
 const BOOKS = Array.from({length:21},(_,i)=>i+1);
 const TESTS = [1,2,3,4];
 const MODS = {
@@ -889,7 +890,7 @@ function renderSummary(){
     let next=`<span class="muted">All tests in this filter are done</span>`;
     if(nx){
       const key=k(m,nx.b,nx.t), main=linksFor(m,nx.b,nx.t)[0], lbl=`C${nx.b} Test ${nx.t} ${name}`;
-      next=`<div class="nx"><button type="button" class="goto" data-goto="${key}" aria-label="Go to row ${lbl}">C${nx.b} · Test ${nx.t}</button><span class="acts"><a class="btn${m===primary?" primary":""}" href="${esc(main.u)}" target="_blank" rel="noopener" data-open="${key}" aria-label="Open test ${lbl} on ${main.src} (new tab)">Open test</a><button type="button" data-timer="${key}" aria-label="Start ${MODS[m].min}-minute timer for ${lbl}">Timer ${MODS[m].min} min</button></span></div>`;
+      next=`<div class="nx"><button type="button" class="goto" data-goto="${key}" aria-label="Go to row ${lbl}">C${nx.b} · Test ${nx.t}</button><span class="acts"><a class="btn${m===primary?" primary":""}" href="${esc(main.u)}" target="_blank" rel="noopener" data-open="${key}" aria-label="Open test ${lbl} on ${main.src} (new tab)">Open test</a></span></div>`;
     }
     h+=`<tr class="${m===focus?"focus":""}">
       <th scope="row"><span class="sk">${name}</span>${m===focus?'<span class="tag">Priority</span>':""}</th>
@@ -1188,7 +1189,7 @@ const saveTimer=()=>{ try{ localStorage.setItem(TKEY,JSON.stringify(timer)); }ca
 function fmt(ms){ const s=Math.max(0,Math.ceil(ms/1000)); return String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0"); }
 function remaining(){ return timer.running ? timer.endAt-Date.now() : timer.left; }
 function drawTimer(){
-  const el=$("#timer"); el.classList.toggle("on",timer.shown);
+  const el=$("#timer"); el.classList.toggle("on",timer.shown); document.body.classList.toggle("timer-on",timer.shown);
   const ms=remaining();
   $("#tmTime").textContent=fmt(ms);
   $("#tmLabel").textContent=timer.label||"Practice timer";
@@ -1230,12 +1231,6 @@ $("#tmClose").onclick=()=>{ timer.running=false; timer.shown=false; clearInterva
   if(!THEME_NAME[prefs.theme]) prefs.theme="auto";
   applyTheme();
   if(!storageOk()) $("#storageWarn").classList.remove("hidden");
-  let nEN=0;
-  for(const m of MOD_KEYS) for(const b of BOOKS) for(const t of TESTS) if(enUrl(m,b,t)) nEN++;
-  const nIX=Object.keys(L).length+Object.keys(R).length;
-  const nLG=Object.values(W).flat().length+Object.values(S).flat().length;
-  $("#linkNote").textContent=`Every direct link returned HTTP 200 on ${VERIFIED}. Third-party sites can change, so every row also has a Search (Google) link as a backup.`;
-  $("#srcCount").textContent=`Direct links: Engnovate ${nEN} interactive tests, IELTSXpress ${nIX} Listening/Reading pages, LangGo ${nLG} Writing/Speaking model answers.`;
   $("#bandTable").innerHTML=bandTableHtml();
   $("#helpAbout").innerHTML=$("#aboutText").innerHTML;
   if(timer.total && [...$("#tmPreset").options].some(o=>+o.value*60000===timer.total)) $("#tmPreset").value=String(timer.total/60000);

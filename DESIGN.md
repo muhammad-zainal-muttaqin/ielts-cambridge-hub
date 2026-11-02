@@ -80,7 +80,9 @@ Semua pasangan teks sudah dicek dengan `contrast-check.py` (≥ 4.5:1 di kedua t
   5. format tes IELTS;
   6. sumber resmi;
   7. backup;
-  8. footer: catatan tautan, "About this site", dan hak cipta.
+  8. footer: hanya "About this site" (disclaimer dan hak cipta).
+- **Hanya info yang dibutuhkan pengguna.** Status teknis (cek HTTP 200, jumlah tautan per situs) hanya ada di README dan AGENTS, tidak di halaman. Ringkasan hanya punya satu aksi per skill ("Open test"); timer ada di toolbar dan di baris tes.
+- Jarak bawah 110px untuk timer melayang hanya dipakai saat timer tampil. Tombol "Delete all progress" dipisah ke kanan dari dua tombol backup.
 - **Panel Start here:** tiga langkah karena proses nyatanya memang tiga: pilih target, buka tes, catat skor. Ini bukan template "How it works": setiap langkah punya kontrolnya sendiri, dan kotak centangnya terisi otomatis dari data.
 - **Help:** dialog modal (`<dialog>`), ditutup dengan tombol Close atau Esc. Isinya cara kerja, arti istilah, tabel band, data Anda, pintasan keyboard, dan tentang situs ini.
 - **Ukuran kontrol:**
