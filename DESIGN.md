@@ -98,6 +98,8 @@ Semua pasangan teks sudah dicek dengan `contrast-check.py` (≥ 4.5:1 di kedua t
 - **HP (≤ 760px):**
   - tombol header turun ke bawah judul;
   - tiap tes menjadi satu baris ringkas: nomor tes, sumber utama, skor, centang, dan tombol detail;
+  - di baris ringkas, sumber utama bertuliskan "Open" karena nama situs tidak muat di 360px; nama situs tampil saat baris dibuka;
+  - header buku membungkus per fakta utuh (judul, hitungan, label, ringkasan buku), dan tautan "book overview" setinggi 44px;
   - sumber lain, catatan, tanggal, dan timer dibuka lewat tombol detail;
   - peta buku menampilkan satu modul sekaligus dengan kotak 44px;
   - dialog Help hampir selebar layar dan bisa digulir.

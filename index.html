@@ -174,6 +174,7 @@
   .src:hover{background:var(--hover);border-color:var(--ink);text-decoration:underline}
   .src.main{color:var(--acc-text);border-color:var(--acc);background:var(--acc-soft)}
   .src.search{border-color:transparent;color:var(--muted);text-decoration:underline}
+  .src .cs{display:none}
   .src.search:hover{border-color:var(--line-in)}
   .contoh{font-size:12.5px;color:var(--muted);margin-left:4px}
   .opened{font-size:12px;color:var(--muted)}
@@ -297,7 +298,8 @@
     .sum td.c-tg{grid-area:tg;display:flex;align-items:center;justify-content:flex-end;gap:8px}
     .sum td.c-tg::before{display:inline}
     .sum td.c-avg .small{display:block}
-    .sum select{width:132px}
+    .sum select{width:112px}
+    .sum td.c-tg::before{white-space:nowrap}
     .sum td.nextcell{grid-area:next}
     .sum .spark{display:none}
     .nx{flex-wrap:nowrap;justify-content:space-between}
@@ -308,7 +310,15 @@
 
     .list,.list tbody,.list tr,.list td,.list th{display:block}
     .list thead{display:none}
-    .list tr.bookrow th{padding:14px 12px 8px}
+    /* Book header: each fact stays whole on one line, and the overview link gets a 44px tap height. */
+    .list tr.bookrow th{padding:12px 12px 6px;display:flex;flex-wrap:wrap;align-items:center;column-gap:12px}
+    .list tr.bookrow th>*{margin-right:0;white-space:nowrap}
+    .list tr.bookrow a{display:inline-flex;align-items:center;min-height:44px}
+    .srccell .src.main{padding:0 8px}
+    .srccell .src.main .cl{display:none}
+    .srccell .src.main .cs{display:inline}
+    .list tr.open .srccell .src.main .cl{display:inline}
+    .list tr.open .srccell .src.main .cs{display:none}
     .list tr.item{display:grid;grid-template-columns:auto minmax(0,1fr) auto auto auto;align-items:center;gap:6px;padding:6px 6px 6px 12px;border-bottom:1px solid var(--line)}
     .list tr.item.done{background:var(--acc-soft)}
     .list tr.item.done>td{background:transparent}
@@ -322,7 +332,7 @@
     .list td.notecell,.list td.tmcell{display:none}
     .srccell .src:not(.main),.srccell .contoh,.srccell .opened,.donecell .date{display:none}
     .xbtn,.xbtn:hover{width:44px;padding:0;border-color:transparent;background:transparent}
-    .scorecell input{width:60px;padding:0 8px}
+    .scorecell input{width:56px;padding:0 8px}
     .scorecell select{width:96px;padding:0 30px 0 10px;background-position:right 10px center}
     .band{min-width:38px;margin-left:4px}
     .list tr.open td.srccell{order:6;grid-column:1/-1;padding-top:4px}
@@ -540,7 +550,7 @@
       <dt>Test 1 to 4</dt><dd>Each book has four full practice tests.</dd>
       <dt>Session</dt><dd>One skill of one test, for example Listening Test 2. A book has 16 sessions: 4 tests × 4 skills.</dd>
       <dt>Current book</dt><dd>The first book in your list that still has sessions to do.</dd>
-      <dt>Main link</dt><dd>The link in a coloured box, usually Engnovate. It opens the full interactive test.</dd>
+      <dt>Main link</dt><dd>The link in a coloured box, usually Engnovate. It opens the full interactive test. On a phone it reads Open.</dd>
       <dt>Other links</dt><dd>IELTSXpress pages show the questions with answers. LangGo has model answers for Writing and Speaking (books 18 to 20). Search opens a Google search in case a link stops working.</dd>
       <dt>Band</dt><dd>The IELTS score scale, from 0 to 9 in half steps.</dd>
       <dt>Priority</dt><dd>The skill with the biggest gap between your average band and your target.</dd>
@@ -937,7 +947,9 @@ function chipsHtml(m,b,t,key,name){
   for(const l of ls){
     if(l.kind==="ex" && !ex){ h+=`<span class="contoh">Model answers:</span>`; ex=true; }
     const lbl = l.kind==="search" ? `Search Google for ${name}` : l.kind==="ex" ? `${l.t} model answer for ${name} on LangGo` : `${name}${l.what?" ("+l.what+")":""} on ${l.src}`;
-    h+=`<a class="src ${l.kind}" href="${esc(l.u)}" target="_blank" rel="noopener" data-open="${key}" aria-label="${esc(lbl)} (new tab)">${esc(l.t)}</a>`;
+    // The main chip carries a short "Open" label for the compact phone row, where the site name does not fit.
+    const txt = l.kind==="main" ? `<span class="cl">${esc(l.t)}</span><span class="cs">Open</span>` : esc(l.t);
+    h+=`<a class="src ${l.kind}" href="${esc(l.u)}" target="_blank" rel="noopener" data-open="${key}" aria-label="${esc(lbl)} (new tab)">${txt}</a>`;
   }
   const s=get(key);
   return `<div class="chips">${h}<span class="opened ${s&&s.opened&&!s.done?"":"hidden"}" id="op-${key}">opened</span></div>`;
